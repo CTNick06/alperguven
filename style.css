@@ -47,11 +47,15 @@ body.dark-mode {
   -webkit-font-smoothing: antialiased;
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-body);
-  overflow-x: hidden;
   line-height: 1.6;
   transition: background-color 0.4s ease, color 0.4s ease;
 }
@@ -73,8 +77,8 @@ body {
 
 .glow-bg {
   position: fixed;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
   z-index: -2;
@@ -1110,8 +1114,8 @@ section {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: 1000;
   display: none;
   justify-content: center;
@@ -1485,7 +1489,7 @@ footer {
   
   .about-grid {
     grid-template-columns: 1fr;
-    gap: 4rem;
+    gap: 2rem;
   }
   
   .contact-grid {
@@ -1536,51 +1540,43 @@ footer {
     transform: translateY(-8px) rotate(-45deg);
   }
   
-  section {
-    padding: 3.5rem 1.2rem;
-  }
-  
-  .section-header {
-    margin-bottom: 2.5rem;
-  }
-  
   .avatar-wrapper {
-    width: 240px;
-    height: 240px;
+    width: 260px;
+    height: 260px;
   }
   
-  .floating-card {
-    display: none !important;
+  .card-1 {
+    left: -10px;
   }
   
-  .about-card, .about-right {
-    padding: 1.5rem 1.2rem !important;
+  .card-2 {
+    right: -10px;
+  }
+  
+  section {
+    padding: 4rem 1.2rem;
+  }
+  
+  .about-card {
+    padding: 1.8rem 1.2rem;
+  }
+  
+  .about-right {
+    padding: 1.8rem 1.2rem !important;
   }
   
   .about-stats {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
     margin-top: 1.5rem;
   }
   
+  .stat-num {
+    font-size: 1.8rem;
+  }
+
   .skills-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .project-card {
-    min-height: auto;
-    padding: 1.5rem 1.2rem;
-  }
-  
-  .project-image {
-    height: 160px;
-    margin: -1.5rem -1.2rem 1.2rem -1.2rem;
   }
   
   .hobbies-grid {
@@ -1593,75 +1589,15 @@ footer {
   }
   
   .contact-form-panel {
-    padding: 2rem 1.2rem;
+    padding: 2rem 1.5rem;
   }
   
   .modal-content {
-    padding: 2rem 1.2rem;
+    padding: 2rem 1.5rem;
   }
   
   .modal-image {
-    height: 160px;
-  }
-  
-  .easter-egg-area {
-    padding: 2rem 0.8rem;
-  }
-  
-  .game-container {
-    margin-top: 1rem;
-    border-radius: 12px !important;
-  }
-  
-  .game-header {
-    padding: 1rem 0.8rem;
-    gap: 0.8rem;
-  }
-  
-  .game-title {
-    font-size: 1.1rem;
-  }
-  
-  .game-stats {
-    width: 100%;
-    justify-content: space-between;
-    gap: 0.8rem;
-  }
-  
-  .game-stat {
-    min-width: auto;
-    flex-grow: 1;
-  }
-  
-  .game-alerts-list {
-    height: 240px;
-    padding: 0.8rem;
-    gap: 0.6rem;
-  }
-  
-  .game-controls-panel {
-    padding: 1rem 0.8rem;
-    gap: 1rem;
-  }
-  
-  .game-alert-details {
-    padding: 1rem;
-    min-height: 120px;
-  }
-  
-  .game-action-buttons {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-  }
-  
-  .game-btn {
-    padding: 0.6rem 0.4rem;
-    font-size: 0.72rem;
-  }
-  
-  .game-terminal-output {
-    height: 100px;
-    padding: 0.8rem 1rem;
+    height: 200px;
   }
 }
 
