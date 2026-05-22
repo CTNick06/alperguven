@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdullah Alper Güven | Siber Güvenlik Uzmanı</title>
+  <meta name="description"
+    content="Abdullah Alper Güven kişisel portfolyosu. Siber Güvenlik, EDR/NDR, SOAR Entegrasyonları, SIEM Log Yönetimi ve Sistem & Ağ Uzmanlığı.">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <canvas id="bg-canvas"></canvas>
+
+  <div class="glow-bg">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+  </div>
+
+  <header>
+    <div class="nav-container glass-panel">
+
+      <a href="#" class="logo">Alper <span>Güven</span></a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link active">Giriş</a></li>
+          <li><a href="#about" class="nav-link">Hakkımda</a></li>
+          <li><a href="#projects" class="nav-link">Projelerim</a></li>
+          <li><a href="#contact" class="nav-link">İletişim</a></li>
+        </ul>
+      </nav>
+
+      <button class="theme-toggle" id="theme-toggle" aria-label="Karanlık/Aydınlık Modu">
+
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+
+      <button class="hamburger" aria-label="Menü">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-container">
+
+      <div class="hero-content">
+        <span class="hero-subtitle">SİBER GÜVENLİK UZMANI</span>
+        <h1 class="hero-title">
+          Abdullah Alper <br>
+          <span class="gradient-text">GÜVEN</span>
+        </h1>
+
+        <div class="typing-container">
+          &nbsp;<span id="typing-text"></span><span class="typing-cursor"></span>
+        </div>
+
+        <p class="hero-desc">
+          Aktif olarak kurumsal güvenlik operasyonları, mor takım (purple team) analizleri ve SOAR playbook otomasyon
+          süreçleri üzerine odaklanmış bir Siber Güvenlik Uzmanıyım. Sistem-ağ altyapımı ve mühendislik geçmişimden
+          gelen yüksek analitik problem çözme yeteneğimi birleştirerek proaktif siber savunma çözümleri geliştiriyorum.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">
+            <span>Projelerimi İncele</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="#contact" class="btn btn-secondary">İletişime Geç</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="avatar-wrapper">
+          <div class="avatar-inner">
+            <svg viewBox="0 0 100 100">
+              <defs>
+                <linearGradient id="avatar-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0d9488" />
+                  <stop offset="100%" stop-color="#0284c7" />
+                </linearGradient>
+              </defs>
+
+              <path d="M50 15 L80 25 V45 C80 65 50 85 50 85 C50 85 20 65 20 45 V25 Z" fill="url(#avatar-gradient)"
+                opacity="0.15" />
+              <path d="M50 20 L75 28 V45 C75 62 50 79 50 79 C50 79 25 62 25 45 V28 Z" fill="none"
+                stroke="url(#avatar-gradient)" stroke-width="3" stroke-linejoin="round" />
+              <circle cx="50" cy="45" r="8" fill="url(#avatar-gradient)" />
+              <path d="M50 53 L50 63" stroke="url(#avatar-gradient)" stroke-width="3" stroke-linecap="round" />
+              <circle cx="50" cy="65" r="3" fill="url(#avatar-gradient)" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="floating-card card-1 glass-panel">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <div>
+            <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--text-primary);">Siber Güvenlik</h4>
+            <p style="font-size: 0.75rem; color: var(--text-muted);">EDR, NDR, SIEM, SOAR</p>
+          </div>
+        </div>
+
+        <div class="floating-card card-2 glass-panel">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+            <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path>
+          </svg>
+          <div>
+            <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--text-primary);">Sistem & Ağ</h4>
+            <p style="font-size: 0.75rem; color: var(--text-muted);">Cisco, Linux, Sunucu</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="about" class="reveal">
+    <div class="section-header">
+      <span class="section-tag">Hikayem</span>
+      <h2 class="section-title">Hakkımda <span>Bilgiler</span></h2>
+    </div>
+
+    <div class="about-grid">
+
+      <div class="about-left">
+        <div class="glass-panel about-card">
+          <h3 class="about-title">Ben Kimim?</h3>
+          <p class="about-text">
+            Siber olay analizi, tehdit avcılığı ve güvenlik otomasyonları konularında uzmanlaşmış, profesyonel bir
+            <strong>Siber Güvenlik Uzmanıyım</strong>. Tehditleri bertaraf etme, mor takım (purple team) operasyonları,
+            EDR/NDR çözümleri ve SIEM/SOAR iş akışı otomasyonlarına odaklanarak kurumsal altyapıların siber güvenliğini
+            en üst düzeyde sağlıyorum.
+          </p>
+          <p class="about-text">
+            Bilişim yolculuğuma 2022 yılında Fenerbahçe Üniversitesi'nde tamamladığım 800 saatlik kapsamlı
+            <strong>Sistem ve Ağ Uzmanlığı</strong> eğitimi ile başladım. Mühendislik geçmişimden kazandığım güçlü
+            analitik problem çözme yeteneğimi bu altyapıyla birleştirerek, siber güvenlik dünyasındaki karmaşık
+            tehditleri proaktif bir yaklaşımla çözüyorum.
+          </p>
+
+          <div class="about-stats">
+            <div class="stat-item">
+              <div class="stat-num">800+</div>
+              <div class="stat-label">Saat Uzmanlık Eğitimi</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">10+</div>
+              <div class="stat-label">Sertifikasyon</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">2+</div>
+              <div class="stat-label">Yıl Siber Tecrübe</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-right glass-panel" style="padding: 2.5rem;">
+
+        <div class="tabs-header">
+          <button class="tab-btn active" data-tab="skills">Yetenekler</button>
+          <button class="tab-btn" data-tab="experience">Zaman Tüneli</button>
+          <button class="tab-btn" data-tab="certs">Sertifikalar & Kurslar</button>
+        </div>
+
+        <div class="tab-content active" id="skills">
+          <div class="skills-grid">
+
+            <div class="glass-card skill-card">
+              <div class="skill-icon-wrap">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+                </svg>
+              </div>
+              <div class="skill-info">
+                <div class="skill-name">EPP, EDR & NDR Güvenlik Çözümleri</div>
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-bar" data-progress="95%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card skill-card">
+              <div class="skill-icon-wrap">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2z" />
+                </svg>
+              </div>
+              <div class="skill-info">
+                <div class="skill-name">SOAR (Playbook) Tasarımı</div>
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-bar" data-progress="90%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card skill-card">
+              <div class="skill-icon-wrap">
+                <svg viewBox="0 0 24 24">
+                  <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z" />
+                </svg>
+              </div>
+              <div class="skill-info">
+                <div class="skill-name">SIEM Log Yönetimi & Alarm Analizi</div>
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-bar" data-progress="88%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card skill-card">
+              <div class="skill-icon-wrap">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                </svg>
+              </div>
+              <div class="skill-info">
+                <div class="skill-name">Sistem ve Ağ (CISCO, Sunucu, AD)</div>
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-bar" data-progress="85%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card skill-card">
+              <div class="skill-icon-wrap">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" />
+                </svg>
+              </div>
+              <div class="skill-info">
+                <div class="skill-name">Nessus & Kali Linux (Sızma Analizleri)</div>
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-bar" data-progress="82%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card skill-card">
+              <div class="skill-icon-wrap">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
+                </svg>
+              </div>
+              <div class="skill-info">
+                <div class="skill-name">Python Araç Geliştirme & Scripting</div>
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-bar" data-progress="80%"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="tab-content" id="experience">
+          <div class="timeline">
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-meta">
+                <span class="timeline-date">04.2023 - 04.2025</span>
+                <span class="timeline-org">İnfrasis Siber Mühendislik</span>
+              </div>
+              <h4 class="timeline-title">Associate Cybersecurity Expert</h4>
+              <ul class="timeline-list">
+                <li>EDR, NDR ve EPP Güvenlik Çözümlerinin Kurulumu ve Yönetimi</li>
+                <li>MDR Çözümleri Üzerinde Alarm Analizi Gerçekleştirme ve Raporlama</li>
+                <li>SOAR Platformlarında Entegrasyon ve Otomasyon Süreçleri / Playbook Tasarımı</li>
+                <li>SIEM Ürünleri ile Log Analizi ve Log Yönetimi</li>
+                <li>Siber Güvenlik Süreçlerini İyileştirmek için Python ile Araç Geliştirme</li>
+              </ul>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-meta">
+                <span class="timeline-date">09.2022 - 01.2023</span>
+                <span class="timeline-org">Fenerbahçe Üniversitesi</span>
+              </div>
+              <h4 class="timeline-title">Sistem ve Ağ Eğitimi (800 Saat)</h4>
+              <p class="timeline-desc">"Nitelikli Bilişim Uzmanı Yetiştirme" programı kapsamında; Ağ Güvenliği, Sistem
+                Yönetimi, CISCO Cihazları ve Sanallaştırma teknolojileri üzerinde kapsamlı teorik ve pratik uygulamalar
+                gerçekleştirildi.</p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-meta">
+                <span class="timeline-date">2013 - 2018</span>
+                <span class="timeline-org">KAYHAN Mühendislik & Mimarlık Ltd. Şti.</span>
+              </div>
+              <h4 class="timeline-title">Uzun Dönem Stajyer Mühendis</h4>
+              <ul class="timeline-list">
+                <li>AutoCAD ve MS Excel kullanarak mühendislik projelerinin hazırlanması ve analizi</li>
+                <li>ProtaStructure, ideCAD ve STA4CAD yazılımları ile yapısal sistem modellemeleri</li>
+              </ul>
+            </div>
+
+            <div class="timeline-item"
+              style="margin-top: 1rem; border-top: 1px dashed var(--glass-border); padding-top: 1.5rem;">
+              <div class="timeline-dot" style="background: var(--accent-secondary);"></div>
+              <div class="timeline-meta">
+                <span class="timeline-date"
+                  style="color: var(--accent-secondary); background: rgba(2, 132, 199, 0.08);">07.2019 Mezuniyet</span>
+                <span class="timeline-org">Kırıkkale Üniversitesi</span>
+              </div>
+              <h4 class="timeline-title">İnşaat Mühendisliği Lisansı</h4>
+              <p class="timeline-desc">Mühendislik Eğitimi | Genel Ortalama: 2.81 / 4</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="tab-content" id="certs">
+          <div class="cert-list">
+
+            <div class="glass-card cert-item">
+              <h4 class="cert-title">Kaspersky Global Sertifikaları</h4>
+              <ul class="cert-desc">
+                <li><strong>Certified Professional:</strong> KATA Platform & EDR Expert (Sertifika No: 025.6-XXXXX)</li>
+                <li><strong>Certified Professional:</strong> Kaspersky Endpoint Security & Management (Sertifika No:
+                  002.12.1-XXXXX)</li>
+                <li><strong>Certified Professional:</strong> Kaspersky Endpoint Security Cloud (Sertifika No:
+                  040.16-XXXXX)</li>
+              </ul>
+            </div>
+
+            <div class="glass-card cert-item">
+              <h4 class="cert-title">Akademi & Resmi Eğitim Sertifikaları</h4>
+              <ul class="cert-desc">
+                <li><strong>Fenerbahçe Üniversitesi:</strong> Sistem ve Ağ Uzmanlığı (800 Saat)</li>
+                <li><strong>Fenerbahçe Üniversitesi:</strong> KVKK Eğitimi & ISO 27001 Bilgi Güvenliğine Giriş</li>
+                <li><strong>Udemy:</strong> Etik Hacker Olma Kursu / Sıfırdan Hyper-V Eğitimi ve Sanallaştırma</li>
+              </ul>
+            </div>
+
+            <div class="glass-card cert-item">
+              <h4 class="cert-title">BTK Akademi & Turkcell Geleceği Yazanlar</h4>
+              <ul class="cert-desc">
+                <li><strong>Turkcell:</strong> Siber Güvenlik 101, Temel Network, Temel Linux Serisi (101-401)</li>
+                <li><strong>BTK Akademi:</strong> Uygulamalarla SQL Öğreniyorum, Docker Temelleri, Fortinet Güvenlik
+                  Duvarı Temelleri, KVKK ve GDPR Eğitim Seti, Ağ Temelleri</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <section id="projects" class="reveal">
+    <div class="section-header">
+      <span class="section-tag">Uygulamalı Analizlerim</span>
+      <h2 class="section-title">Teknik <span>Projelerim</span></h2>
+    </div>
+
+    <div class="portfolio-filter">
+      <button class="filter-btn active" data-filter="all">Hepsi</button>
+      <button class="filter-btn" data-filter="soar">SOAR & Otomasyon</button>
+      <button class="filter-btn" data-filter="security">Zafiyet Analizi</button>
+    </div>
+
+    <div class="portfolio-grid">
+
+      <div class="glass-panel project-card" data-category="soar" data-project-id="p1">
+        <div class="project-image">
+          <svg viewBox="0 0 100 100" fill="none" stroke="url(#proj-grad-1)" stroke-width="1.5">
+            <defs>
+              <linearGradient id="proj-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0d9488" />
+                <stop offset="100%" stop-color="#0284c7" />
+              </linearGradient>
+            </defs>
+
+            <circle cx="20" cy="50" r="8" />
+            <circle cx="50" cy="20" r="8" />
+            <circle cx="50" cy="80" r="8" />
+            <circle cx="80" cy="50" r="8" />
+            <line x1="28" y1="50" x2="42" y2="25" />
+            <line x1="28" y1="50" x2="42" y2="75" />
+            <line x1="58" y1="25" x2="72" y2="50" />
+            <line x1="58" y1="75" x2="72" y2="50" />
+            <line x1="50" y1="28" x2="50" y2="72" />
+          </svg>
+          <div class="project-overlay">
+            <div class="project-overlay-btn">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-tags">
+            <span class="project-tag">SOAR</span>
+            <span class="project-tag">Otomasyon</span>
+            <span class="project-tag">API Entegrasyon</span>
+          </div>
+          <h3 class="project-title">Shuffle SOAR Güvenlik Entegrasyonları</h3>
+          <p class="project-desc">EPP, EDR, NDR, SIEM ve Aktif Dizin çözümlerinin SOAR platformuna bağlanması ve
+            playbook iş akışı otomasyonu.</p>
+        </div>
+      </div>
+
+      <div class="glass-panel project-card" data-category="security" data-project-id="p2">
+        <div class="project-image">
+          <svg viewBox="0 0 100 100" fill="none" stroke="url(#proj-grad-2)" stroke-width="1.5">
+            <defs>
+              <linearGradient id="proj-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0284c7" />
+                <stop offset="100%" stop-color="#10b981" />
+              </linearGradient>
+            </defs>
+
+            <circle cx="50" cy="50" r="30" />
+            <circle cx="50" cy="50" r="15" />
+            <line x1="50" y1="10" x2="50" y2="90" />
+            <line x1="10" y1="50" x2="90" y2="50" />
+            <path d="M70 70 L85 85" stroke-width="3" />
+          </svg>
+          <div class="project-overlay">
+            <div class="project-overlay-btn">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-tags">
+            <span class="project-tag">Nessus</span>
+            <span class="project-tag">Zafiyet Analizi</span>
+            <span class="project-tag">Sızma Testi</span>
+          </div>
+          <h3 class="project-title">Nessus Zafiyet Tarama ve Sızma Analizi</h3>
+          <p class="project-desc">Laboratuvar ortamında Windows, Linux ve Web sunucularının Nessus ile taranması,
+            zafiyet tespiti ve sızma testleri.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <div class="section-header">
+      <span class="section-tag">Bana Ulaşın</span>
+      <h2 class="section-title">İletişim <span>Bilgilerim</span></h2>
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="contact-left">
+        <div class="contact-info-list">
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+              </svg>
+            </div>
+            <div class="contact-info-content">
+              <h4>E-posta</h4>
+              <p>abdullahalperguven<span style="display:none">.bot-protection</span>@gmail.com</p>
+            </div>
+          </div>
+
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+            </div>
+            <div class="contact-info-content">
+              <h4>Lokasyon</h4>
+              <p>Türkiye</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div>
+          <h3 class="social-header">Sosyal Medya</h3>
+          <div class="social-links">
+            <a href="#" class="social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+              </svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="GitHub">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="glass-panel contact-form-panel">
+          <form class="contact-form" id="portfolio-contact-form">
+            <div class="form-group-row">
+              <div class="form-group">
+                <label for="form-name" class="form-label">Adınız Soyadınız</label>
+                <input type="text" id="form-name" class="form-input" placeholder="Ahmet Yılmaz" required>
+              </div>
+              <div class="form-group">
+                <label for="form-email" class="form-label">E-posta Adresiniz</label>
+                <input type="email" id="form-email" class="form-input" placeholder="ahmet@gmail.com" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="form-subject" class="form-label">Konu</label>
+              <input type="text" id="form-subject" class="form-input" placeholder="İş birliği teklifi" required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-msg" class="form-label">Mesajınız</label>
+              <textarea id="form-msg" class="form-textarea"
+                placeholder="İletmek istediğiniz detayları buraya yazabilirsiniz..." required></textarea>
+            </div>
+
+            <div id="form-response-status" class="form-status"></div>
+
+            <button type="submit" class="btn btn-primary" style="align-self: flex-start;">
+              <span>Mesajı İlet</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <a href="#" class="logo" style="font-size: 1.8rem;">Alper <span>Güven</span></a>
+      <ul class="footer-nav">
+        <li><a href="#home" class="footer-link">Giriş</a></li>
+        <li><a href="#about" class="footer-link">Hakkımda</a></li>
+        <li><a href="#projects" class="footer-link">Projelerim</a></li>
+        <li><a href="#contact" class="footer-link">İletişim</a></li>
+      </ul>
+      <p class="footer-text">© 2026 Abdullah Alper Güven. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+  <section class="easter-egg-area" id="easter-egg">
+    <div class="easter-egg-trigger-container" id="easter-egg-trigger">
+      <span class="glitch-text">guest@guven.sec:~$ <span class="terminal-blink-text">init_override_protocol</span></span>
+    </div>
+    
+    <div class="game-container glass-panel hidden" id="game-panel">
+      <div class="game-header">
+        <div class="game-title-wrap">
+          <span class="game-badge">SOC SIMULATOR v1.0</span>
+          <h3 class="game-title">SIEM Defender & Threat Mitigator</h3>
+        </div>
+        <div class="game-stats">
+          <div class="game-stat">
+            <span class="stat-lbl">SİSTEM SAĞLIĞI</span>
+            <div class="stat-bar-bg"><div class="stat-bar-fill health" id="game-health" style="width: 100%;"></div></div>
+          </div>
+          <div class="game-stat">
+            <span class="stat-lbl">MÜDAHALE EDİLEN</span>
+            <span class="stat-val" id="game-score">0</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="game-body">
+        <div class="game-alerts-panel">
+          <div class="game-panel-title">SIEM CANLI ALARM EKRANI</div>
+          <div class="game-alerts-list" id="game-alerts-list"></div>
+        </div>
+        
+        <div class="game-controls-panel">
+          <div class="game-panel-title">MÜDAHALE KONSOLU</div>
+          <div class="game-alert-details" id="active-alert-details">
+            <p class="select-prompt">Lütfen müdahale etmek için sol listeden aktif bir alarm seçin.</p>
+          </div>
+          <div class="game-action-buttons">
+            <button class="game-btn btn-edr" id="btn-edr" disabled>EDR: HOSTU İZOLE ET</button>
+            <button class="game-btn btn-fw" id="btn-fw" disabled>FIREWALL: IP ENGELLE</button>
+            <button class="game-btn btn-ad" id="btn-ad" disabled>AD: HESABI DEVRE DIŞI BIRAK</button>
+            <button class="game-btn btn-soc" id="btn-soc" disabled>SOC: ALARMI YOKSAY (FALSE POSITIVE)</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="game-terminal">
+        <div class="game-panel-title">ANALYST LOGS</div>
+        <div class="game-terminal-output" id="game-terminal-log">
+          <div>[SİSTEM] Güvenlik operasyon protokolü aktifleşti. Tehditleri bertaraf edin.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal" id="modal-p1">
+    <div class="modal-overlay"></div>
+    <div class="modal-content glass-panel">
+      <button class="modal-close" aria-label="Kapat">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+        </svg>
+      </button>
+      <div class="modal-image">
+        <svg viewBox="0 0 100 100" fill="none" stroke="#0d9488" stroke-width="1.2" style="width: 20%; height: 20%;">
+          <circle cx="20" cy="50" r="8" />
+          <circle cx="50" cy="20" r="8" />
+          <circle cx="50" cy="80" r="8" />
+          <circle cx="80" cy="50" r="8" />
+          <line x1="28" y1="50" x2="42" y2="25" />
+          <line x1="28" y1="50" x2="42" y2="75" />
+          <line x1="58" y1="25" x2="72" y2="50" />
+          <line x1="58" y1="75" x2="72" y2="50" />
+        </svg>
+      </div>
+      <div class="modal-body">
+        <h3 class="modal-title">Shuffle SOAR Güvenlik Entegrasyonları</h3>
+        <div class="modal-meta-grid">
+          <div>
+            <div class="meta-item-label">Kategori</div>
+            <div class="meta-item-value">SOAR & Otomasyon</div>
+          </div>
+          <div>
+            <div class="meta-item-label">Araçlar & Teknolojiler</div>
+            <div class="meta-item-value">Shuffle SOAR, EDR, SIEM, AD, API</div>
+          </div>
+          <div>
+            <div class="meta-item-label">Süreç</div>
+            <div class="meta-item-value">Güvenlik Otomasyonu</div>
+          </div>
+        </div>
+        <p class="modal-desc">
+          Bu proje kapsamında, siber olaylara müdahale süreçlerini otomatikleştirmek amacıyla Shuffle SOAR platformunun
+          sıfırdan kurulumunu ve temel yapılandırmasını gerçekleştirdim. Kullanıcı hesaplarının oluşturulması ve
+          yetkilendirme süreçlerini yönettikten sonra; EPP, EDR, NDR, SIEM, Güvenlik Duvarı, NAC, DLP ve Active
+          Directory gibi kritik kurumsal güvenlik çözümlerini SOAR platformuna entegre ettim.<br><br>
+          Yerel API desteği olmayan sistemler için özel entegrasyon modülleri ve API bağlantıları geliştirerek, olay
+          yönetimini otomatikleştiren özel playbook'lar ve iş akışları tasarladım. Ayrıca, regex ve gelişmiş veri işleme
+          teknikleri kullanarak olay günlüklerinden anlamlı veriler çıkarılmasını sağlayıp, koşullu dallanma ve
+          tetikleyiciler ile manuel müdahale sürelerini minimuma indiren uçtan uca otomasyon süreçleri oluşturdum.
+        </p>
+        <div class="modal-links">
+          <a href="#contact" class="btn btn-primary">Bilgi Al</a>
+          <a href="#" class="btn btn-secondary modal-btn-close">Geri Dön</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-p2">
+    <div class="modal-overlay"></div>
+    <div class="modal-content glass-panel">
+      <button class="modal-close" aria-label="Kapat">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+        </svg>
+      </button>
+      <div class="modal-image">
+        <svg viewBox="0 0 100 100" fill="none" stroke="#0284c7" stroke-width="1.2" style="width: 20%; height: 20%;">
+          <circle cx="50" cy="50" r="30" />
+          <circle cx="50" cy="50" r="15" />
+          <line x1="50" y1="10" x2="50" y2="90" />
+          <line x1="10" y1="50" x2="90" y2="50" />
+        </svg>
+      </div>
+      <div class="modal-body">
+        <h3 class="modal-title">Nessus Zafiyet Tarama ve Sızma Analizi</h3>
+        <div class="modal-meta-grid">
+          <div>
+            <div class="meta-item-label">Kategori</div>
+            <div class="meta-item-value">Zafiyet Analizi / Pentest</div>
+          </div>
+          <div>
+            <div class="meta-item-label">Kullanılan Araçlar</div>
+            <div class="meta-item-value">Nessus, Kali Linux, Metasploit</div>
+          </div>
+          <div>
+            <div class="meta-item-label">Süreç</div>
+            <div class="meta-item-value">Zafiyet Yönetimi & Sızma</div>
+          </div>
+        </div>
+        <p class="modal-desc">
+          Fenerbahçe Üniversitesi Sistem ve Ağ Uzmanlığı laboratuvar sınıfında gerçekleştirdiğim bu çalışmada, Nessus
+          Zafiyet Tarama yazılımının kurulumunu, yapılandırmasını ve detaylı kullanımını yönettim. <br><br>
+          Zafiyetli olarak yapılandırılmış Linux, Windows işletim sistemleri ve web uygulaması makinelerini Nessus ile
+          tarayarak kritik güvenlik açıklarını tespit ettim. Çıkan tarama sonuçlarını profesyonel standartlarda
+          raporlaştırıp analiz ettim. Ardından, bulunan zafiyetlerden (exploit) yararlanarak Kali Linux ve çeşitli sızma
+          teknikleri vasıtasıyla hedef makinelere sızma testleri gerçekleştirip güvenlik açıklarının kapatılmasına
+          yönelik çözüm yollarını doğruladım.
+        </p>
+        <div class="modal-links">
+          <a href="#contact" class="btn btn-primary">Bilgi Al</a>
+          <a href="#" class="btn btn-secondary modal-btn-close">Geri Dön</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
