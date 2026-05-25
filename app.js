@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function setLanguage(lang) {
     document.documentElement.classList.remove('lang-en', 'lang-de', 'lang-zh', 'lang-ru');
-    
+
     if (lang === 'en') {
       document.documentElement.classList.add('lang-en');
     } else if (lang === 'de') {
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (lang === 'ru') {
       document.documentElement.classList.add('lang-ru');
     }
-    
+
     localStorage.setItem('portfolio-lang', lang);
     updateLangBtnText(lang.toUpperCase());
     updatePlaceholders();
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const dePlaceholder = input.getAttribute('data-placeholder-de');
       const zhPlaceholder = input.getAttribute('data-placeholder-zh');
       const ruPlaceholder = input.getAttribute('data-placeholder-ru');
-      
+
       let placeholder = trPlaceholder;
       if (isEn) {
         placeholder = enPlaceholder;
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const typingTextElement = document.getElementById('typing-text');
-  
+
   function getRoles() {
     if (document.documentElement.classList.contains('lang-en')) {
       return ["Cybersecurity Specialist."];
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return ["Siber Güvenlik Uzmanı."];
     }
   }
-  
+
   let roleIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
@@ -228,6 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let radarAngle = 0;
 
     const colors = ['#0d9488', '#0284c7', '#10b981'];
+    const cyberTerms = ['SECURE', '80', '443', 'EDR', 'API', 'LOG', 'NET', 'APT', '22', '445', '3389', 'CVE', '2FA', 'SQL', 'EPP', 'FW', 'NDR', 'VPN', 'NAC', 'PAM', 'C2'];
 
     function resizeCanvas() {
       canvas.width = window.innerWidth;
@@ -292,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     class Particle {
-      constructor() {
+      constructor(labelType = 'none', assignedTerm = null) {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
         this.size = Math.random() * 2 + 1.2;
@@ -300,11 +301,11 @@ document.addEventListener('DOMContentLoaded', () => {
         this.speedY = Math.random() * 0.5 - 0.25;
         this.color = colors[Math.floor(Math.random() * colors.length)];
 
-        this.labelType = Math.random() < 0.25 ? 'binary' : (Math.random() < 0.08 ? 'term' : 'none');
+        this.labelType = labelType;
+        if (labelType === 'term') {
+          this.cyberTerm = assignedTerm;
+        }
         this.binaryVal = Math.random() < 0.5 ? '0' : '1';
-
-        const cyberTerms = ['SECURE', 'PORT_80', 'FW_PASS', 'EDR_OK', 'API_CONN', 'LOG_OK', 'SSL_VAL', 'NET_CONNECTED', 'MorTeam_Active'];
-        this.cyberTerm = cyberTerms[Math.floor(Math.random() * cyberTerms.length)];
       }
 
       update() {
@@ -354,8 +355,25 @@ document.addEventListener('DOMContentLoaded', () => {
       particlesArray = [];
       packetsArray = [];
       const numberOfParticles = Math.min((canvas.width * canvas.height) / 11500, 90);
+
+      const shuffledTerms = [...cyberTerms].sort(() => Math.random() - 0.5);
+      let termIndex = 0;
+
       for (let i = 0; i < numberOfParticles; i++) {
-        particlesArray.push(new Particle());
+        let labelType = 'none';
+        let term = null;
+
+        const rand = Math.random();
+        if (rand < 0.25 && termIndex < shuffledTerms.length) {
+          labelType = 'term';
+          term = shuffledTerms[termIndex++];
+        } else if (rand < 0.25 + 0.35) { // 0.25 - 0.60 arası (%35 ihtimal)
+          labelType = 'binary';
+        } else {
+          labelType = 'none'; // Geriye kalan %40 ihtimal
+        }
+
+        particlesArray.push(new Particle(labelType, term));
       }
     }
     init();
@@ -616,7 +634,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const isEn = document.documentElement.classList.contains('lang-en');
       const isDe = document.documentElement.classList.contains('lang-de');
       const isZh = document.documentElement.classList.contains('lang-zh');
-      
+
       const messages = {
         sending: isEn ? "Sending..." : (isDe ? "Wird gesendet..." : (isZh ? "发送中..." : "Gönderiliyor...")),
         success: isEn ? "Your message has been sent successfully! I will get back to you soon." : (isDe ? "Ihre Nachricht wurde erfolgreich gesendet! Ich werde mich in Kürze bei Ihnen melden." : (isZh ? "您的留言已成功发送！我会尽快回复您。" : "Mesajınız başarıyla iletildi! En kısa sürede geri döneceğim.")),
@@ -672,69 +690,69 @@ document.addEventListener('DOMContentLoaded', () => {
           'Accept': 'application/json'
         }
       })
-      .then(response => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnText;
+        .then(response => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
 
-        if (response.ok) {
-          contactForm.reset();
-          if (formResponseStatus) {
-            formResponseStatus.className = "form-status success";
-            formResponseStatus.textContent = getFormMessage('success');
-            formResponseStatus.style.display = "block";
+          if (response.ok) {
+            contactForm.reset();
+            if (formResponseStatus) {
+              formResponseStatus.className = "form-status success";
+              formResponseStatus.textContent = getFormMessage('success');
+              formResponseStatus.style.display = "block";
 
-            setTimeout(() => {
-              formResponseStatus.style.display = "none";
-            }, 6000);
-          }
-        } else {
-          response.json().then(data => {
-            if (data && data.errors) {
-              const isEn = document.documentElement.classList.contains('lang-en');
-              const isDe = document.documentElement.classList.contains('lang-de');
-              const isZh = document.documentElement.classList.contains('lang-zh');
-              const errorMsg = data.errors.map(err => {
-                if (isEn) {
-                  return `${err.field}: ${err.message}`;
-                } else if (isDe) {
-                  let fieldName = err.field === 'email' ? 'E-Mail' : (err.field === 'message' ? 'Nachricht' : (err.field === 'name' ? 'Name' : err.field));
-                  let msg = err.message;
-                  if (msg === 'must be a valid email address') msg = 'muss eine gültige E-Mail-Adresse sein';
-                  if (msg === 'is required') msg = 'ist erforderlich';
-                  return `${fieldName} ${msg}`;
-                } else if (isZh) {
-                  let fieldName = err.field === 'email' ? '电子邮箱' : (err.field === 'message' ? '留言内容' : (err.field === 'name' ? '姓名' : err.field));
-                  let msg = err.message;
-                  if (msg === 'must be a valid email address') msg = '必须是有效的电子邮箱地址';
-                  if (msg === 'is required') msg = '是必填项';
-                  return `${fieldName}${msg}`;
-                } else {
-                  let fieldName = err.field === 'email' ? 'E-posta' : (err.field === 'message' ? 'Mesaj' : (err.field === 'name' ? 'Ad Soyad' : err.field));
-                  let msg = err.message;
-                  if (msg === 'must be a valid email address') msg = 'geçerli bir e-posta adresi olmalıdır';
-                  if (msg === 'is required') msg = 'zorunludur';
-                  return `${fieldName} ${msg}`;
-                }
-              }).join(', ');
-              
-              let prefix = 'Form hatası';
-              if (isEn) prefix = 'Form error';
-              else if (isDe) prefix = 'Formfehler';
-              else if (isZh) prefix = '表单错误';
-              showError(`${prefix}: ${errorMsg}`);
-            } else {
-              showError(getFormMessage('defaultError'));
+              setTimeout(() => {
+                formResponseStatus.style.display = "none";
+              }, 6000);
             }
-          }).catch(() => {
-            showError(getFormMessage('serverError'));
-          });
-        }
-      })
-      .catch(error => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnText;
-        showError(getFormMessage('networkError'));
-      });
+          } else {
+            response.json().then(data => {
+              if (data && data.errors) {
+                const isEn = document.documentElement.classList.contains('lang-en');
+                const isDe = document.documentElement.classList.contains('lang-de');
+                const isZh = document.documentElement.classList.contains('lang-zh');
+                const errorMsg = data.errors.map(err => {
+                  if (isEn) {
+                    return `${err.field}: ${err.message}`;
+                  } else if (isDe) {
+                    let fieldName = err.field === 'email' ? 'E-Mail' : (err.field === 'message' ? 'Nachricht' : (err.field === 'name' ? 'Name' : err.field));
+                    let msg = err.message;
+                    if (msg === 'must be a valid email address') msg = 'muss eine gültige E-Mail-Adresse sein';
+                    if (msg === 'is required') msg = 'ist erforderlich';
+                    return `${fieldName} ${msg}`;
+                  } else if (isZh) {
+                    let fieldName = err.field === 'email' ? '电子邮箱' : (err.field === 'message' ? '留言内容' : (err.field === 'name' ? '姓名' : err.field));
+                    let msg = err.message;
+                    if (msg === 'must be a valid email address') msg = '必须是有效的电子邮箱地址';
+                    if (msg === 'is required') msg = '是必填项';
+                    return `${fieldName}${msg}`;
+                  } else {
+                    let fieldName = err.field === 'email' ? 'E-posta' : (err.field === 'message' ? 'Mesaj' : (err.field === 'name' ? 'Ad Soyad' : err.field));
+                    let msg = err.message;
+                    if (msg === 'must be a valid email address') msg = 'geçerli bir e-posta adresi olmalıdır';
+                    if (msg === 'is required') msg = 'zorunludur';
+                    return `${fieldName} ${msg}`;
+                  }
+                }).join(', ');
+
+                let prefix = 'Form hatası';
+                if (isEn) prefix = 'Form error';
+                else if (isDe) prefix = 'Formfehler';
+                else if (isZh) prefix = '表单错误';
+                showError(`${prefix}: ${errorMsg}`);
+              } else {
+                showError(getFormMessage('defaultError'));
+              }
+            }).catch(() => {
+              showError(getFormMessage('serverError'));
+            });
+          }
+        })
+        .catch(error => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
+          showError(getFormMessage('networkError'));
+        });
     });
   }
 
@@ -1273,7 +1291,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isDe = document.documentElement.classList.contains('lang-de');
         const isZh = document.documentElement.classList.contains('lang-zh');
         const isRu = document.documentElement.classList.contains('lang-ru');
-        
+
         let labelDesc = 'Açıklama';
         if (isEn) labelDesc = 'Description';
         else if (isDe) labelDesc = 'Beschreibung';
@@ -1285,7 +1303,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (isDe) labelSource = 'Quelle';
         else if (isZh) labelSource = '来源';
         else if (isRu) labelSource = 'Источник';
-        
+
         detailsBox.innerHTML = `
           <div class="details-content">
             <div class="details-header">
@@ -1320,7 +1338,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isDe = document.documentElement.classList.contains('lang-de');
         const isZh = document.documentElement.classList.contains('lang-zh');
         const isRu = document.documentElement.classList.contains('lang-ru');
-        
+
         let promptText = 'Lütfen müdahale etmek için sol listeden aktif bir alarm seçin.';
         if (isEn) promptText = 'Please select an active alert from the left panel to mitigate.';
         else if (isDe) promptText = 'Bitte wählen Sie einen aktiven Alarm aus dem linken Panel aus, um ihn abzuwehren.';
@@ -1345,7 +1363,7 @@ document.addEventListener('DOMContentLoaded', () => {
       else if (isDe) activeLibrary = threatLibraryDE;
       else if (isZh) activeLibrary = threatLibraryZH;
       else if (isRu) activeLibrary = threatLibraryRU;
-      
+
       const baseThreat = activeLibrary[Math.floor(Math.random() * activeLibrary.length)];
       const newAlert = {
         id: nextAlertId++,
@@ -1376,7 +1394,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         alertListContainer.appendChild(item);
-        
+
         let logText = `YENİ ALARM: ${newAlert.title} [Sınıf: ${newAlert.type.toUpperCase()}]`;
         if (isEn) logText = `NEW ALERT: ${newAlert.title} [Class: ${newAlert.type.toUpperCase()}]`;
         else if (isDe) logText = `NEUER ALARM: ${newAlert.title} [Klasse: ${newAlert.type.toUpperCase()}]`;
@@ -1500,13 +1518,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const isDe = document.documentElement.classList.contains('lang-de');
         const isZh = document.documentElement.classList.contains('lang-zh');
         const isRu = document.documentElement.classList.contains('lang-ru');
-        
+
         let gameOverTitle = "SİSTEM SIZMA LİMİTİNE ULAŞTI";
         let gameOverDesc = "Kritik sunucular ve veri tabanı sistemleri ele geçirildi. Güvenlik operasyon merkezi başarısız oldu.";
         let statLabelScore = "SKOR";
         let statLabelLevel = "SEVİYE";
         let restartBtnText = "KONSOLU YENİDEN BAŞLAT";
-        
+
         if (isEn) {
           gameOverTitle = "SYSTEM COMPROMISED";
           gameOverDesc = "Critical servers and database systems have been breached. Security Operations Center failed to mitigate the threats.";
