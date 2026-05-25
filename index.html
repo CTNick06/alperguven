@@ -548,26 +548,26 @@
 
       <div>
         <div class="glass-panel contact-form-panel">
-          <form class="contact-form" id="portfolio-contact-form">
+          <form class="contact-form" id="portfolio-contact-form" action="https://formspree.io/f/mjgzeewj" method="POST">
             <div class="form-group-row">
               <div class="form-group">
                 <label for="form-name" class="form-label">Adınız Soyadınız</label>
-                <input type="text" id="form-name" class="form-input" placeholder="Ahmet Yılmaz" required>
+                <input type="text" id="form-name" name="name" class="form-input" placeholder="Ahmet Yılmaz" required>
               </div>
               <div class="form-group">
                 <label for="form-email" class="form-label">E-posta Adresiniz</label>
-                <input type="email" id="form-email" class="form-input" placeholder="ahmet@gmail.com" required>
+                <input type="email" id="form-email" name="email" class="form-input" placeholder="ahmet@gmail.com" required>
               </div>
             </div>
 
             <div class="form-group">
               <label for="form-subject" class="form-label">Konu</label>
-              <input type="text" id="form-subject" class="form-input" placeholder="İş birliği teklifi" required>
+              <input type="text" id="form-subject" name="_subject" class="form-input" placeholder="İş birliği teklifi" required>
             </div>
 
             <div class="form-group">
               <label for="form-msg" class="form-label">Mesajınız</label>
-              <textarea id="form-msg" class="form-textarea"
+              <textarea id="form-msg" name="message" class="form-textarea"
                 placeholder="İletmek istediğiniz detayları buraya yazabilirsiniz..." required></textarea>
             </div>
 

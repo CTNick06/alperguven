@@ -498,21 +498,66 @@ document.addEventListener('DOMContentLoaded', () => {
         document.head.appendChild(style);
       }
 
-      setTimeout(() => {
-        contactForm.reset();
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnText;
-
+      function showError(msg) {
         if (formResponseStatus) {
-          formResponseStatus.className = "form-status success";
-          formResponseStatus.textContent = "Mesajınız başarıyla iletildi! En kısa sürede geri döneceğim.";
+          formResponseStatus.className = "form-status error";
+          formResponseStatus.textContent = msg;
           formResponseStatus.style.display = "block";
 
           setTimeout(() => {
             formResponseStatus.style.display = "none";
           }, 6000);
         }
-      }, 1500);
+      }
+
+      const formData = new FormData(contactForm);
+
+      fetch(contactForm.action || 'https://formspree.io/f/mjgzeewj', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+
+        if (response.ok) {
+          contactForm.reset();
+          if (formResponseStatus) {
+            formResponseStatus.className = "form-status success";
+            formResponseStatus.textContent = "Mesajınız başarıyla iletildi! En kısa sürede geri döneceğim.";
+            formResponseStatus.style.display = "block";
+
+            setTimeout(() => {
+              formResponseStatus.style.display = "none";
+            }, 6000);
+          }
+        } else {
+          response.json().then(data => {
+            if (data && data.errors) {
+              const errorMsg = data.errors.map(err => {
+                let fieldName = err.field === 'email' ? 'E-posta' : (err.field === 'message' ? 'Mesaj' : (err.field === 'name' ? 'Ad Soyad' : err.field));
+                let msg = err.message;
+                if (msg === 'must be a valid email address') msg = 'geçerli bir e-posta adresi olmalıdır';
+                if (msg === 'is required') msg = 'zorunludur';
+                return `${fieldName} ${msg}`;
+              }).join(', ');
+              showError(`Form hatası: ${errorMsg}`);
+            } else {
+              showError("Mesajınız iletilemedi. Lütfen daha sonra tekrar deneyiniz.");
+            }
+          }).catch(() => {
+            showError("Mesajınız gönderilirken bir sunucu hatası oluştu.");
+          });
+        }
+      })
+      .catch(error => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+        showError("Bir ağ bağlantısı hatası oluştu. Lütfen bağlantınızı kontrol edip tekrar deneyin.");
+      });
     });
   }
 
