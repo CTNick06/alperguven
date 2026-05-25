@@ -1,5 +1,105 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Language Management Logic
+  const langToggleBtn = document.getElementById('lang-toggle');
+
+  function initLanguage() {
+    const savedLang = localStorage.getItem('portfolio-lang');
+    const systemPrefersEn = navigator.language.startsWith('en');
+    const systemPrefersDe = navigator.language.startsWith('de');
+    const systemPrefersZh = navigator.language.startsWith('zh');
+
+    if (savedLang === 'en' || (!savedLang && systemPrefersEn)) {
+      document.documentElement.classList.add('lang-en');
+      document.documentElement.classList.remove('lang-de', 'lang-zh');
+      updateLangBtnText('EN');
+    } else if (savedLang === 'de' || (!savedLang && systemPrefersDe)) {
+      document.documentElement.classList.add('lang-de');
+      document.documentElement.classList.remove('lang-en', 'lang-zh');
+      updateLangBtnText('DE');
+    } else if (savedLang === 'zh' || (!savedLang && systemPrefersZh)) {
+      document.documentElement.classList.add('lang-zh');
+      document.documentElement.classList.remove('lang-en', 'lang-de');
+      updateLangBtnText('ZH');
+    } else {
+      document.documentElement.classList.remove('lang-en', 'lang-de', 'lang-zh');
+      updateLangBtnText('TR');
+    }
+    updatePlaceholders();
+  }
+
+  function updateLangBtnText(lang) {
+    if (langToggleBtn) {
+      const activeSpan = langToggleBtn.querySelector('.active-lang');
+      if (activeSpan) activeSpan.textContent = lang;
+    }
+  }
+
+  function updatePlaceholders() {
+    const isEn = document.documentElement.classList.contains('lang-en');
+    const isDe = document.documentElement.classList.contains('lang-de');
+    const isZh = document.documentElement.classList.contains('lang-zh');
+    const inputs = document.querySelectorAll('[data-placeholder-tr]');
+    inputs.forEach(input => {
+      const trPlaceholder = input.getAttribute('data-placeholder-tr');
+      const enPlaceholder = input.getAttribute('data-placeholder-en');
+      const dePlaceholder = input.getAttribute('data-placeholder-de');
+      const zhPlaceholder = input.getAttribute('data-placeholder-zh');
+      
+      let placeholder = trPlaceholder;
+      if (isEn) {
+        placeholder = enPlaceholder;
+      } else if (isDe) {
+        placeholder = dePlaceholder;
+      } else if (isZh) {
+        placeholder = zhPlaceholder;
+      }
+      input.setAttribute('placeholder', placeholder);
+    });
+  }
+
+  if (langToggleBtn) {
+    langToggleBtn.addEventListener('click', () => {
+      const isEn = document.documentElement.classList.contains('lang-en');
+      const isDe = document.documentElement.classList.contains('lang-de');
+      const isZh = document.documentElement.classList.contains('lang-zh');
+      
+      if (!isEn && !isDe && !isZh) {
+        // TR -> EN
+        document.documentElement.classList.add('lang-en');
+        document.documentElement.classList.remove('lang-de', 'lang-zh');
+        localStorage.setItem('portfolio-lang', 'en');
+        updateLangBtnText('EN');
+      } else if (isEn) {
+        // EN -> DE
+        document.documentElement.classList.add('lang-de');
+        document.documentElement.classList.remove('lang-en', 'lang-zh');
+        localStorage.setItem('portfolio-lang', 'de');
+        updateLangBtnText('DE');
+      } else if (isDe) {
+        // DE -> ZH
+        document.documentElement.classList.add('lang-zh');
+        document.documentElement.classList.remove('lang-en', 'lang-de');
+        localStorage.setItem('portfolio-lang', 'zh');
+        updateLangBtnText('ZH');
+      } else {
+        // ZH -> TR
+        document.documentElement.classList.remove('lang-en', 'lang-de', 'lang-zh');
+        localStorage.setItem('portfolio-lang', 'tr');
+        updateLangBtnText('TR');
+      }
+      
+      updatePlaceholders();
+
+      // Update typing effect if active
+      if (typingTextElement) {
+        charIndex = 0;
+        isDeleting = false;
+        typingTextElement.textContent = '';
+      }
+    });
+  }
+
   const hamburger = document.querySelector('.hamburger');
   const navMenu = document.querySelector('.nav-menu');
   const navLinks = document.querySelectorAll('.nav-link');
@@ -43,16 +143,27 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const typingTextElement = document.getElementById('typing-text');
-  const roles = [
-    "Siber Güvenlik Uzmanı."
-  ];
+  
+  function getRoles() {
+    if (document.documentElement.classList.contains('lang-en')) {
+      return ["Cybersecurity Specialist."];
+    } else if (document.documentElement.classList.contains('lang-de')) {
+      return ["Spezialist für Cybersicherheit."];
+    } else if (document.documentElement.classList.contains('lang-zh')) {
+      return ["网络安全专家。"];
+    } else {
+      return ["Siber Güvenlik Uzmanı."];
+    }
+  }
+  
   let roleIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
   let typingSpeed = 100;
 
   function typeEffect() {
-    const currentRole = roles[roleIndex];
+    const currentRoles = getRoles();
+    const currentRole = currentRoles[roleIndex % currentRoles.length];
 
     if (isDeleting) {
 
@@ -71,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
       isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
-      roleIndex = (roleIndex + 1) % roles.length;
+      roleIndex = (roleIndex + 1) % currentRoles.length;
       typingSpeed = 500;
     }
 
@@ -81,6 +192,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typingTextElement) {
     typeEffect();
   }
+
+  // Trigger language init to ensure typing logic is ready
+  initLanguage();
 
   const canvas = document.getElementById('bg-canvas');
   if (canvas) {
@@ -474,6 +588,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const formResponseStatus = document.getElementById('form-response-status');
 
   if (contactForm) {
+    function getFormMessage(key) {
+      const isEn = document.documentElement.classList.contains('lang-en');
+      const isDe = document.documentElement.classList.contains('lang-de');
+      const isZh = document.documentElement.classList.contains('lang-zh');
+      
+      const messages = {
+        sending: isEn ? "Sending..." : (isDe ? "Wird gesendet..." : (isZh ? "发送中..." : "Gönderiliyor...")),
+        success: isEn ? "Your message has been sent successfully! I will get back to you soon." : (isDe ? "Ihre Nachricht wurde erfolgreich gesendet! Ich werde mich in Kürze bei Ihnen melden." : (isZh ? "您的留言已成功发送！我会尽快回复您。" : "Mesajınız başarıyla iletildi! En kısa sürede geri döneceğim.")),
+        networkError: isEn ? "A network error occurred. Please check your connection and try again." : (isDe ? "Ein Netzwerkfehler ist aufgetreten. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut." : (isZh ? "网络发生错误，请检查您的连接并重试。" : "Bir ağ bağlantısı hatası oluştu. Lütfen bağlantınızı kontrol edip tekrar deneyin.")),
+        serverError: isEn ? "A server error occurred while sending your message." : (isDe ? "Beim Senden Ihrer Nachricht ist ein Serverfehler aufgetreten." : (isZh ? "发送消息时服务器发生错误。" : "Mesajınız gönderilirken bir sunucu hatası oluştu.")),
+        defaultError: isEn ? "Your message could not be delivered. Please try again later." : (isDe ? "Ihre Nachricht konnte nicht zugestellt werden. Bitte versuchen Sie es später noch einmal." : (isZh ? "您的消息未能送达，请稍后重试。" : "Mesajınız iletilemedi. Lütfen daha sonra tekrar deneyiniz."))
+      };
+      return messages[key];
+    }
+
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
@@ -482,7 +611,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       submitBtn.disabled = true;
       submitBtn.innerHTML = `
-        <span>Gönderiliyor...</span>
+        <span>${getFormMessage('sending')}</span>
         <svg class="spinner" viewBox="0 0 50 50" width="18" height="18" fill="none" stroke="currentColor" stroke-width="5" style="animation: spin 1s infinite linear;">
           <circle cx="25" cy="25" r="20" stroke-dasharray="80 200" stroke-dashoffset="0"></circle>
         </svg>
@@ -527,7 +656,7 @@ document.addEventListener('DOMContentLoaded', () => {
           contactForm.reset();
           if (formResponseStatus) {
             formResponseStatus.className = "form-status success";
-            formResponseStatus.textContent = "Mesajınız başarıyla iletildi! En kısa sürede geri döneceğim.";
+            formResponseStatus.textContent = getFormMessage('success');
             formResponseStatus.style.display = "block";
 
             setTimeout(() => {
@@ -537,26 +666,50 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           response.json().then(data => {
             if (data && data.errors) {
+              const isEn = document.documentElement.classList.contains('lang-en');
+              const isDe = document.documentElement.classList.contains('lang-de');
+              const isZh = document.documentElement.classList.contains('lang-zh');
               const errorMsg = data.errors.map(err => {
-                let fieldName = err.field === 'email' ? 'E-posta' : (err.field === 'message' ? 'Mesaj' : (err.field === 'name' ? 'Ad Soyad' : err.field));
-                let msg = err.message;
-                if (msg === 'must be a valid email address') msg = 'geçerli bir e-posta adresi olmalıdır';
-                if (msg === 'is required') msg = 'zorunludur';
-                return `${fieldName} ${msg}`;
+                if (isEn) {
+                  return `${err.field}: ${err.message}`;
+                } else if (isDe) {
+                  let fieldName = err.field === 'email' ? 'E-Mail' : (err.field === 'message' ? 'Nachricht' : (err.field === 'name' ? 'Name' : err.field));
+                  let msg = err.message;
+                  if (msg === 'must be a valid email address') msg = 'muss eine gültige E-Mail-Adresse sein';
+                  if (msg === 'is required') msg = 'ist erforderlich';
+                  return `${fieldName} ${msg}`;
+                } else if (isZh) {
+                  let fieldName = err.field === 'email' ? '电子邮箱' : (err.field === 'message' ? '留言内容' : (err.field === 'name' ? '姓名' : err.field));
+                  let msg = err.message;
+                  if (msg === 'must be a valid email address') msg = '必须是有效的电子邮箱地址';
+                  if (msg === 'is required') msg = '是必填项';
+                  return `${fieldName}${msg}`;
+                } else {
+                  let fieldName = err.field === 'email' ? 'E-posta' : (err.field === 'message' ? 'Mesaj' : (err.field === 'name' ? 'Ad Soyad' : err.field));
+                  let msg = err.message;
+                  if (msg === 'must be a valid email address') msg = 'geçerli bir e-posta adresi olmalıdır';
+                  if (msg === 'is required') msg = 'zorunludur';
+                  return `${fieldName} ${msg}`;
+                }
               }).join(', ');
-              showError(`Form hatası: ${errorMsg}`);
+              
+              let prefix = 'Form hatası';
+              if (isEn) prefix = 'Form error';
+              else if (isDe) prefix = 'Formfehler';
+              else if (isZh) prefix = '表单错误';
+              showError(`${prefix}: ${errorMsg}`);
             } else {
-              showError("Mesajınız iletilemedi. Lütfen daha sonra tekrar deneyiniz.");
+              showError(getFormMessage('defaultError'));
             }
           }).catch(() => {
-            showError("Mesajınız gönderilirken bir sunucu hatası oluştu.");
+            showError(getFormMessage('serverError'));
           });
         }
       })
       .catch(error => {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnText;
-        showError("Bir ağ bağlantısı hatası oluştu. Lütfen bağlantınızı kontrol edip tekrar deneyin.");
+        showError(getFormMessage('networkError'));
       });
     });
   }
@@ -618,7 +771,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let gameLoopActive = false;
     let nextAlertId = 1;
 
-    const threatLibrary = [
+    const threatLibraryTR = [
       {
         type: 'critical',
         title: 'Mimikatz Bellek Taraması',
@@ -705,6 +858,267 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     ];
 
+    const threatLibraryEN = [
+      {
+        type: 'critical',
+        title: 'Mimikatz Memory Dump',
+        desc: 'Active memory scan (mimikatz.exe) detected to extract LSA secrets and password hashes.',
+        source: 'Endpoint: DB-SERVER-01',
+        category: 'EDR'
+      },
+      {
+        type: 'critical',
+        title: 'WannaCry Ransomware',
+        desc: 'Files are being encrypted on the endpoint; encrypted files with the .wnry extension are being created.',
+        source: 'Endpoint: ADMIN-PC',
+        category: 'EDR'
+      },
+      {
+        type: 'high',
+        title: 'Unauthorized PowerShell Command',
+        desc: 'Obfuscated powershell.exe command-line parameters were executed.',
+        source: 'Endpoint: USER-12',
+        category: 'EDR'
+      },
+      {
+        type: 'high',
+        title: 'DDoS SYN Flood',
+        desc: '15,000 TCP SYN packets per second are being sent to the web server from an external IP address.',
+        source: 'Network Interface: Outer-FW',
+        category: 'FW'
+      },
+      {
+        type: 'high',
+        title: 'SQL Injection Attempt',
+        desc: 'UNION SELECT injection attempted through the customer query panel to breach the SQL database.',
+        source: 'WAF: Application Server',
+        category: 'FW'
+      },
+      {
+        type: 'medium',
+        title: 'Suspicious Port Scan',
+        desc: 'Consecutive SYN port scans target all TCP ports from a single source IP address.',
+        source: 'Firewall: Internal Gateway',
+        category: 'FW'
+      },
+      {
+        type: 'high',
+        title: 'After-Hours Admin Login',
+        desc: 'Unauthorized domain administrator session established at 03:15 AM.',
+        source: 'Active Directory: Domain Controller',
+        category: 'AD'
+      },
+      {
+        type: 'medium',
+        title: 'Successful Brute Force',
+        desc: 'Successful authentication detected after 45 consecutive failed attempts on the same user account.',
+        source: 'Active Directory: Domain Controller',
+        category: 'AD'
+      },
+      {
+        type: 'medium',
+        title: 'Kerberoasting Attempt',
+        desc: 'Anomalous number of Kerberos TGS ticket requests detected for service accounts.',
+        source: 'Active Directory: Domain Controller',
+        category: 'AD'
+      },
+      {
+        type: 'info',
+        title: 'Scheduled Backup Logs',
+        desc: 'Scheduled backup script ran on database server and synchronized with archiving disk.',
+        source: 'Backup Server',
+        category: 'SOC'
+      },
+      {
+        type: 'info',
+        title: 'IT Vulnerability Scan',
+        desc: 'Routine internal vulnerability scan initiated from authorized Nessus scanner IP.',
+        source: 'Vulnerability Scanner: Nessus-01',
+        category: 'SOC'
+      },
+      {
+        type: 'info',
+        title: 'Server Health Check',
+        desc: 'Zabbix monitoring tool checking service response times and disk space metrics.',
+        source: 'Monitoring Server: Zabbix',
+        category: 'SOC'
+      }
+    ];
+
+    const threatLibraryDE = [
+      {
+        type: 'critical',
+        title: 'Mimikatz-Speicherabbild',
+        desc: 'Aktiver Arbeitsspeicherscan (mimikatz.exe) zur Extraktion von LSA-Geheimnissen und Passwort-Hashes erkannt.',
+        source: 'Endpunkt: DB-SERVER-01',
+        category: 'EDR'
+      },
+      {
+        type: 'critical',
+        title: 'WannaCry Ransomware',
+        desc: 'Dateien auf dem Endpunkt werden verschlüsselt; verschlüsselte Dateien mit der Endung .wnry werden erstellt.',
+        source: 'Endpunkt: ADMIN-PC',
+        category: 'EDR'
+      },
+      {
+        type: 'high',
+        title: 'Nicht autorisierter PowerShell-Befehl',
+        desc: 'Verschleierte (obfuscated) powershell.exe Befehlszeilenparameter wurden ausgeführt.',
+        source: 'Endpunkt: BENUTZER-12',
+        category: 'EDR'
+      },
+      {
+        type: 'high',
+        title: 'DDoS SYN Flood',
+        desc: '15.000 TCP-SYN-Pakete pro Sekunde werden von einer externen IP-Adresse an den Webserver gesendet.',
+        source: 'Netzwerkschnittstelle: External-FW',
+        category: 'FW'
+      },
+      {
+        type: 'high',
+        title: 'SQL-Injection-Versuch',
+        desc: 'UNION SELECT-Injektion über das Kundenabfrage-Panel versucht, um die SQL-Datenbank zu kompromittieren.',
+        source: 'WAF: Anwendungsserver',
+        category: 'FW'
+      },
+      {
+        type: 'medium',
+        title: 'Verdächtiger Portscan',
+        desc: 'Aufeinanderfolgende SYN-Portscans zielen von einer einzelnen Quell-IP-Adresse auf alle TCP-Ports ab.',
+        source: 'Firewall: Internes Gateway',
+        category: 'FW'
+      },
+      {
+        type: 'high',
+        title: 'Admin-Anmeldung nach Feierabend',
+        desc: 'Nicht autorisierte Domain-Administrator-Sitzung um 03:15 Uhr morgens aufgebaut.',
+        source: 'Active Directory: Domain Controller',
+        category: 'AD'
+      },
+      {
+        type: 'medium',
+        title: 'Erfolgreicher Brute-Force-Angriff',
+        desc: 'Erfolgreiche Authentifizierung nach 45 aufeinanderfolgenden fehlgeschlagenen Versuchen für dasselbe Benutzerkonto erkannt.',
+        source: 'Active Directory: Domain Controller',
+        category: 'AD'
+      },
+      {
+        type: 'medium',
+        title: 'Kerberoasting-Versuch',
+        desc: 'Ungewöhnliche Anzahl von Kerberos-TGS-Ticketanforderungen für Dienstkonten erkannt.',
+        source: 'Active Directory: Domain Controller',
+        category: 'AD'
+      },
+      {
+        type: 'info',
+        title: 'Geplantes Backup-Protokoll',
+        desc: 'Geplantes Backup-Skript lief auf dem Datenbankserver und wurde mit der Archivierungsfestplatte synchronisiert.',
+        source: 'Backup-Server',
+        category: 'SOC'
+      },
+      {
+        type: 'info',
+        title: 'IT-Schwachstellenscan',
+        desc: 'Routinemäßiger interner Schwachstellenscan von einer autorisierten Nessus-Scanner-IP initiiert.',
+        source: 'Schwachstellen-Scanner: Nessus-01',
+        category: 'SOC'
+      },
+      {
+        type: 'info',
+        title: 'Server-Gesundheitscheck',
+        desc: 'Zabbix-Überwachungstool überprüft Dienstantwortzeiten und Festplattenspeicher-Metriken.',
+        source: 'Überwachungsserver: Zabbix',
+        category: 'SOC'
+      }
+    ];
+
+    const threatLibraryZH = [
+      {
+        type: 'critical',
+        title: 'Mimikatz 内存转储',
+        desc: '检测到活动内存扫描 (mimikatz.exe) 以提取 LSA 机密和密码哈希。',
+        source: '端点: DB-SERVER-01',
+        category: 'EDR'
+      },
+      {
+        type: 'critical',
+        title: 'WannaCry 勒索软件',
+        desc: '端点上的文件正在被加密；正在生成扩展名为 .wnry 的加密文件。',
+        source: '端点: ADMIN-PC',
+        category: 'EDR'
+      },
+      {
+        type: 'high',
+        title: '未经授权的 PowerShell 命令',
+        desc: '执行了混淆的 powershell.exe 命令行参数。',
+        source: '端点: USER-12',
+        category: 'EDR'
+      },
+      {
+        type: 'high',
+        title: 'DDoS SYN Flood',
+        desc: '每秒向 Web 服务器发送 15,000 个来自外部 IP 地址的 TCP SYN 包。',
+        source: '网络接口: 外部防火墙',
+        category: 'FW'
+      },
+      {
+        type: 'high',
+        title: 'SQL 注入企图',
+        desc: '尝试通过客户查询面板进行 UNION SELECT 注入，以破坏 SQL 数据库。',
+        source: 'WAF: 应用服务器',
+        category: 'FW'
+      },
+      {
+        type: 'medium',
+        title: '可疑端口扫描',
+        desc: '来自单个源 IP 地址 of 连续 SYN 端口扫描指向所有 TCP 端口。',
+        source: '防火墙: 内网网关',
+        category: 'FW'
+      },
+      {
+        type: 'high',
+        title: '非工作时间管理员登录',
+        desc: '凌晨 03:15 建立了未经授权的域管理员会话。',
+        source: '活动目录: 域控制器',
+        category: 'AD'
+      },
+      {
+        type: 'medium',
+        title: '暴力破解成功',
+        desc: '在同一用户账号连续 45 次尝试失败后，检测到成功登录。',
+        source: '活动目录: 域控制器',
+        category: 'AD'
+      },
+      {
+        type: 'medium',
+        title: 'Kerberoasting 企图',
+        desc: '检测到服务账号的异常数量的 Kerberos TGS 票证请求。',
+        source: '活动目录: 域控制器',
+        category: 'AD'
+      },
+      {
+        type: 'info',
+        title: '计划备份日志',
+        desc: '在数据库服务器上运行了计划备份脚本，并与归档磁盘同步。',
+        source: '备份服务器',
+        category: 'SOC'
+      },
+      {
+        type: 'info',
+        title: 'IT 漏洞扫描',
+        desc: '从授权的 Nessus 扫描器 IP 发起例行内部漏洞扫描。',
+        source: '漏洞扫描器: Nessus-01',
+        category: 'SOC'
+      },
+      {
+        type: 'info',
+        title: '服务器健康检查',
+        desc: 'Zabbix 监控工具正在检查服务响应时间和磁盘空间指标。',
+        source: '监控服务器: Zabbix',
+        category: 'SOC'
+      }
+    ];
+
     function addGameLog(text, isError = false, isSuccess = false) {
       const logArea = document.getElementById('game-terminal-log');
       if (!logArea) return;
@@ -744,6 +1158,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const detailsBox = document.getElementById('active-alert-details');
       if (detailsBox) {
+        const isEn = document.documentElement.classList.contains('lang-en');
+        const isDe = document.documentElement.classList.contains('lang-de');
+        const isZh = document.documentElement.classList.contains('lang-zh');
+        let labelDesc = isEn ? 'Description' : (isDe ? 'Beschreibung' : (isZh ? '描述' : 'Açıklama'));
+        let labelSource = isEn ? 'Source' : (isDe ? 'Quelle' : (isZh ? '来源' : 'Kaynak'));
+        
         detailsBox.innerHTML = `
           <div class="details-content">
             <div class="details-header">
@@ -752,11 +1172,11 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="details-grid" style="display: flex; flex-direction: column; gap: 0.6rem; width: 100%;">
               <div class="detail-field">
-                <span class="detail-lbl">Açıklama</span>
+                <span class="detail-lbl">${labelDesc}</span>
                 <span class="detail-val" style="color: #cbd5e1; font-family: var(--font-body); font-size: 0.82rem; line-height: 1.4;">${alertObj.desc}</span>
               </div>
               <div class="detail-field">
-                <span class="detail-lbl">Kaynak</span>
+                <span class="detail-lbl">${labelSource}</span>
                 <span class="detail-val">${alertObj.source}</span>
               </div>
             </div>
@@ -774,7 +1194,14 @@ document.addEventListener('DOMContentLoaded', () => {
       activeAlert = null;
       const detailsBox = document.getElementById('active-alert-details');
       if (detailsBox) {
-        detailsBox.innerHTML = '<p class="select-prompt">Lütfen müdahale etmek için sol listeden aktif bir alarm seçin.</p>';
+        const isEn = document.documentElement.classList.contains('lang-en');
+        const isDe = document.documentElement.classList.contains('lang-de');
+        const isZh = document.documentElement.classList.contains('lang-zh');
+        let promptText = 'Lütfen müdahale etmek için sol listeden aktif bir alarm seçin.';
+        if (isEn) promptText = 'Please select an active alert from the left panel to mitigate.';
+        else if (isDe) promptText = 'Bitte wählen Sie einen aktiven Alarm aus dem linken Panel aus, um ihn abzuwehren.';
+        else if (isZh) promptText = '请从左侧面板选择一个活动告警进行处置。';
+        detailsBox.innerHTML = `<p class="select-prompt">${promptText}</p>`;
       }
       ['btn-edr', 'btn-fw', 'btn-ad', 'btn-soc'].forEach(id => {
         const btn = document.getElementById(id);
@@ -784,7 +1211,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function generateAlert() {
       if (!gameLoopActive || alerts.length >= 5) return;
-      const baseThreat = threatLibrary[Math.floor(Math.random() * threatLibrary.length)];
+      const isEn = document.documentElement.classList.contains('lang-en');
+      const isDe = document.documentElement.classList.contains('lang-de');
+      const isZh = document.documentElement.classList.contains('lang-zh');
+      let activeLibrary = threatLibraryTR;
+      if (isEn) activeLibrary = threatLibraryEN;
+      else if (isDe) activeLibrary = threatLibraryDE;
+      else if (isZh) activeLibrary = threatLibraryZH;
+      
+      const baseThreat = activeLibrary[Math.floor(Math.random() * activeLibrary.length)];
       const newAlert = {
         id: nextAlertId++,
         ...baseThreat,
@@ -814,7 +1249,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         alertListContainer.appendChild(item);
-        addGameLog(`YENİ ALARM: ${newAlert.title} [Sınıf: ${newAlert.type.toUpperCase()}]`);
+        
+        let logText = `YENİ ALARM: ${newAlert.title} [Sınıf: ${newAlert.type.toUpperCase()}]`;
+        if (isEn) logText = `NEW ALERT: ${newAlert.title} [Class: ${newAlert.type.toUpperCase()}]`;
+        else if (isDe) logText = `NEUER ALARM: ${newAlert.title} [Klasse: ${newAlert.type.toUpperCase()}]`;
+        else if (isZh) logText = `新告警: ${newAlert.title} [级别: ${newAlert.type.toUpperCase()}]`;
+        addGameLog(logText);
 
         const timerInterval = setInterval(() => {
           if (!gameLoopActive) {
@@ -862,7 +1302,14 @@ document.addEventListener('DOMContentLoaded', () => {
       health -= 20;
       if (health < 0) health = 0;
       updateHUD();
-      addGameLog(`[SIZMA] ${alertObj.title} tehdidine zamanında müdahale edilemedi! (%20 Sağlık Hasarı)`, true);
+      const isEn = document.documentElement.classList.contains('lang-en');
+      const isDe = document.documentElement.classList.contains('lang-de');
+      const isZh = document.documentElement.classList.contains('lang-zh');
+      let breachText = `[SIZMA] ${alertObj.title} tehdidine zamanında müdahale edilemedi! (%20 Sağlık Hasarı)`;
+      if (isEn) breachText = `[BREACH] ${alertObj.title} was not mitigated in time! (20% Health Damage)`;
+      else if (isDe) breachText = `[SICHERHEITSLÜCKE] ${alertObj.title} wurde nicht rechtzeitig abgewehrt! (20% Systemschaden)`;
+      else if (isZh) breachText = `[安全漏洞] 未能及时处置 ${alertObj.title} 威胁！（系统健康度受到 20% 伤害）`;
+      addGameLog(breachText, true);
       shakeGame();
 
       if (activeAlert && activeAlert.id === alertObj.id) {
@@ -877,17 +1324,28 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleMitigate(category) {
       if (!activeAlert || !gameLoopActive) return;
       const currentAlert = activeAlert;
+      const isEn = document.documentElement.classList.contains('lang-en');
+      const isDe = document.documentElement.classList.contains('lang-de');
+      const isZh = document.documentElement.classList.contains('lang-zh');
       if (currentAlert.category === category) {
         score += 10;
         updateHUD();
-        addGameLog(`[BAŞARILI] ${currentAlert.title} tehdidi ${category} ile bertaraf edildi! (+10 Skor)`, false, true);
+        let successText = `[BAŞARILI] ${currentAlert.title} tehdidi ${category} ile bertaraf edildi! (+10 Skor)`;
+        if (isEn) successText = `[SUCCESS] ${currentAlert.title} mitigated with ${category}! (+10 Score)`;
+        else if (isDe) successText = `[ERFOLG] ${currentAlert.title} wurde erfolgreich mit ${category} abgewehrt! (+10 Punkte)`;
+        else if (isZh) successText = `[成功] 已成功通过 ${category} 处置 ${currentAlert.title} 威胁！（+10 分）`;
+        addGameLog(successText, false, true);
         removeAlertFromList(currentAlert.id);
         deselectAlert();
       } else {
         health -= 10;
         if (health < 0) health = 0;
         updateHUD();
-        addGameLog(`[HATA] ${currentAlert.title} için yanlış müdahale uygulandı! (%10 Sağlık Hasarı)`, true);
+        let errorText = `[HATA] ${currentAlert.title} için yanlış müdahale uygulandı! (%10 Sağlık Hasarı)`;
+        if (isEn) errorText = `[ERROR] Incorrect mitigation applied for ${currentAlert.title}! (10% Health Damage)`;
+        else if (isDe) errorText = `[FEHLER] Falsche Abwehr für ${currentAlert.title} angewendet! (10% Systemschaden)`;
+        else if (isZh) errorText = `[错误] 对 ${currentAlert.title} 采取了错误的处置动作！（系统健康度受到 10% 伤害）`;
+        addGameLog(errorText, true);
         shakeGame();
         if (health <= 0) {
           triggerGameOver();
@@ -905,21 +1363,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const bodyContainer = gamePanel.querySelector('.game-body');
       if (bodyContainer) {
+        const isEn = document.documentElement.classList.contains('lang-en');
+        const isDe = document.documentElement.classList.contains('lang-de');
+        const isZh = document.documentElement.classList.contains('lang-zh');
+        
+        let gameOverTitle = "SİSTEM SIZMA LİMİTİNE ULAŞTI";
+        let gameOverDesc = "Kritik sunucular ve veri tabanı sistemleri ele geçirildi. Güvenlik operasyon merkezi başarısız oldu.";
+        let statLabelScore = "SKOR";
+        let statLabelLevel = "SEVİYE";
+        let restartBtnText = "KONSOLU YENİDEN BAŞLAT";
+        
+        if (isEn) {
+          gameOverTitle = "SYSTEM COMPROMISED";
+          gameOverDesc = "Critical servers and database systems have been breached. Security Operations Center failed to mitigate the threats.";
+          statLabelScore = "SCORE";
+          statLabelLevel = "LEVEL";
+          restartBtnText = "RESTART CONSOLE";
+        } else if (isDe) {
+          gameOverTitle = "SYSTEM KOMPROMITTIERT";
+          gameOverDesc = "Kritische Server und Datenbanksysteme wurden kompromittiert. Das Security Operations Center konnte die Bedrohungen nicht rechtzeitig abwehren.";
+          statLabelScore = "SCORE";
+          statLabelLevel = "LEVEL";
+          restartBtnText = "KONSOLE NEUSTARTEN";
+        } else if (isZh) {
+          gameOverTitle = "系统已被入侵";
+          gameOverDesc = "关键服务器和数据库系统已被攻破。安全运营中心未能成功阻止威胁。";
+          statLabelScore = "得分";
+          statLabelLevel = "等级";
+          restartBtnText = "重新启动控制台";
+        }
+
         gamePanel.innerHTML = `
           <div class="game-over-screen">
-            <h3 class="game-over-title">SİSTEM SIZMA LİMİTİNE ULAŞTI</h3>
-            <p class="game-over-desc">Kritik sunucular ve veri tabanı sistemleri ele geçirildi. Güvenlik operasyon merkezi başarısız oldu.</p>
+            <h3 class="game-over-title">${gameOverTitle}</h3>
+            <p class="game-over-desc">${gameOverDesc}</p>
             <div class="game-over-stats">
               <div class="game-over-stat">
-                <span class="stat-lbl">SKOR</span>
+                <span class="stat-lbl">${statLabelScore}</span>
                 <span class="stat-val" style="color: var(--accent-pink);">${score}</span>
               </div>
               <div class="game-over-stat">
-                <span class="stat-lbl">SEVİYE</span>
+                <span class="stat-lbl">${statLabelLevel}</span>
                 <span class="stat-val" style="color: var(--accent-secondary);">${Math.floor(score / 50) + 1}</span>
               </div>
             </div>
-            <button class="btn btn-primary" id="game-restart-btn">KONSOLU YENİDEN BAŞLAT</button>
+            <button class="btn btn-primary" id="game-restart-btn">${restartBtnText}</button>
           </div>
         `;
 
@@ -945,7 +1433,14 @@ document.addEventListener('DOMContentLoaded', () => {
       deselectAlert();
       bindActionButtons();
 
-      addGameLog('Güvenlik operasyon protokolü aktifleşti. Tehditleri bertaraf edin.');
+      const isEn = document.documentElement.classList.contains('lang-en');
+      const isDe = document.documentElement.classList.contains('lang-de');
+      const isZh = document.documentElement.classList.contains('lang-zh');
+      let bootText = 'Güvenlik operasyon protokolü aktifleşti. Tehditleri bertaraf edin.';
+      if (isEn) bootText = 'Security operations protocol active. Mitigate threats.';
+      else if (isDe) bootText = 'Sicherheitsbetriebsprotokoll aktiv. Wehren Sie Bedrohungen ab.';
+      else if (isZh) bootText = '安全运营协议已启动。请处置传入的威胁。';
+      addGameLog(bootText);
 
       for (let i = 0; i < 2; i++) {
         generateAlert();

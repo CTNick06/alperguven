@@ -28,33 +28,63 @@
 
       <nav>
         <ul class="nav-menu">
-          <li><a href="#home" class="nav-link active">Giriş</a></li>
-          <li><a href="#about" class="nav-link">Hakkımda</a></li>
-          <li><a href="#projects" class="nav-link">Projelerim</a></li>
-          <li><a href="#contact" class="nav-link">İletişim</a></li>
+          <li><a href="#home" class="nav-link active">
+              <span data-lang="tr">Giriş</span>
+              <span data-lang="en">Home</span>
+              <span data-lang="de">Startseite</span>
+              <span data-lang="zh">首页</span>
+            </a></li>
+          <li><a href="#about" class="nav-link">
+              <span data-lang="tr">Hakkımda</span>
+              <span data-lang="en">About</span>
+              <span data-lang="de">Über mich</span>
+              <span data-lang="zh">关于我</span>
+            </a></li>
+          <li><a href="#projects" class="nav-link">
+              <span data-lang="tr">Projelerim</span>
+              <span data-lang="en">Projects</span>
+              <span data-lang="de">Projekte</span>
+              <span data-lang="zh">项目</span>
+            </a></li>
+          <li><a href="#contact" class="nav-link">
+              <span data-lang="tr">İletişim</span>
+              <span data-lang="en">Contact</span>
+              <span data-lang="de">Kontakt</span>
+              <span data-lang="zh">联系我</span>
+            </a></li>
         </ul>
       </nav>
 
-      <button class="theme-toggle" id="theme-toggle" aria-label="Karanlık/Aydınlık Modu">
+      <div class="header-controls">
+        <button class="lang-toggle" id="lang-toggle" aria-label="Dili Değiştir / Switch Language">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span class="active-lang">TR</span>
+        </button>
 
-        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="5"></circle>
-          <line x1="12" y1="1" x2="12" y2="3"></line>
-          <line x1="12" y1="21" x2="12" y2="23"></line>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-          <line x1="1" y1="12" x2="3" y2="12"></line>
-          <line x1="21" y1="12" x2="23" y2="12"></line>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-
-        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      </button>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Karanlık/Aydınlık Modu">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
 
       <button class="hamburger" aria-label="Menü">
         <span></span>
@@ -68,7 +98,12 @@
     <div class="hero-container">
 
       <div class="hero-content">
-        <span class="hero-subtitle">SİBER GÜVENLİK UZMANI</span>
+        <span class="hero-subtitle">
+          <span data-lang="tr">SİBER GÜVENLİK UZMANI</span>
+          <span data-lang="en">CYBERSECURITY SPECIALIST</span>
+          <span data-lang="de">SPEZIALIST FÜR CYBERSICHERHEIT</span>
+          <span data-lang="zh">网络安全专家</span>
+        </span>
         <h1 class="hero-title">
           Abdullah Alper <br>
           <span class="gradient-text">GÜVEN</span>
@@ -79,20 +114,37 @@
         </div>
 
         <p class="hero-desc">
-          Aktif olarak kurumsal güvenlik operasyonları, mor takım (purple team) analizleri ve SOAR playbook otomasyon
-          süreçleri üzerine odaklanmış bir Siber Güvenlik Uzmanıyım. Sistem-ağ altyapımı ve mühendislik geçmişimden
-          gelen yüksek analitik problem çözme yeteneğimi birleştirerek proaktif siber savunma çözümleri geliştiriyorum.
+          <span data-lang="tr">Aktif olarak kurumsal güvenlik operasyonları, mor takım (purple team) analizleri ve SOAR
+            playbook otomasyon süreçleri üzerine odaklanmış bir Siber Güvenlik Uzmanıyım. Sistem-ağ altyapımı ve
+            mühendislik geçmişimden gelen yüksek analitik problem çözme yeteneğimi birleştirerek proaktif siber savunma
+            çözümleri geliştiriyorum.</span>
+          <span data-lang="en">I am a Cybersecurity Specialist actively focused on enterprise security operations,
+            purple team engagements, and SOAR playbook automation workflows. By combining my systems and network
+            infrastructure background with the high analytical problem-solving skills from my engineering past, I
+            develop proactive cyber defense solutions.</span>
+          <span data-lang="de">Ich bin ein Spezialist für Cybersicherheit, der sich aktiv auf Sicherheitsabläufe in Unternehmen (SOC), Purple-Team-Analysen und SOAR-Playbook-Automatisierungsprozesse konzentriert. Durch die Kombination meines System- und Netzwerkinfrastruktur-Hintergrunds mit den ausgeprägten analytischen Problemlösungsfähigkeiten aus meiner Ingenieursvergangenheit entwickle ich proaktive Cyber-Abwehrlösungen.</span>
+          <span data-lang="zh">我是一名网络安全专家，专注于企业安全运营、蓝军/紫军（Purple Team）分析及 SOAR 剧本自动化流程。我将系统网络基础设施背景与工程背景带来的强大分析和问题解决能力相结合，开发出主动的网络防御解决方案。</span>
         </p>
 
         <div class="hero-buttons">
           <a href="#projects" class="btn btn-primary">
-            <span>Projelerimi İncele</span>
+            <span>
+              <span data-lang="tr">Projelerimi İncele</span>
+              <span data-lang="en">View My Projects</span>
+              <span data-lang="de">Projekte ansehen</span>
+              <span data-lang="zh">浏览我的项目</span>
+            </span>
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </a>
-          <a href="#contact" class="btn btn-secondary">İletişime Geç</a>
+          <a href="#contact" class="btn btn-secondary">
+            <span data-lang="tr">İletişime Geç</span>
+            <span data-lang="en">Get in Touch</span>
+            <span data-lang="de">Kontakt aufnehmen</span>
+            <span data-lang="zh">与我联系</span>
+          </a>
         </div>
       </div>
 
@@ -125,7 +177,12 @@
             <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
           </svg>
           <div>
-            <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--text-primary);">Siber Güvenlik</h4>
+            <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--text-primary);">
+              <span data-lang="tr">Siber Güvenlik</span>
+              <span data-lang="en">Cybersecurity</span>
+              <span data-lang="de">Cybersicherheit</span>
+              <span data-lang="zh">网络安全</span>
+            </h4>
             <p style="font-size: 0.75rem; color: var(--text-muted);">EDR, NDR, SIEM, SOAR</p>
           </div>
         </div>
@@ -138,8 +195,18 @@
             <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path>
           </svg>
           <div>
-            <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--text-primary);">Sistem & Ağ</h4>
-            <p style="font-size: 0.75rem; color: var(--text-muted);">Cisco, Linux, Sunucu</p>
+            <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--text-primary);">
+              <span data-lang="tr">Sistem & Ağ</span>
+              <span data-lang="en">System & Network</span>
+              <span data-lang="de">System & Netzwerk</span>
+              <span data-lang="zh">系统与网络</span>
+            </h4>
+            <p style="font-size: 0.75rem; color: var(--text-muted);">
+              <span data-lang="tr">Cisco, Linux, Sunucu</span>
+              <span data-lang="en">Cisco, Linux, Servers</span>
+              <span data-lang="de">Cisco, Linux, Server</span>
+              <span data-lang="zh">Cisco, Linux, 服务器</span>
+            </p>
           </div>
         </div>
 
@@ -150,40 +217,82 @@
 
   <section id="about" class="reveal">
     <div class="section-header">
-      <span class="section-tag">Hikayem</span>
-      <h2 class="section-title">Hakkımda <span>Bilgiler</span></h2>
+      <span class="section-tag">
+        <span data-lang="tr">Hikayem</span>
+        <span data-lang="en">My Story</span>
+        <span data-lang="de">Werdegang</span>
+        <span data-lang="zh">职业历程</span>
+      </span>
+      <h2 class="section-title">
+        <span data-lang="tr">Hakkımda <span>Bilgiler</span></span>
+        <span data-lang="en">About <span>Me</span></span>
+        <span data-lang="de">Über <span>mich</span></span>
+        <span data-lang="zh">关于 <span>我</span></span>
+      </h2>
     </div>
 
     <div class="about-grid">
 
       <div class="about-left">
         <div class="glass-panel about-card">
-          <h3 class="about-title">Ben Kimim?</h3>
+          <h3 class="about-title">
+            <span data-lang="tr">Ben Kimim?</span>
+            <span data-lang="en">Who Am I?</span>
+            <span data-lang="de">Wer bin ich?</span>
+            <span data-lang="zh">我是谁？</span>
+          </h3>
           <p class="about-text">
-            Siber olay analizi, tehdit avcılığı ve güvenlik otomasyonları konularında uzmanlaşmış, profesyonel bir
-            <strong>Siber Güvenlik Uzmanıyım</strong>. Tehditleri bertaraf etme, mor takım (purple team) operasyonları,
-            EDR/NDR çözümleri ve SIEM/SOAR iş akışı otomasyonlarına odaklanarak kurumsal altyapıların siber güvenliğini
-            en üst düzeyde sağlıyorum.
+            <span data-lang="tr">Siber olay analizi, tehdit avcılığı ve güvenlik otomasyonları konularında uzmanlaşmış,
+              profesyonel bir <strong>Siber Güvenlik Uzmanıyım</strong>. Tehditleri bertaraf etme, mor takım (purple
+              team) operasyonları, EDR/NDR çözümleri ve SIEM/SOAR iş akışı otomasyonlarına odaklanarak kurumsal
+              altyapıların siber güvenliğini en üst düzeyde sağlıyorum.</span>
+            <span data-lang="en">I am a professional <strong>Cybersecurity Specialist</strong> specializing in incident
+              analysis, threat hunting, and security automation workflows. By focusing on mitigating threats, purple
+              team operations, EDR/NDR solutions, and SIEM/SOAR integration processes, I secure enterprise
+              infrastructures at the highest standards.</span>
+            <span data-lang="de">Ich bin ein professioneller <strong>Spezialist für Cybersicherheit</strong>, spezialisiert auf Vorfallsanalyse (Incident Response), Bedrohungssuche (Threat Hunting) und Sicherheitsautomatisierung. Durch meinen Fokus auf Bedrohungsabwehr, Purple-Team-Aktivitäten, EDR/NDR-Lösungen und SIEM/SOAR-Workflow-Automatisierung sichere ich Unternehmens-Infrastrukturen auf höchstem Niveau.</span>
+            <span data-lang="zh">我是一名专业的<strong>网络安全专家</strong>，专注于安全事件分析、威胁猎杀和安全自动化工作流。通过专注于威胁消除、紫军行动、EDR/NDR 解决方案 and SIEM/SOAR 流程自动化，我以最高标准保障企业基础设施的网络安全。</span>
           </p>
           <p class="about-text">
-            Bilişim yolculuğuma 2022 yılında Fenerbahçe Üniversitesi'nde tamamladığım 800 saatlik kapsamlı
-            <strong>Sistem ve Ağ Uzmanlığı</strong> eğitimi ile başladım. Mühendislik geçmişimden kazandığım güçlü
-            analitik problem çözme yeteneğimi bu altyapıyla birleştirerek, siber güvenlik dünyasındaki karmaşık
-            tehditleri proaktif bir yaklaşımla çözüyorum.
+            <span data-lang="tr">Bilişim yolculuğuma 2022 yılında Fenerbahçe Üniversitesi'nde tamamladığım 800 saatlik
+              kapsamlı <strong>Sistem ve Ağ Uzmanlığı</strong> eğitimi ile başladım. Mühendislik geçmişimden kazandığım
+              güçlü analitik problem çözme yeteneğimi bu altyapıyla birleştirerek, siber güvenlik dünyasındaki karmaşık
+              tehditleri proaktif bir yaklaşımla çözüyorum.</span>
+            <span data-lang="en">I embarked on my IT journey with a comprehensive 800-hour <strong>System and Network
+                Engineering</strong> program completed at Fenerbahçe University in 2022. Combining my strong analytical
+              problem-solving skills acquired from my engineering background with this infrastructure network knowledge,
+              I resolve complex threats in the cybersecurity field using a proactive defensive approach.</span>
+            <span data-lang="de">Meine IT-Laufbahn begann 2022 mit einer umfassenden 800-stündigen Ausbildung zum <strong>System- und Netzwerkspezialisten</strong> an der Fenerbahçe-Universität. Kombiniert mit den starken analytischen Problemlösungsfähigkeiten aus meinem Ingenieursstudium gehe ich komplexe Bedrohungen in der Cybersicherheitswelt mit einem proaktiven Ansatz an.</span>
+            <span data-lang="zh">我的 IT 职业生涯始于 2022 年，当时在费内巴切大学完成了 800 小时系统的 <strong>系统与网络工程</strong> 培训。结合我从工程背景中获得的强大分析解决问题能力与网络基础设施知识，我以主动防御的方式解决网络安全领域中的复杂威胁。</span>
           </p>
 
           <div class="about-stats">
             <div class="stat-item">
               <div class="stat-num">800+</div>
-              <div class="stat-label">Saat Uzmanlık Eğitimi</div>
+              <div class="stat-label">
+                <span data-lang="tr">Saat Uzmanlık Eğitimi</span>
+                <span data-lang="en">Hours of Training</span>
+                <span data-lang="de">Stunden Fachausbildung</span>
+                <span data-lang="zh">小时专业培训</span>
+              </div>
             </div>
             <div class="stat-item">
               <div class="stat-num">10+</div>
-              <div class="stat-label">Sertifikasyon</div>
+              <div class="stat-label">
+                <span data-lang="tr">Sertifikasyon</span>
+                <span data-lang="en">Certifications</span>
+                <span data-lang="de">Zertifizierungen</span>
+                <span data-lang="zh">项认证证书</span>
+              </div>
             </div>
             <div class="stat-item">
               <div class="stat-num">2+</div>
-              <div class="stat-label">Yıl Siber Tecrübe</div>
+              <div class="stat-label">
+                <span data-lang="tr">Yıl Siber Tecrübe</span>
+                <span data-lang="en">Years of Cyber Exp.</span>
+                <span data-lang="de">Jahre Cybersecurity-Erfahrung</span>
+                <span data-lang="zh">年网络安全经验</span>
+              </div>
             </div>
           </div>
         </div>
@@ -192,9 +301,24 @@
       <div class="about-right glass-panel" style="padding: 2.5rem;">
 
         <div class="tabs-header">
-          <button class="tab-btn active" data-tab="skills">Yetenekler</button>
-          <button class="tab-btn" data-tab="experience">Zaman Tüneli</button>
-          <button class="tab-btn" data-tab="certs">Sertifikalar & Kurslar</button>
+          <button class="tab-btn active" data-tab="skills">
+            <span data-lang="tr">Yetenekler</span>
+            <span data-lang="en">Skills</span>
+            <span data-lang="de">Fähigkeiten</span>
+            <span data-lang="zh">专业技能</span>
+          </button>
+          <button class="tab-btn" data-tab="experience">
+            <span data-lang="tr">Zaman Tüneli</span>
+            <span data-lang="en">Timeline</span>
+            <span data-lang="de">Lebenslauf</span>
+            <span data-lang="zh">职业历程</span>
+          </button>
+          <button class="tab-btn" data-tab="certs">
+            <span data-lang="tr">Sertifikalar & Kurslar</span>
+            <span data-lang="en">Certificates & Courses</span>
+            <span data-lang="de">Zertifikate & Kurse</span>
+            <span data-lang="zh">证书与课程</span>
+          </button>
         </div>
 
         <div class="tab-content active" id="skills">
@@ -208,7 +332,12 @@
                 </svg>
               </div>
               <div class="skill-info">
-                <div class="skill-name">EPP, EDR & NDR Güvenlik Çözümleri</div>
+                <div class="skill-name">
+                  <span data-lang="tr">EPP, EDR & NDR Güvenlik Çözümleri</span>
+                  <span data-lang="en">EPP, EDR & NDR Security Solutions</span>
+                  <span data-lang="de">EPP-, EDR- & NDR-Sicherheitslösungen</span>
+                  <span data-lang="zh">EPP, EDR & NDR 安全解决方案</span>
+                </div>
                 <div class="skill-progress-bg">
                   <div class="skill-progress-bar" data-progress="95%"></div>
                 </div>
@@ -223,7 +352,12 @@
                 </svg>
               </div>
               <div class="skill-info">
-                <div class="skill-name">SOAR (Playbook) Tasarımı</div>
+                <div class="skill-name">
+                  <span data-lang="tr">SOAR (Playbook) Tasarımı</span>
+                  <span data-lang="en">SOAR (Playbook) Design</span>
+                  <span data-lang="de">SOAR- (Playbook) Design</span>
+                  <span data-lang="zh">SOAR (剧本) 设计</span>
+                </div>
                 <div class="skill-progress-bg">
                   <div class="skill-progress-bar" data-progress="90%"></div>
                 </div>
@@ -237,7 +371,12 @@
                 </svg>
               </div>
               <div class="skill-info">
-                <div class="skill-name">SIEM Log Yönetimi & Alarm Analizi</div>
+                <div class="skill-name">
+                  <span data-lang="tr">SIEM Log Yönetimi & Alarm Analizi</span>
+                  <span data-lang="en">SIEM Log Management & Alert Analysis</span>
+                  <span data-lang="de">SIEM-Log-Management & Alarmanalyse</span>
+                  <span data-lang="zh">SIEM 日志管理与告警分析</span>
+                </div>
                 <div class="skill-progress-bg">
                   <div class="skill-progress-bar" data-progress="88%"></div>
                 </div>
@@ -252,24 +391,14 @@
                 </svg>
               </div>
               <div class="skill-info">
-                <div class="skill-name">Sistem ve Ağ (CISCO, Sunucu, AD)</div>
+                <div class="skill-name">
+                  <span data-lang="tr">Sistem ve Ağ (CISCO, Sunucu, AD)</span>
+                  <span data-lang="en">System & Network (CISCO, Servers, AD)</span>
+                  <span data-lang="de">System & Netzwerk (CISCO, Server, AD)</span>
+                  <span data-lang="zh">系统与网络 (CISCO, 服务器, 活动目录)</span>
+                </div>
                 <div class="skill-progress-bg">
                   <div class="skill-progress-bar" data-progress="85%"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="glass-card skill-card">
-              <div class="skill-icon-wrap">
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" />
-                </svg>
-              </div>
-              <div class="skill-info">
-                <div class="skill-name">Nessus & Kali Linux (Sızma Analizleri)</div>
-                <div class="skill-progress-bg">
-                  <div class="skill-progress-bar" data-progress="82%"></div>
                 </div>
               </div>
             </div>
@@ -282,7 +411,12 @@
                 </svg>
               </div>
               <div class="skill-info">
-                <div class="skill-name">Python Araç Geliştirme & Scripting</div>
+                <div class="skill-name">
+                  <span data-lang="tr">Python Araç Geliştirme & Scripting</span>
+                  <span data-lang="en">Python Tool Development & Scripting</span>
+                  <span data-lang="de">Python-Tool-Entwicklung & Scripting</span>
+                  <span data-lang="zh">Python 工具开发与自动化脚本</span>
+                </div>
                 <div class="skill-progress-bg">
                   <div class="skill-progress-bar" data-progress="80%"></div>
                 </div>
@@ -303,11 +437,39 @@
               </div>
               <h4 class="timeline-title">Associate Cybersecurity Expert</h4>
               <ul class="timeline-list">
-                <li>EDR, NDR ve EPP Güvenlik Çözümlerinin Kurulumu ve Yönetimi</li>
-                <li>MDR Çözümleri Üzerinde Alarm Analizi Gerçekleştirme ve Raporlama</li>
-                <li>SOAR Platformlarında Entegrasyon ve Otomasyon Süreçleri / Playbook Tasarımı</li>
-                <li>SIEM Ürünleri ile Log Analizi ve Log Yönetimi</li>
-                <li>Siber Güvenlik Süreçlerini İyileştirmek için Python ile Araç Geliştirme</li>
+                <li>
+                  <span data-lang="tr">EDR, NDR ve EPP Güvenlik Çözümlerinin Kurulumu ve Yönetimi</span>
+                  <span data-lang="en">Deployment and Management of EDR, NDR, and EPP Security Solutions</span>
+                  <span data-lang="de">Bereitstellung und Verwaltung von EDR-, NDR- und EPP-Sicherheitslösungen</span>
+                  <span data-lang="zh">部署和管理 EDR、NDR 和 EPP 安全解决方案</span>
+                </li>
+                <li>
+                  <span data-lang="tr">MDR Çözümleri Üzerinde Alarm Analizi Gerçekleştirme ve Raporlama</span>
+                  <span data-lang="en">Performing Alert Analysis and Reporting on Managed Detection & Response (MDR)
+                    platforms</span>
+                  <span data-lang="de">Durchführung von Alarmanalysen und Berichterstattung auf Managed Detection & Response (MDR)-Plattformen</span>
+                  <span data-lang="zh">在托管检测与响应（MDR）平台进行告警分析和报告</span>
+                </li>
+                <li>
+                  <span data-lang="tr">SOAR Platformlarında Entegrasyon ve Otomasyon Süreçleri / Playbook
+                    Tasarımı</span>
+                  <span data-lang="en">Integration and Automation Processes / Playbook Design on SOAR Platforms</span>
+                  <span data-lang="de">Integrations- und Automatisierungsprozesse / Playbook-Design auf SOAR-Plattformen</span>
+                  <span data-lang="zh">SOAR 平台上的集成与自动化流程设计 / 剧本设计</span>
+                </li>
+                <li>
+                  <span data-lang="tr">SIEM Ürünleri ile Log Analizi ve Log Yönetimi</span>
+                  <span data-lang="en">Log Analysis and Log Management using Enterprise SIEM Products</span>
+                  <span data-lang="de">Protokollanalyse (Log Analysis) und Protokollverwaltung mit Enterprise-SIEM-Produkten</span>
+                  <span data-lang="zh">使用企业 SIEM 产品进行日志分析与日志管理</span>
+                </li>
+                <li>
+                  <span data-lang="tr">Siber Güvenlik Süreçlerini İyileştirmek için Python ile Araç Geliştirme</span>
+                  <span data-lang="en">Developing custom Python Tools to optimize security and operations
+                    processes</span>
+                  <span data-lang="de">Entwicklung benutzerdefinierter Python-Tools zur Optimierung von Sicherheits- und Betriebsprozessen</span>
+                  <span data-lang="zh">开发定制的 Python 工具以优化安全和运维流程</span>
+                </li>
               </ul>
             </div>
 
@@ -315,12 +477,29 @@
               <div class="timeline-dot"></div>
               <div class="timeline-meta">
                 <span class="timeline-date">09.2022 - 01.2023</span>
-                <span class="timeline-org">Fenerbahçe Üniversitesi</span>
+                <span class="timeline-org">
+                  <span data-lang="tr">Fenerbahçe Üniversitesi</span>
+                  <span data-lang="en">Fenerbahçe University</span>
+                  <span data-lang="de">Fenerbahçe-Universität</span>
+                  <span data-lang="zh">费内巴切大学</span>
+                </span>
               </div>
-              <h4 class="timeline-title">Sistem ve Ağ Eğitimi (800 Saat)</h4>
-              <p class="timeline-desc">"Nitelikli Bilişim Uzmanı Yetiştirme" programı kapsamında; Ağ Güvenliği, Sistem
-                Yönetimi, CISCO Cihazları ve Sanallaştırma teknolojileri üzerinde kapsamlı teorik ve pratik uygulamalar
-                gerçekleştirildi.</p>
+              <h4 class="timeline-title">
+                <span data-lang="tr">Sistem ve Ağ Eğitimi (800 Saat)</span>
+                <span data-lang="en">System and Network Engineering Program (800 Hours)</span>
+                <span data-lang="de">System- und Netzwerktechnik-Programm (800 Stunden)</span>
+                <span data-lang="zh">系统与网络工程培训 (800 小时)</span>
+              </h4>
+              <p class="timeline-desc">
+                <span data-lang="tr">"Nitelikli Bilişim Uzmanı Yetiştirme" programı kapsamında; Ağ Güvenliği, Sistem
+                  Yönetimi, CISCO Cihazları ve Sanallaştırma teknolojileri üzerinde kapsamlı teorik ve pratik
+                  uygulamalar gerçekleştirildi.</span>
+                <span data-lang="en">Under the "Qualified IT Specialist Training" initiative; comprehensive theoretical
+                  and hands-on practices were executed on Network Security, System Administration, CISCO Devices, and
+                  Virtualization systems.</span>
+                <span data-lang="de">Im Rahmen der Initiative „Qualifizierte IT-Spezialistenausbildung“ wurden umfassende theoretische und praktische Anwendungen in den Bereichen Netzwerksicherheit, Systemadministration, CISCO-Geräte und Virtualisierungstechnologien durchgeführt.</span>
+                <span data-lang="zh">在“优秀信息技术专家培训”计划下，在网络安全、系统管理、CISCO 设备和虚拟化技术上进行了全面的理论和实际操作应用。</span>
+              </p>
             </div>
 
             <div class="timeline-item">
@@ -329,10 +508,28 @@
                 <span class="timeline-date">2013 - 2018</span>
                 <span class="timeline-org">KAYHAN Mühendislik & Mimarlık Ltd. Şti.</span>
               </div>
-              <h4 class="timeline-title">Uzun Dönem Stajyer Mühendis</h4>
+              <h4 class="timeline-title">
+                <span data-lang="tr">Uzun Dönem Stajyer Mühendis</span>
+                <span data-lang="en">Long-Term Engineering Intern</span>
+                <span data-lang="de">Langzeit-Praktikant im Ingenieurwesen</span>
+                <span data-lang="zh">长期实习工程师</span>
+              </h4>
               <ul class="timeline-list">
-                <li>AutoCAD ve MS Excel kullanarak mühendislik projelerinin hazırlanması ve analizi</li>
-                <li>ProtaStructure, ideCAD ve STA4CAD yazılımları ile yapısal sistem modellemeleri</li>
+                <li>
+                  <span data-lang="tr">AutoCAD ve MS Excel kullanarak mühendislik projelerinin hazırlanması ve
+                    analizi</span>
+                  <span data-lang="en">Preparing and analyzing engineering designs using AutoCAD and MS Excel</span>
+                  <span data-lang="de">Erstellung und Analyse von Ingenieurprojekten unter Verwendung von AutoCAD und MS Excel</span>
+                  <span data-lang="zh">使用 AutoCAD 和 MS Excel 准备和 analysis 工程设计项目</span>
+                </li>
+                <li>
+                  <span data-lang="tr">ProtaStructure, ideCAD ve STA4CAD yazılımları ile yapısal sistem
+                    modellemeleri</span>
+                  <span data-lang="en">Structural system modeling using ProtaStructure, ideCAD, and STA4CAD software
+                    tools</span>
+                  <span data-lang="de">Tragwerksmodellierung mit den Softwaretools ProtaStructure, ideCAD und STA4CAD</span>
+                  <span data-lang="zh">使用 ProtaStructure, ideCAD 和 STA4CAD 软件进行结构系统建模</span>
+                </li>
               </ul>
             </div>
 
@@ -341,11 +538,31 @@
               <div class="timeline-dot" style="background: var(--accent-secondary);"></div>
               <div class="timeline-meta">
                 <span class="timeline-date"
-                  style="color: var(--accent-secondary); background: rgba(2, 132, 199, 0.08);">07.2019 Mezuniyet</span>
-                <span class="timeline-org">Kırıkkale Üniversitesi</span>
+                  style="color: var(--accent-secondary); background: rgba(2, 132, 199, 0.08);">
+                  <span data-lang="tr">07.2019 Mezuniyet</span>
+                  <span data-lang="en">07.2019 Graduation</span>
+                  <span data-lang="de">07.2019 Abschluss</span>
+                  <span data-lang="zh">07.2019 毕业</span>
+                </span>
+                <span class="timeline-org">
+                  <span data-lang="tr">Kırıkkale Üniversitesi</span>
+                  <span data-lang="en">Kırıkkale University</span>
+                  <span data-lang="de">Kırıkkale-Universität</span>
+                  <span data-lang="zh">克勒克卡莱大学</span>
+                </span>
               </div>
-              <h4 class="timeline-title">İnşaat Mühendisliği Lisansı</h4>
-              <p class="timeline-desc">Mühendislik Eğitimi | Genel Ortalama: 2.81 / 4</p>
+              <h4 class="timeline-title">
+                <span data-lang="tr">İnşaat Mühendisliği Lisansı</span>
+                <span data-lang="en">B.S. in Civil Engineering</span>
+                <span data-lang="de">Bachelor in Bauingenieurwesen</span>
+                <span data-lang="zh">土木工程学士学位</span>
+              </h4>
+              <p class="timeline-desc">
+                <span data-lang="tr">Mühendislik Eğitimi | Genel Ortalama: 2.81 / 4</span>
+                <span data-lang="en">Engineering Education | Cumulative GPA: 2.81 / 4</span>
+                <span data-lang="de">Ingenieursausbildung | Gesamtnotendurchschnitt: 2,81 / 4</span>
+                <span data-lang="zh">工程教育 | 累积 GPA：2.81 / 4</span>
+              </p>
             </div>
 
           </div>
@@ -355,7 +572,12 @@
           <div class="cert-list">
 
             <div class="glass-card cert-item">
-              <h4 class="cert-title">Kaspersky Global Sertifikaları</h4>
+              <h4 class="cert-title">
+                <span data-lang="tr">Kaspersky Global Sertifikaları</span>
+                <span data-lang="en">Kaspersky Global Certifications</span>
+                <span data-lang="de">Globale Kaspersky-Zertifikate</span>
+                <span data-lang="zh">卡巴斯基全球认证</span>
+              </h4>
               <ul class="cert-desc">
                 <li><strong>Certified Professional:</strong> KATA Platform & EDR Expert (Sertifika No: 025.6-XXXXX)</li>
                 <li><strong>Certified Professional:</strong> Kaspersky Endpoint Security & Management (Sertifika No:
@@ -366,20 +588,64 @@
             </div>
 
             <div class="glass-card cert-item">
-              <h4 class="cert-title">Akademi & Resmi Eğitim Sertifikaları</h4>
+              <h4 class="cert-title">
+                <span data-lang="tr">Akademi & Resmi Eğitim Sertifikaları</span>
+                <span data-lang="en">Academy & Official Training Certificates</span>
+                <span data-lang="de">Akademische & offizielle Schulungszertifikate</span>
+                <span data-lang="zh">学院与官方培训证书</span>
+              </h4>
               <ul class="cert-desc">
-                <li><strong>Fenerbahçe Üniversitesi:</strong> Sistem ve Ağ Uzmanlığı (800 Saat)</li>
-                <li><strong>Fenerbahçe Üniversitesi:</strong> KVKK Eğitimi & ISO 27001 Bilgi Güvenliğine Giriş</li>
-                <li><strong>Udemy:</strong> Etik Hacker Olma Kursu / Sıfırdan Hyper-V Eğitimi ve Sanallaştırma</li>
+                <li>
+                  <span data-lang="tr"><strong>Fenerbahçe Üniversitesi:</strong> Sistem ve Ağ Uzmanlığı (800
+                    Saat)</span>
+                  <span data-lang="en"><strong>Fenerbahçe University:</strong> System & Network Engineering (800
+                    Hours)</span>
+                  <span data-lang="de"><strong>Fenerbahçe-Universität:</strong> System- und Netzwerktechnik (800 Stunden)</span>
+                  <span data-lang="zh"><strong>费内巴切大学：</strong>系统与网络工程 (800 小时)</span>
+                </li>
+                <li>
+                  <span data-lang="tr"><strong>Fenerbahçe Üniversitesi:</strong> KVKK Eğitimi & ISO 27001 Bilgi
+                    Güvenliğine Giriş</span>
+                  <span data-lang="en"><strong>Fenerbahçe University:</strong> KVKK (GDPR Compliance) & Intro to ISO
+                    27001 Info Security</span>
+                  <span data-lang="de"><strong>Fenerbahçe-Universität:</strong> KVKK-Schulung & Einführung in die ISO 27001 Informationssicherheit</span>
+                  <span data-lang="zh"><strong>费内巴切大学：</strong>KVKK（GDPR 合规）与 ISO 27001 信息安全导论</span>
+                </li>
+                <li>
+                  <span data-lang="tr"><strong>Udemy:</strong> Etik Hacker Olma Kursu / Sıfırdan Hyper-V Eğitimi ve
+                    Sanallaştırma</span>
+                  <span data-lang="en"><strong>Udemy:</strong> Complete Ethical Hacking / Hyper-V Virtualization from
+                    Scratch</span>
+                  <span data-lang="de"><strong>Udemy:</strong> Ethisches Hacking / Hyper-V Virtualisierung von Grund auf</span>
+                  <span data-lang="zh"><strong>Udemy：</strong>完整道德黑客认证 / 从零开始的 Hyper-V 虚拟化培训</span>
+                </li>
               </ul>
             </div>
 
             <div class="glass-card cert-item">
-              <h4 class="cert-title">BTK Akademi & Turkcell Geleceği Yazanlar</h4>
+              <h4 class="cert-title">
+                <span data-lang="tr">BTK Akademi & Turkcell Geleceği Yazanlar</span>
+                <span data-lang="en">BTK Academy & Turkcell Gelecegi Yazanlar</span>
+                <span data-lang="de">BTK-Akademie & Turkcell Gelecegi Yazanlar</span>
+                <span data-lang="zh">BTK 学院与 Turkcell Geleceği Yazanlar</span>
+              </h4>
               <ul class="cert-desc">
-                <li><strong>Turkcell:</strong> Siber Güvenlik 101, Temel Network, Temel Linux Serisi (101-401)</li>
-                <li><strong>BTK Akademi:</strong> Uygulamalarla SQL Öğreniyorum, Docker Temelleri, Fortinet Güvenlik
-                  Duvarı Temelleri, KVKK ve GDPR Eğitim Seti, Ağ Temelleri</li>
+                <li>
+                  <span data-lang="tr"><strong>Turkcell:</strong> Siber Güvenlik 101, Temel Network, Temel Linux Serisi
+                    (101-401)</span>
+                  <span data-lang="en"><strong>Turkcell:</strong> Cybersecurity 101, Basic Networking, Basic Linux
+                    Series (101-401)</span>
+                  <span data-lang="de"><strong>Turkcell:</strong> Cybersicherheit 101, Grundlagen Netzwerke, Linux-Grundlagen (101-401)</span>
+                  <span data-lang="zh"><strong>Turkcell：</strong>网络安全 101、基础网络、基础 Linux 系列课程 (101-401)</span>
+                </li>
+                <li>
+                  <span data-lang="tr"><strong>BTK Akademi:</strong> Uygulamalarla SQL Öğreniyorum, Docker Temelleri,
+                    Fortinet Güvenlik Duvarı Temelleri, KVKK ve GDPR Eğitim Seti, Ağ Temelleri</span>
+                  <span data-lang="en"><strong>BTK Academy:</strong> Applied SQL Databases, Docker Essentials, Fortinet
+                    Firewall Basics, KVKK & GDPR Training, Networking Fundamentals</span>
+                  <span data-lang="de"><strong>BTK-Akademie:</strong> Angewandte SQL-Datenbanken, Docker-Grundlagen, Fortinet Firewall-Grundlagen, KVKK- & DSGVO-Schulung, Netzwerk-Grundlagen</span>
+                  <span data-lang="zh"><strong>BTK 学院：</strong>应用 SQL 数据库、Docker 基础、Fortinet 防火墙基础、KVKK 与 GDPR 培训、网络基础</span>
+                </li>
               </ul>
             </div>
 
@@ -394,14 +660,39 @@
 
   <section id="projects" class="reveal">
     <div class="section-header">
-      <span class="section-tag">Uygulamalı Analizlerim</span>
-      <h2 class="section-title">Teknik <span>Projelerim</span></h2>
+      <span class="section-tag">
+        <span data-lang="tr">Uygulamalı Analizlerim</span>
+        <span data-lang="en">Practical Analysis Cases</span>
+        <span data-lang="de">Praktische Analysen</span>
+        <span data-lang="zh">项目实践与分析</span>
+      </span>
+      <h2 class="section-title">
+        <span data-lang="tr">Teknik <span>Projelerim</span></span>
+        <span data-lang="en">Technical <span>Projects</span></span>
+        <span data-lang="de">Technische <span>Projekte</span></span>
+        <span data-lang="zh">技术<span>项目</span></span>
+      </h2>
     </div>
 
     <div class="portfolio-filter">
-      <button class="filter-btn active" data-filter="all">Hepsi</button>
-      <button class="filter-btn" data-filter="soar">SOAR & Otomasyon</button>
-      <button class="filter-btn" data-filter="security">Zafiyet Analizi</button>
+      <button class="filter-btn active" data-filter="all">
+        <span data-lang="tr">Hepsi</span>
+        <span data-lang="en">All</span>
+        <span data-lang="de">Alle</span>
+        <span data-lang="zh">全部</span>
+      </button>
+      <button class="filter-btn" data-filter="soar">
+        <span data-lang="tr">SOAR & Otomasyon</span>
+        <span data-lang="en">SOAR & Automation</span>
+        <span data-lang="de">SOAR & Automatisierung</span>
+        <span data-lang="zh">SOAR 与自动化</span>
+      </button>
+      <button class="filter-btn" data-filter="security">
+        <span data-lang="tr">Zafiyet Analizi</span>
+        <span data-lang="en">Vulnerability Analysis</span>
+        <span data-lang="de">Schwachstellenanalyse</span>
+        <span data-lang="zh">漏洞分析</span>
+      </button>
     </div>
 
     <div class="portfolio-grid">
@@ -438,12 +729,33 @@
         <div class="project-info">
           <div class="project-tags">
             <span class="project-tag">SOAR</span>
-            <span class="project-tag">Otomasyon</span>
-            <span class="project-tag">API Entegrasyon</span>
+            <span class="project-tag">
+              <span data-lang="tr">Otomasyon</span>
+              <span data-lang="en">Automation</span>
+              <span data-lang="de">Automatisierung</span>
+              <span data-lang="zh">自动化</span>
+            </span>
+            <span class="project-tag">
+              <span data-lang="tr">API Entegrasyon</span>
+              <span data-lang="en">API Integration</span>
+              <span data-lang="de">API-Integration</span>
+              <span data-lang="zh">API 集成</span>
+            </span>
           </div>
-          <h3 class="project-title">Shuffle SOAR Güvenlik Entegrasyonları</h3>
-          <p class="project-desc">EPP, EDR, NDR, SIEM ve Aktif Dizin çözümlerinin SOAR platformuna bağlanması ve
-            playbook iş akışı otomasyonu.</p>
+          <h3 class="project-title">
+            <span data-lang="tr">Shuffle SOAR Güvenlik Entegrasyonları</span>
+            <span data-lang="en">Shuffle SOAR Security Integrations</span>
+            <span data-lang="de">Shuffle SOAR Sicherheitsintegrationen</span>
+            <span data-lang="zh">Shuffle SOAR 安全集成与自动化</span>
+          </h3>
+          <p class="project-desc">
+            <span data-lang="tr">EPP, EDR, NDR, SIEM ve Aktif Dizin çözümlerinin SOAR platformuna bağlanması ve playbook
+              iş akışı otomasyonu.</span>
+            <span data-lang="en">Connecting EPP, EDR, NDR, SIEM, and Active Directory platforms into the Shuffle SOAR
+              orchestrator with automated playbook workflows.</span>
+            <span data-lang="de">Anbindung von EPP-, EDR-, NDR-, SIEM- und Active-Directory-Plattformen an den Shuffle SOAR Orchestrator mit automatisierten Playbook-Workflows.</span>
+            <span data-lang="zh">将 EPP、EDR、NDR、SIEM 和 Active Directory 解决方案连接到 SOAR 平台，实现剧本工作流自动化。</span>
+          </p>
         </div>
       </div>
 
@@ -475,12 +787,33 @@
         <div class="project-info">
           <div class="project-tags">
             <span class="project-tag">Nessus</span>
-            <span class="project-tag">Zafiyet Analizi</span>
-            <span class="project-tag">Sızma Testi</span>
+            <span class="project-tag">
+              <span data-lang="tr">Zafiyet Analizi</span>
+              <span data-lang="en">Vulnerability Analysis</span>
+              <span data-lang="de">Schwachstellenanalyse</span>
+              <span data-lang="zh">漏洞分析</span>
+            </span>
+            <span class="project-tag">
+              <span data-lang="tr">Sızma Testi</span>
+              <span data-lang="en">Penetration Testing</span>
+              <span data-lang="de">Penetrationstests</span>
+              <span data-lang="zh">渗透测试</span>
+            </span>
           </div>
-          <h3 class="project-title">Nessus Zafiyet Tarama ve Sızma Analizi</h3>
-          <p class="project-desc">Laboratuvar ortamında Windows, Linux ve Web sunucularının Nessus ile taranması,
-            zafiyet tespiti ve sızma testleri.</p>
+          <h3 class="project-title">
+            <span data-lang="tr">Nessus Zafiyet Tarama ve Sızma Analizi</span>
+            <span data-lang="en">Nessus Vulnerability Scanning & Pentesting</span>
+            <span data-lang="de">Nessus Schwachstellenscan & Pentesting</span>
+            <span data-lang="zh">Nessus 漏洞扫描与渗透测试分析</span>
+          </h3>
+          <p class="project-desc">
+            <span data-lang="tr">Laboratuvar ortamında Windows, Linux ve Web sunucularının Nessus ile taranması, zafiyet
+              tespiti ve sızma testleri.</span>
+            <span data-lang="en">Scanning Windows, Linux, and Web servers with Nessus, vulnerability mapping, and
+              hands-on penetration testing in laboratory environments.</span>
+            <span data-lang="de">Scannen von Windows-, Linux- und Webservern mit Nessus, Schwachstellenanalyse und Penetrationstests im Labor.</span>
+            <span data-lang="zh">在实验室环境中，使用 Nessus 扫描 Windows、Linux 和 Web 服务器，进行漏洞检测与渗透测试。</span>
+          </p>
         </div>
       </div>
 
@@ -489,8 +822,18 @@
 
   <section id="contact" class="reveal">
     <div class="section-header">
-      <span class="section-tag">Bana Ulaşın</span>
-      <h2 class="section-title">İletişim <span>Bilgilerim</span></h2>
+      <span class="section-tag">
+        <span data-lang="tr">Bana Ulaşın</span>
+        <span data-lang="en">Get In Touch</span>
+        <span data-lang="de">Kontaktieren Sie mich</span>
+        <span data-lang="zh">联系我</span>
+      </span>
+      <h2 class="section-title">
+        <span data-lang="tr">İletişim <span>Bilgilerim</span></span>
+        <span data-lang="en">Contact <span>Info</span></span>
+        <span data-lang="de">Kontaktinformationen</span>
+        <span data-lang="zh">联系<span>信息</span></span>
+      </h2>
     </div>
 
     <div class="contact-grid">
@@ -506,17 +849,33 @@
               </svg>
             </div>
             <div class="contact-info-content">
-              <h4>Lokasyon</h4>
-              <p>Türkiye</p>
+              <h4>
+                <span data-lang="tr">Lokasyon</span>
+                <span data-lang="en">Location</span>
+                <span data-lang="de">Standort</span>
+                <span data-lang="zh">地点</span>
+              </h4>
+              <p>
+                <span data-lang="tr">Türkiye</span>
+                <span data-lang="en">Türkiye</span>
+                <span data-lang="de">Türkei</span>
+                <span data-lang="zh">土耳其</span>
+              </p>
             </div>
           </div>
 
         </div>
 
         <div>
-          <h3 class="social-header">Sosyal Medya</h3>
+          <h3 class="social-header">
+            <span data-lang="tr">Sosyal Medya</span>
+            <span data-lang="en">Social Media</span>
+            <span data-lang="de">Soziale Medien</span>
+            <span data-lang="zh">社交媒体</span>
+          </h3>
           <div class="social-links">
-            <a href="https://www.linkedin.com/in/abdullahalperguven" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/abdullahalperguven" target="_blank" rel="noopener noreferrer"
+              class="social-btn" aria-label="LinkedIn">
               <svg viewBox="0 0 24 24">
                 <path
                   d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
@@ -537,30 +896,62 @@
           <form class="contact-form" id="portfolio-contact-form" action="https://formspree.io/f/mjgzeewj" method="POST">
             <div class="form-group-row">
               <div class="form-group">
-                <label for="form-name" class="form-label">Adınız Soyadınız</label>
-                <input type="text" id="form-name" name="name" class="form-input" placeholder="Ahmet Yılmaz" required>
+                <label for="form-name" class="form-label">
+                  <span data-lang="tr">Adınız Soyadınız</span>
+                  <span data-lang="en">Your Full Name</span>
+                  <span data-lang="de">Ihr Name</span>
+                  <span data-lang="zh">您的姓名</span>
+                </label>
+                <input type="text" id="form-name" name="name" class="form-input" placeholder="Ahmet Yılmaz"
+                  data-placeholder-tr="Ahmet Yılmaz" data-placeholder-en="John Doe" data-placeholder-de="Max Mustermann" data-placeholder-zh="张三" required>
               </div>
               <div class="form-group">
-                <label for="form-email" class="form-label">E-posta Adresiniz</label>
-                <input type="email" id="form-email" name="email" class="form-input" placeholder="ahmet@gmail.com" required>
+                <label for="form-email" class="form-label">
+                  <span data-lang="tr">E-posta Adresiniz</span>
+                  <span data-lang="en">Your Email Address</span>
+                  <span data-lang="de">Ihre E-Mail-Adresse</span>
+                  <span data-lang="zh">您的电子邮箱</span>
+                </label>
+                <input type="email" id="form-email" name="email" class="form-input" placeholder="ahmet@gmail.com"
+                  required>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="form-subject" class="form-label">Konu</label>
-              <input type="text" id="form-subject" name="_subject" class="form-input" placeholder="İş birliği teklifi" required>
+              <label for="form-subject" class="form-label">
+                <span data-lang="tr">Konu</span>
+                <span data-lang="en">Subject</span>
+                <span data-lang="de">Betreff</span>
+                <span data-lang="zh">主题</span>
+              </label>
+              <input type="text" id="form-subject" name="_subject" class="form-input" placeholder="İş birliği teklifi"
+                data-placeholder-tr="İş birliği teklifi" data-placeholder-en="Collaboration request" data-placeholder-de="Zusammenarbeit" data-placeholder-zh="合作意向" required>
             </div>
 
             <div class="form-group">
-              <label for="form-msg" class="form-label">Mesajınız</label>
+              <label for="form-msg" class="form-label">
+                <span data-lang="tr">Mesajınız</span>
+                <span data-lang="en">Your Message</span>
+                <span data-lang="de">Ihre Nachricht</span>
+                <span data-lang="zh">您的留言</span>
+              </label>
               <textarea id="form-msg" name="message" class="form-textarea"
-                placeholder="İletmek istediğiniz detayları buraya yazabilirsiniz..." required></textarea>
+                placeholder="İletmek istediğiniz detayları buraya yazabilirsiniz..."
+                data-placeholder-tr="İletmek istediğiniz detayları buraya yazabilirsiniz..."
+                data-placeholder-en="Write details of your message here..."
+                data-placeholder-de="Schreiben Sie hier Ihre Nachricht..."
+                data-placeholder-zh="请在此处填写您的留言详情..." required></textarea>
             </div>
 
             <div id="form-response-status" class="form-status"></div>
 
             <button type="submit" class="btn btn-primary" style="align-self: flex-start;">
-              <span>Mesajı İlet</span>
+              <span>
+                <span data-lang="tr">Mesajı İlet</span>
+                <span data-lang="en">Send Message</span>
+                <span data-lang="de">Nachricht senden</span>
+                <span data-lang="zh">发送消息</span>
+              </span>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
                 <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
               </svg>
@@ -576,20 +967,46 @@
     <div class="footer-container">
       <a href="#" class="logo" style="font-size: 1.8rem;">Alper <span>Güven</span></a>
       <ul class="footer-nav">
-        <li><a href="#home" class="footer-link">Giriş</a></li>
-        <li><a href="#about" class="footer-link">Hakkımda</a></li>
-        <li><a href="#projects" class="footer-link">Projelerim</a></li>
-        <li><a href="#contact" class="footer-link">İletişim</a></li>
+        <li><a href="#home" class="footer-link">
+            <span data-lang="tr">Giriş</span>
+            <span data-lang="en">Home</span>
+            <span data-lang="de">Startseite</span>
+            <span data-lang="zh">首页</span>
+          </a></li>
+        <li><a href="#about" class="footer-link">
+            <span data-lang="tr">Hakkımda</span>
+            <span data-lang="en">About</span>
+            <span data-lang="de">Über mich</span>
+            <span data-lang="zh">关于我</span>
+          </a></li>
+        <li><a href="#projects" class="footer-link">
+            <span data-lang="tr">Projelerim</span>
+            <span data-lang="en">Projects</span>
+            <span data-lang="de">Projekte</span>
+            <span data-lang="zh">项目</span>
+          </a></li>
+        <li><a href="#contact" class="footer-link">
+            <span data-lang="tr">İletişim</span>
+            <span data-lang="en">Contact</span>
+            <span data-lang="de">Kontakt</span>
+            <span data-lang="zh">联系我</span>
+          </a></li>
       </ul>
-      <p class="footer-text">© 2026 Abdullah Alper Güven. Tüm hakları saklıdır.</p>
+      <p class="footer-text">
+        <span data-lang="tr">© 2026 Abdullah Alper Güven. Tüm hakları saklıdır.</span>
+        <span data-lang="en">© 2026 Abdullah Alper Güven. All rights reserved.</span>
+        <span data-lang="de">© 2026 Abdullah Alper Güven. Alle Rechte vorbehalten.</span>
+        <span data-lang="zh">© 2026 Abdullah Alper Güven. 保留所有权利。</span>
+      </p>
     </div>
   </footer>
 
   <section class="easter-egg-area" id="easter-egg">
     <div class="easter-egg-trigger-container" id="easter-egg-trigger">
-      <span class="glitch-text">guest@guven.sec:~$ <span class="terminal-blink-text">init_override_protocol</span></span>
+      <span class="glitch-text">guest@guven.sec:~$ <span
+          class="terminal-blink-text">init_override_protocol</span></span>
     </div>
-    
+
     <div class="game-container glass-panel hidden" id="game-panel">
       <div class="game-header">
         <div class="game-title-wrap">
@@ -598,40 +1015,92 @@
         </div>
         <div class="game-stats">
           <div class="game-stat">
-            <span class="stat-lbl">SİSTEM SAĞLIĞI</span>
-            <div class="stat-bar-bg"><div class="stat-bar-fill health" id="game-health" style="width: 100%;"></div></div>
+            <span class="stat-lbl">
+              <span data-lang="tr">SİSTEM SAĞLIĞI</span>
+              <span data-lang="en">SYSTEM HEALTH</span>
+              <span data-lang="de">SYSTEMZUSTAND</span>
+              <span data-lang="zh">系统健康度</span>
+            </span>
+            <div class="stat-bar-bg">
+              <div class="stat-bar-fill health" id="game-health" style="width: 100%;"></div>
+            </div>
           </div>
           <div class="game-stat">
-            <span class="stat-lbl">MÜDAHALE EDİLEN</span>
+            <span class="stat-lbl">
+              <span data-lang="tr">MÜDAHALE EDİLEN</span>
+              <span data-lang="en">THREATS MITIGATED</span>
+              <span data-lang="de">ABGEWEHRTE BEDROHUNGEN</span>
+              <span data-lang="zh">已处置威胁</span>
+            </span>
             <span class="stat-val" id="game-score">0</span>
           </div>
         </div>
       </div>
-      
+
       <div class="game-body">
         <div class="game-alerts-panel">
-          <div class="game-panel-title">SIEM CANLI ALARM EKRANI</div>
+          <div class="game-alerts-panel-title">
+            <span data-lang="tr">SIEM CANLI ALARM EKRANI</span>
+            <span data-lang="en">SIEM LIVE ALERTS PANEL</span>
+            <span data-lang="de">SIEM LIVE-ALARMPANEL</span>
+            <span data-lang="zh">SIEM 实时告警面板</span>
+          </div>
           <div class="game-alerts-list" id="game-alerts-list"></div>
         </div>
-        
+
         <div class="game-controls-panel">
-          <div class="game-panel-title">MÜDAHALE KONSOLU</div>
+          <div class="game-panel-title">
+            <span data-lang="tr">MÜDAHALE KONSOLU</span>
+            <span data-lang="en">MITIGATION CONSOLE</span>
+            <span data-lang="de">ABWEHRKONSOLE</span>
+            <span data-lang="zh">威胁处置控制台</span>
+          </div>
           <div class="game-alert-details" id="active-alert-details">
-            <p class="select-prompt">Lütfen müdahale etmek için sol listeden aktif bir alarm seçin.</p>
+            <p class="select-prompt">
+              <span data-lang="tr">Lütfen müdahale etmek için sol listeden aktif bir alarm seçin.</span>
+              <span data-lang="en">Please select an active alert from the left panel to mitigate.</span>
+              <span data-lang="de">Bitte wählen Sie einen aktiven Alarm aus dem linken Panel aus, um ihn abzuwehren.</span>
+              <span data-lang="zh">请从左侧面板选择一个活动告警进行处置。</span>
+            </p>
           </div>
           <div class="game-action-buttons">
-            <button class="game-btn btn-edr" id="btn-edr" disabled>EDR: HOSTU İZOLE ET</button>
-            <button class="game-btn btn-fw" id="btn-fw" disabled>FIREWALL: IP ENGELLE</button>
-            <button class="game-btn btn-ad" id="btn-ad" disabled>AD: HESABI DEVRE DIŞI BIRAK</button>
-            <button class="game-btn btn-soc" id="btn-soc" disabled>SOC: ALARMI YOKSAY (FALSE POSITIVE)</button>
+            <button class="game-btn btn-edr" id="btn-edr" disabled>
+              <span data-lang="tr">EDR: HOSTU İZOLE ET</span>
+              <span data-lang="en">EDR: ISOLATE HOST</span>
+              <span data-lang="de">EDR: HOST ISOLIEREN</span>
+              <span data-lang="zh">EDR: 隔离主机</span>
+            </button>
+            <button class="game-btn btn-fw" id="btn-fw" disabled>
+              <span data-lang="tr">FIREWALL: IP ENGELLE</span>
+              <span data-lang="en">FIREWALL: BLOCK IP</span>
+              <span data-lang="de">FIREWALL: IP BLOCKIEREN</span>
+              <span data-lang="zh">FIREWALL: 封禁 IP</span>
+            </button>
+            <button class="game-btn btn-ad" id="btn-ad" disabled>
+              <span data-lang="tr">AD: HESABI DEVRE DIŞI BIRAK</span>
+              <span data-lang="en">AD: DISABLE ACCOUNT</span>
+              <span data-lang="de">AD: KONTO DEAKTIVIEREN</span>
+              <span data-lang="zh">AD: 禁用账户</span>
+            </button>
+            <button class="game-btn btn-soc" id="btn-soc" disabled>
+              <span data-lang="tr">SOC: ALARMI YOKSAY (FALSE POSITIVE)</span>
+              <span data-lang="en">SOC: IGNORE ALERT (FALSE POSITIVE)</span>
+              <span data-lang="de">SOC: ALARM IGNORIEREN (FALSE POSITIVE)</span>
+              <span data-lang="zh">SOC: 忽略告警（误报）</span>
+            </button>
           </div>
         </div>
       </div>
-      
+
       <div class="game-terminal">
         <div class="game-panel-title">ANALYST LOGS</div>
         <div class="game-terminal-output" id="game-terminal-log">
-          <div>[SİSTEM] Güvenlik operasyon protokolü aktifleşti. Tehditleri bertaraf edin.</div>
+          <div>
+            <span data-lang="tr">[SİSTEM] Güvenlik operasyon protokolü aktifleşti. Tehditleri bertaraf edin.</span>
+            <span data-lang="en">[SYSTEM] Security operations protocol activated. Mitigate incoming threats.</span>
+            <span data-lang="de">[SYSTEM] Sicherheitsbetriebsprotokoll aktiv. Wehren Sie Bedrohungen ab.</span>
+            <span data-lang="zh">[SYSTEM] 安全运营协议已启动。请处置传入的威胁。</span>
+          </div>
         </div>
       </div>
     </div>
@@ -659,34 +1128,85 @@
         </svg>
       </div>
       <div class="modal-body">
-        <h3 class="modal-title">Shuffle SOAR Güvenlik Entegrasyonları</h3>
+        <h3 class="modal-title">
+          <span data-lang="tr">Shuffle SOAR Güvenlik Entegrasyonları</span>
+          <span data-lang="en">Shuffle SOAR Security Integrations</span>
+          <span data-lang="de">Shuffle SOAR Sicherheitsintegrationen</span>
+          <span data-lang="zh">Shuffle SOAR 安全集成与自动化</span>
+        </h3>
         <div class="modal-meta-grid">
           <div>
-            <div class="meta-item-label">Kategori</div>
-            <div class="meta-item-value">SOAR & Otomasyon</div>
+            <div class="meta-item-label">
+              <span data-lang="tr">Kategori</span>
+              <span data-lang="en">Category</span>
+              <span data-lang="de">Kategorie</span>
+              <span data-lang="zh">类别</span>
+            </div>
+            <div class="meta-item-value">
+              <span data-lang="tr">SOAR & Otomasyon</span>
+              <span data-lang="en">SOAR & Automation</span>
+              <span data-lang="de">SOAR & Automatisierung</span>
+              <span data-lang="zh">SOAR 与自动化</span>
+            </div>
           </div>
           <div>
-            <div class="meta-item-label">Araçlar & Teknolojiler</div>
+            <div class="meta-item-label">
+              <span data-lang="tr">Araçlar & Teknolojiler</span>
+              <span data-lang="en">Tools & Technologies</span>
+              <span data-lang="de">Tools & Technologien</span>
+              <span data-lang="zh">工具与技术</span>
+            </div>
             <div class="meta-item-value">Shuffle SOAR, EDR, SIEM, AD, API</div>
           </div>
           <div>
-            <div class="meta-item-label">Süreç</div>
-            <div class="meta-item-value">Güvenlik Otomasyonu</div>
+            <div class="meta-item-label">
+              <span data-lang="tr">Süreç</span>
+              <span data-lang="en">Process</span>
+              <span data-lang="de">Prozess</span>
+              <span data-lang="zh">流程</span>
+            </div>
+            <div class="meta-item-value">
+              <span data-lang="tr">Güvenlik Otomasyonu</span>
+              <span data-lang="en">Security Automation</span>
+              <span data-lang="de">Sicherheitsautomatisierung</span>
+              <span data-lang="zh">安全自动化</span>
+            </div>
           </div>
         </div>
         <p class="modal-desc">
-          Bu proje kapsamında, siber olaylara müdahale süreçlerini otomatikleştirmek amacıyla Shuffle SOAR platformunun
-          sıfırdan kurulumunu ve temel yapılandırmasını gerçekleştirdim. Kullanıcı hesaplarının oluşturulması ve
-          yetkilendirme süreçlerini yönettikten sonra; EPP, EDR, NDR, SIEM, Güvenlik Duvarı, NAC, DLP ve Active
-          Directory gibi kritik kurumsal güvenlik çözümlerini SOAR platformuna entegre ettim.<br><br>
-          Yerel API desteği olmayan sistemler için özel entegrasyon modülleri ve API bağlantıları geliştirerek, olay
-          yönetimini otomatikleştiren özel playbook'lar ve iş akışları tasarladım. Ayrıca, regex ve gelişmiş veri işleme
-          teknikleri kullanarak olay günlüklerinden anlamlı veriler çıkarılmasını sağlayıp, koşullu dallanma ve
-          tetikleyiciler ile manuel müdahale sürelerini minimuma indiren uçtan uca otomasyon süreçleri oluşturdum.
+          <span data-lang="tr">Bu proje kapsamında, siber olaylara müdahale süreçlerini otomatikleştirmek amacıyla
+            Shuffle SOAR platformunun sıfırdan kurulumunu ve temel yapılandırmasını gerçekleştirdim. Kullanıcı
+            hesaplarının oluşturulması ve yetkilendirme süreçlerini yönettikten sonra; EPP, EDR, NDR, SIEM, Güvenlik
+            Duvarı, NAC, DLP ve Active Directory gibi kritik kurumsal güvenlik çözümlerini SOAR platformuna entegre
+            ettim.<br><br>Yerel API desteği olmayan sistemler için özel entegrasyon modülleri ve API bağlantıları
+            geliştirerek, olay yönetimini otomatikleştiren özel playbook'lar ve iş akışları tasarladım. Ayrıca, regex ve
+            gelişmiş veri işleme teknikleri kullanarak olay günlüklerinden anlamlı veriler çıkarılmasını sağlayıp,
+            koşullu dallanma ve tetikleyiciler ile manuel müdahale sürelerini minimuma indiren uçtan uca otomasyon
+            süreçleri oluşturdum.</span>
+          <span data-lang="en">Within the scope of this project, I performed a clean deployment and configuration of the
+            Shuffle SOAR platform to automate cyber incident response processes. After setting up user management and
+            access privileges, I successfully integrated critical enterprise security systems including EPP, EDR, NDR,
+            SIEM, Firewalls, NAC, DLP, and Active Directory into the orchestrator.<br><br>I designed custom integration
+            modules and API connectors for systems lacking native API interfaces to create bespoke automated incident
+            playbooks and workflows. Additionally, utilizing regex parsing and advanced data filtering, I extracted
+            actionable logs and engineered end-to-end automation workflows that reduce manual response times through
+            conditional logic and active triggers.</span>
+          <span data-lang="de">Im Rahmen dieses Projekts habe ich eine vollständige Bereitstellung und Konfiguration der Shuffle SOAR-Plattform durchgeführt, um Prozesse zur Reaktion auf Cyber-Vorfälle (Incident Response) zu automatisieren. Nach der Einrichtung der Benutzerverwaltung und der Zugriffsprivilegien habe ich kritische Sicherheitslösungen wie EPP, EDR, NDR, SIEM, Firewalls, NAC, DLP und Active Directory erfolgreich in den Orchestrator integriert.<br><br>Ich habe benutzerdefinierte Integrationsmodule und API-Konnektoren für Systeme ohne native API-Schnittstellen entwickelt, um maßgeschneiderte automatisierte Playbooks und Workflows zu erstellen. Darüber hinaus habe ich unter Verwendung von Regex-Analysen und fortschrittlicher Datenfilterung relevante Logs extrahiert und End-to-End-Automatisierungs-Workflows entwickelt, die die manuellen Reaktionszeiten durch bedingte Logik und aktive Trigger minimieren.</span>
+          <span data-lang="zh">在该项目下，我从零开始部署和配置了 Shuffle SOAR 平台，以实现网络安全事件响应流程的自动化。在完成用户管理与权限配置后，我成功将 EPP、EDR、NDR、SIEM、防火墙、NAC、DLP 和 Active Directory 等关键企业安全解决方案集成到该编排器中。<br><br>针对缺乏原生 API 接口的系统，我设计了自定义集成模块和 API 连接器，以创建定制的事件处置剧本（Playbooks）和自动化工作流。此外，我利用正则表达式解析和高级数据过滤提取了关键日志，并构建了端到端自动化流程，通过条件逻辑和活动触发器将人工响应时间降至最低。</span>
         </p>
         <div class="modal-links">
-          <a href="#contact" class="btn btn-primary">Bilgi Al</a>
-          <a href="#" class="btn btn-secondary modal-btn-close">Geri Dön</a>
+          <a href="#contact" class="btn btn-primary">
+            <span data-lang="tr">Bilgi Al</span>
+            <span data-lang="en">Get Info</span>
+            <span data-lang="de">Info anfordern</span>
+            <span data-lang="zh">获取信息</span>
+          </a>
+          <a href="#" class="btn btn-secondary modal-btn-close">
+            <span data-lang="tr">Geri Dön</span>
+            <span data-lang="en">Go Back</span>
+            <span data-lang="de">Zurück</span>
+            <span data-lang="zh">返回</span>
+          </a>
         </div>
       </div>
     </div>
@@ -710,33 +1230,81 @@
         </svg>
       </div>
       <div class="modal-body">
-        <h3 class="modal-title">Nessus Zafiyet Tarama ve Sızma Analizi</h3>
+        <h3 class="modal-title">
+          <span data-lang="tr">Nessus Zafiyet Tarama ve Sızma Analizi</span>
+          <span data-lang="en">Nessus Vulnerability Scanning & Pentesting</span>
+          <span data-lang="de">Nessus Schwachstellenscan & Pentesting</span>
+          <span data-lang="zh">Nessus 漏洞扫描与渗透测试分析</span>
+        </h3>
         <div class="modal-meta-grid">
           <div>
-            <div class="meta-item-label">Kategori</div>
-            <div class="meta-item-value">Zafiyet Analizi / Pentest</div>
+            <div class="meta-item-label">
+              <span data-lang="tr">Kategori</span>
+              <span data-lang="en">Category</span>
+              <span data-lang="de">Kategorie</span>
+              <span data-lang="zh">类别</span>
+            </div>
+            <div class="meta-item-value">
+              <span data-lang="tr">Zafiyet Analizi / Pentest</span>
+              <span data-lang="en">Vulnerability Management / Pentest</span>
+              <span data-lang="de">Schwachstellenanalyse / Pentest</span>
+              <span data-lang="zh">漏洞管理 / 渗透测试</span>
+            </div>
           </div>
           <div>
-            <div class="meta-item-label">Kullanılan Araçlar</div>
+            <div class="meta-item-label">
+              <span data-lang="tr">Kullanılan Araçlar</span>
+              <span data-lang="en">Tools Used</span>
+              <span data-lang="de">Verwendete Tools</span>
+              <span data-lang="zh">使用工具</span>
+            </div>
             <div class="meta-item-value">Nessus, Kali Linux, Metasploit</div>
           </div>
           <div>
-            <div class="meta-item-label">Süreç</div>
-            <div class="meta-item-value">Zafiyet Yönetimi & Sızma</div>
+            <div class="meta-item-label">
+              <span data-lang="tr">Süreç</span>
+              <span data-lang="en">Process</span>
+              <span data-lang="de">Prozess</span>
+              <span data-lang="zh">流程</span>
+            </div>
+            <div class="meta-item-value">
+              <span data-lang="tr">Zafiyet Yönetimi & Sızma</span>
+              <span data-lang="en">Vulnerability Management & Pentesting</span>
+              <span data-lang="de">Schwachstellenmanagement & Pentesting</span>
+              <span data-lang="zh">漏洞管理与渗透测试</span>
+            </div>
           </div>
         </div>
         <p class="modal-desc">
-          Fenerbahçe Üniversitesi Sistem ve Ağ Uzmanlığı laboratuvar sınıfında gerçekleştirdiğim bu çalışmada, Nessus
-          Zafiyet Tarama yazılımının kurulumunu, yapılandırmasını ve detaylı kullanımını yönettim. <br><br>
-          Zafiyetli olarak yapılandırılmış Linux, Windows işletim sistemleri ve web uygulaması makinelerini Nessus ile
-          tarayarak kritik güvenlik açıklarını tespit ettim. Çıkan tarama sonuçlarını profesyonel standartlarda
-          raporlaştırıp analiz ettim. Ardından, bulunan zafiyetlerden (exploit) yararlanarak Kali Linux ve çeşitli sızma
-          teknikleri vasıtasıyla hedef makinelere sızma testleri gerçekleştirip güvenlik açıklarının kapatılmasına
-          yönelik çözüm yollarını doğruladım.
+          <span data-lang="tr">Fenerbahçe Üniversitesi Sistem ve Ağ Uzmanlığı laboratuvar sınıfında gerçekleştirdiğim bu
+            çalışmada, Nessus Zafiyet Tarama yazılımının kurulumunu, yapılandırmasını ve detaylı kullanımını yönettim.
+            <br><br>Zafiyetli olarak yapılandırılmış Linux, Windows işletim sistemleri ve web uygulaması makinelerini
+            Nessus ile tarayarak kritik güvenlik açıklarını tespit ettim. Çıkan tarama sonuçlarını profesyonel
+            standartlarda raporlaştırıp analiz ettim. Ardından, bulunan zafiyetlerden (exploit) yararlanarak Kali Linux
+            ve çeşitli sızma teknikleri vasıtasıyla hedef makinelere sızma testleri gerçekleştirip güvenlik açıklarının
+            kapatılmasına yönelik çözüm yollarını doğruladım.</span>
+          <span data-lang="en">In this lab project executed during the System and Network Engineering program at
+            Fenerbahçe University, I managed the deployment, tuning, and rigorous operation of the Nessus Vulnerability
+            Scanner.<br><br>I scanned purposefully vulnerable Linux, Windows machines, and web applications with Nessus
+            to map out critical and high-severity security vulnerabilities. The results were professionally audited,
+            categorized, and documented. Following this, using Kali Linux and custom exploits, I performed penetration
+            tests to confirm access paths and validate mitigation strategies to seal off active vulnerabilities.</span>
+          <span data-lang="de">In diesem Laborprojekt, das während des Programms für System- und Netzwerktechnik an der Fenerbahçe-Universität durchgeführt wurde, habe ich die Bereitstellung, Feinabstimmung und den Betrieb des Nessus Vulnerability Scanners geleitet.<br><br>Ich habe gezielt anfällige Linux- und Windows-Maschinen sowie Webanwendungen mit Nessus gescannt, um kritische und schwerwiegende Sicherheitslücken aufzudecken. Die Ergebnisse wurden professionell geprüft, kategorisiert und dokumentiert. Anschließend habe ich unter Verwendung von Kali Linux und gängigen Exploits Penetrationstests durchgeführt, um Angriffsvektoren zu bestätigen und Gegenmaßnahmen zur Schließung der Schwachstellen zu validieren.</span>
+          <span data-lang="zh">在费内巴切大学系统与网络工程课程期间进行的这个实验室项目中，我负责了 Nessus 漏洞扫描器的部署、微调和严格运行。<br><br>我使用 Nessus 扫描了故意配置漏洞的 Linux、Windows 机器和 Web 应用程序，以定位关键和高危安全漏洞。扫描结果经过了专业审计、分类和归档。随后，使用 Kali Linux 和自定义漏洞利用工具，我进行了渗透测试，以确认入侵路径并验证安全加固策略，从而封锁活跃的漏洞。</span>
         </p>
         <div class="modal-links">
-          <a href="#contact" class="btn btn-primary">Bilgi Al</a>
-          <a href="#" class="btn btn-secondary modal-btn-close">Geri Dön</a>
+          <a href="#contact" class="btn btn-primary">
+            <span data-lang="tr">Bilgi Al</span>
+            <span data-lang="en">Get Info</span>
+            <span data-lang="de">Info anfordern</span>
+            <span data-lang="zh">获取信息</span>
+          </a>
+          <a href="#" class="btn btn-secondary modal-btn-close">
+            <span data-lang="tr">Geri Dön</span>
+            <span data-lang="en">Go Back</span>
+            <span data-lang="de">Zurück</span>
+            <span data-lang="zh">返回</span>
+          </a>
         </div>
       </div>
     </div>
