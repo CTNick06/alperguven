@@ -304,6 +304,9 @@ document.addEventListener('DOMContentLoaded', () => {
         this.labelType = labelType;
         if (labelType === 'term') {
           this.cyberTerm = assignedTerm;
+          if (assignedTerm === 'APT') {
+            this.color = '#ef4444'; // APT tehdidi için kırmızı nokta
+          }
         }
         this.binaryVal = Math.random() < 0.5 ? '0' : '1';
       }
@@ -356,21 +359,31 @@ document.addEventListener('DOMContentLoaded', () => {
       packetsArray = [];
       const numberOfParticles = Math.min((canvas.width * canvas.height) / 11500, 90);
 
-      const shuffledTerms = [...cyberTerms].sort(() => Math.random() - 0.5);
+      // 'APT' kelimesini karıştırma havuzundan çıkarıp en başa garantili yerleştiriyoruz
+      const remainingTerms = cyberTerms.filter(t => t !== 'APT');
+      const shuffledTerms = [...remainingTerms].sort(() => Math.random() - 0.5);
+      shuffledTerms.unshift('APT'); // 'APT' her zaman index 0'da
+
       let termIndex = 0;
 
       for (let i = 0; i < numberOfParticles; i++) {
         let labelType = 'none';
         let term = null;
 
-        const rand = Math.random();
-        if (rand < 0.25 && termIndex < shuffledTerms.length) {
+        if (i === 0 && numberOfParticles > 0) {
+          // İlk parçacığı her zaman kırmızı APT parçacığı olarak garanti ediyoruz
           labelType = 'term';
           term = shuffledTerms[termIndex++];
-        } else if (rand < 0.25 + 0.35) { // 0.25 - 0.60 arası (%35 ihtimal)
-          labelType = 'binary';
         } else {
-          labelType = 'none'; // Geriye kalan %40 ihtimal
+          const rand = Math.random();
+          if (rand < 0.25 && termIndex < shuffledTerms.length) {
+            labelType = 'term';
+            term = shuffledTerms[termIndex++];
+          } else if (rand < 0.25 + 0.35) { // 0.25 - 0.60 arası (%35 ihtimal)
+            labelType = 'binary';
+          } else {
+            labelType = 'none'; // Geriye kalan %40 ihtimal
+          }
         }
 
         particlesArray.push(new Particle(labelType, term));
