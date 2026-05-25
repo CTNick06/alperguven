@@ -1,31 +1,57 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Language Management Logic
+  // Language Management Logic (Dropdown Mode)
+  const langDropdown = document.getElementById('lang-dropdown');
   const langToggleBtn = document.getElementById('lang-toggle');
+  const langOptions = document.querySelectorAll('.lang-opt');
 
   function initLanguage() {
     const savedLang = localStorage.getItem('portfolio-lang');
     const systemPrefersEn = navigator.language.startsWith('en');
     const systemPrefersDe = navigator.language.startsWith('de');
     const systemPrefersZh = navigator.language.startsWith('zh');
+    const systemPrefersRu = navigator.language.startsWith('ru');
 
-    if (savedLang === 'en' || (!savedLang && systemPrefersEn)) {
-      document.documentElement.classList.add('lang-en');
-      document.documentElement.classList.remove('lang-de', 'lang-zh');
-      updateLangBtnText('EN');
-    } else if (savedLang === 'de' || (!savedLang && systemPrefersDe)) {
-      document.documentElement.classList.add('lang-de');
-      document.documentElement.classList.remove('lang-en', 'lang-zh');
-      updateLangBtnText('DE');
-    } else if (savedLang === 'zh' || (!savedLang && systemPrefersZh)) {
-      document.documentElement.classList.add('lang-zh');
-      document.documentElement.classList.remove('lang-en', 'lang-de');
-      updateLangBtnText('ZH');
-    } else {
-      document.documentElement.classList.remove('lang-en', 'lang-de', 'lang-zh');
-      updateLangBtnText('TR');
+    let initialLang = 'tr';
+    if (savedLang) {
+      initialLang = savedLang;
+    } else if (systemPrefersEn) {
+      initialLang = 'en';
+    } else if (systemPrefersDe) {
+      initialLang = 'de';
+    } else if (systemPrefersZh) {
+      initialLang = 'zh';
+    } else if (systemPrefersRu) {
+      initialLang = 'ru';
     }
+
+    setLanguage(initialLang);
+  }
+
+  function setLanguage(lang) {
+    document.documentElement.classList.remove('lang-en', 'lang-de', 'lang-zh', 'lang-ru');
+    
+    if (lang === 'en') {
+      document.documentElement.classList.add('lang-en');
+    } else if (lang === 'de') {
+      document.documentElement.classList.add('lang-de');
+    } else if (lang === 'zh') {
+      document.documentElement.classList.add('lang-zh');
+    } else if (lang === 'ru') {
+      document.documentElement.classList.add('lang-ru');
+    }
+    
+    localStorage.setItem('portfolio-lang', lang);
+    updateLangBtnText(lang.toUpperCase());
     updatePlaceholders();
+    updateDropdownActiveState(lang);
+
+    // Update typing effect if active
+    if (typingTextElement) {
+      charIndex = 0;
+      isDeleting = false;
+      typingTextElement.textContent = '';
+    }
   }
 
   function updateLangBtnText(lang) {
@@ -35,16 +61,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function updateDropdownActiveState(lang) {
+    langOptions.forEach(opt => {
+      if (opt.getAttribute('data-lang-val') === lang) {
+        opt.classList.add('selected');
+      } else {
+        opt.classList.remove('selected');
+      }
+    });
+  }
+
   function updatePlaceholders() {
     const isEn = document.documentElement.classList.contains('lang-en');
     const isDe = document.documentElement.classList.contains('lang-de');
     const isZh = document.documentElement.classList.contains('lang-zh');
+    const isRu = document.documentElement.classList.contains('lang-ru');
     const inputs = document.querySelectorAll('[data-placeholder-tr]');
     inputs.forEach(input => {
       const trPlaceholder = input.getAttribute('data-placeholder-tr');
       const enPlaceholder = input.getAttribute('data-placeholder-en');
       const dePlaceholder = input.getAttribute('data-placeholder-de');
       const zhPlaceholder = input.getAttribute('data-placeholder-zh');
+      const ruPlaceholder = input.getAttribute('data-placeholder-ru');
       
       let placeholder = trPlaceholder;
       if (isEn) {
@@ -53,52 +91,36 @@ document.addEventListener('DOMContentLoaded', () => {
         placeholder = dePlaceholder;
       } else if (isZh) {
         placeholder = zhPlaceholder;
+      } else if (isRu) {
+        placeholder = ruPlaceholder || enPlaceholder;
       }
       input.setAttribute('placeholder', placeholder);
     });
   }
 
-  if (langToggleBtn) {
-    langToggleBtn.addEventListener('click', () => {
-      const isEn = document.documentElement.classList.contains('lang-en');
-      const isDe = document.documentElement.classList.contains('lang-de');
-      const isZh = document.documentElement.classList.contains('lang-zh');
-      
-      if (!isEn && !isDe && !isZh) {
-        // TR -> EN
-        document.documentElement.classList.add('lang-en');
-        document.documentElement.classList.remove('lang-de', 'lang-zh');
-        localStorage.setItem('portfolio-lang', 'en');
-        updateLangBtnText('EN');
-      } else if (isEn) {
-        // EN -> DE
-        document.documentElement.classList.add('lang-de');
-        document.documentElement.classList.remove('lang-en', 'lang-zh');
-        localStorage.setItem('portfolio-lang', 'de');
-        updateLangBtnText('DE');
-      } else if (isDe) {
-        // DE -> ZH
-        document.documentElement.classList.add('lang-zh');
-        document.documentElement.classList.remove('lang-en', 'lang-de');
-        localStorage.setItem('portfolio-lang', 'zh');
-        updateLangBtnText('ZH');
-      } else {
-        // ZH -> TR
-        document.documentElement.classList.remove('lang-en', 'lang-de', 'lang-zh');
-        localStorage.setItem('portfolio-lang', 'tr');
-        updateLangBtnText('TR');
-      }
-      
-      updatePlaceholders();
-
-      // Update typing effect if active
-      if (typingTextElement) {
-        charIndex = 0;
-        isDeleting = false;
-        typingTextElement.textContent = '';
-      }
+  // Toggle Dropdown Menu
+  if (langToggleBtn && langDropdown) {
+    langToggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langDropdown.classList.toggle('open');
     });
   }
+
+  // Handle Option Clicks
+  langOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      const selectedLang = opt.getAttribute('data-lang-val');
+      setLanguage(selectedLang);
+      if (langDropdown) langDropdown.classList.remove('open');
+    });
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (langDropdown && !langDropdown.contains(e.target)) {
+      langDropdown.classList.remove('open');
+    }
+  });
 
   const hamburger = document.querySelector('.hamburger');
   const navMenu = document.querySelector('.nav-menu');
@@ -151,6 +173,8 @@ document.addEventListener('DOMContentLoaded', () => {
       return ["Spezialist für Cybersicherheit."];
     } else if (document.documentElement.classList.contains('lang-zh')) {
       return ["网络安全专家。"];
+    } else if (document.documentElement.classList.contains('lang-ru')) {
+      return ["Специалист по кибербезопасности."];
     } else {
       return ["Siber Güvenlik Uzmanı."];
     }
@@ -1119,6 +1143,93 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     ];
 
+    const threatLibraryRU = [
+      {
+        type: 'critical',
+        title: 'Дамп памяти Mimikatz',
+        desc: 'Обнаружено сканирование оперативной памяти (mimikatz.exe) для извлечения LSA-секретов и хэшей паролей.',
+        source: 'Узел: DB-SERVER-01',
+        category: 'EDR'
+      },
+      {
+        type: 'critical',
+        title: 'Шифровальщик WannaCry',
+        desc: 'На узле происходит шифрование файлов; создаются зашифрованные файлы с расширением .wnry.',
+        source: 'Узел: ADMIN-PC',
+        category: 'EDR'
+      },
+      {
+        type: 'high',
+        title: 'Несанкционированная команда PowerShell',
+        desc: 'Выполнены обфусцированные параметры командной строки powershell.exe.',
+        source: 'Узел: USER-12',
+        category: 'EDR'
+      },
+      {
+        type: 'high',
+        title: 'DDoS SYN Flood',
+        desc: 'На веб-сервер отправляется 15 000 пакетов TCP SYN в секунду с внешнего IP-адреса.',
+        source: 'Сетевой интерфейс: Внешний-FW',
+        category: 'FW'
+      },
+      {
+        type: 'high',
+        title: 'Попытка SQL-инъекции',
+        desc: 'Попытка UNION SELECT инъекции через форму поиска клиентов для компрометации базы данных SQL.',
+        source: 'WAF: Сервер приложений',
+        category: 'FW'
+      },
+      {
+        type: 'medium',
+        title: 'Подозрительное сканирование портов',
+        desc: 'Последовательное SYN-сканирование всех портов TCP с одного исходного IP-адреса.',
+        source: 'Брандмауэр: Внутренний шлюз',
+        category: 'FW'
+      },
+      {
+        type: 'high',
+        title: 'Вход администратора во внерабочее время',
+        desc: 'Установлен несанкционированный сеанс администратора домена в 03:15 ночи.',
+        source: 'Active Directory: Контроллер домена',
+        category: 'AD'
+      },
+      {
+        type: 'medium',
+        title: 'Успешный подбор пароля (Brute Force)',
+        desc: 'Обнаружена успешная аутентификация после 45 последовательных неудачных попыток входа под одной учетной записью.',
+        source: 'Active Directory: Контроллер домена',
+        category: 'AD'
+      },
+      {
+        type: 'medium',
+        title: 'Попытка атаки Kerberoasting',
+        desc: 'Обнаружено аномальное количество запросов билетов Kerberos TGS для служебных учетных записей.',
+        source: 'Active Directory: Контроллер домена',
+        category: 'AD'
+      },
+      {
+        type: 'info',
+        title: 'Запланированное резервное копирование',
+        desc: 'На сервере баз данных запущен скрипт резервного копирования и синхронизации с архивным диском.',
+        source: 'Сервер бэкапа',
+        category: 'SOC'
+      },
+      {
+        type: 'info',
+        title: 'Сканирование уязвимостей IT',
+        desc: 'Запущено плановое сканирование внутренней сети с авторизованного IP-адреса сканера Nessus.',
+        source: 'Сканер уязвимостей: Nessus-01',
+        category: 'SOC'
+      },
+      {
+        type: 'info',
+        title: 'Мониторинг здоровья серверов',
+        desc: 'Инструмент мониторинга Zabbix проверяет время отклика сервисов и объем свободного места на дисках.',
+        source: 'Сервер мониторинга: Zabbix',
+        category: 'SOC'
+      }
+    ];
+
     function addGameLog(text, isError = false, isSuccess = false) {
       const logArea = document.getElementById('game-terminal-log');
       if (!logArea) return;
@@ -1161,8 +1272,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const isEn = document.documentElement.classList.contains('lang-en');
         const isDe = document.documentElement.classList.contains('lang-de');
         const isZh = document.documentElement.classList.contains('lang-zh');
-        let labelDesc = isEn ? 'Description' : (isDe ? 'Beschreibung' : (isZh ? '描述' : 'Açıklama'));
-        let labelSource = isEn ? 'Source' : (isDe ? 'Quelle' : (isZh ? '来源' : 'Kaynak'));
+        const isRu = document.documentElement.classList.contains('lang-ru');
+        
+        let labelDesc = 'Açıklama';
+        if (isEn) labelDesc = 'Description';
+        else if (isDe) labelDesc = 'Beschreibung';
+        else if (isZh) labelDesc = '描述';
+        else if (isRu) labelDesc = 'Описание';
+
+        let labelSource = 'Kaynak';
+        if (isEn) labelSource = 'Source';
+        else if (isDe) labelSource = 'Quelle';
+        else if (isZh) labelSource = '来源';
+        else if (isRu) labelSource = 'Источник';
         
         detailsBox.innerHTML = `
           <div class="details-content">
@@ -1197,10 +1319,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const isEn = document.documentElement.classList.contains('lang-en');
         const isDe = document.documentElement.classList.contains('lang-de');
         const isZh = document.documentElement.classList.contains('lang-zh');
+        const isRu = document.documentElement.classList.contains('lang-ru');
+        
         let promptText = 'Lütfen müdahale etmek için sol listeden aktif bir alarm seçin.';
         if (isEn) promptText = 'Please select an active alert from the left panel to mitigate.';
         else if (isDe) promptText = 'Bitte wählen Sie einen aktiven Alarm aus dem linken Panel aus, um ihn abzuwehren.';
         else if (isZh) promptText = '请从左侧面板选择一个活动告警进行处置。';
+        else if (isRu) promptText = 'Пожалуйста, выберите активный аларм из списка слева для реагирования.';
         detailsBox.innerHTML = `<p class="select-prompt">${promptText}</p>`;
       }
       ['btn-edr', 'btn-fw', 'btn-ad', 'btn-soc'].forEach(id => {
@@ -1214,10 +1339,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const isEn = document.documentElement.classList.contains('lang-en');
       const isDe = document.documentElement.classList.contains('lang-de');
       const isZh = document.documentElement.classList.contains('lang-zh');
+      const isRu = document.documentElement.classList.contains('lang-ru');
       let activeLibrary = threatLibraryTR;
       if (isEn) activeLibrary = threatLibraryEN;
       else if (isDe) activeLibrary = threatLibraryDE;
       else if (isZh) activeLibrary = threatLibraryZH;
+      else if (isRu) activeLibrary = threatLibraryRU;
       
       const baseThreat = activeLibrary[Math.floor(Math.random() * activeLibrary.length)];
       const newAlert = {
@@ -1254,6 +1381,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isEn) logText = `NEW ALERT: ${newAlert.title} [Class: ${newAlert.type.toUpperCase()}]`;
         else if (isDe) logText = `NEUER ALARM: ${newAlert.title} [Klasse: ${newAlert.type.toUpperCase()}]`;
         else if (isZh) logText = `新告警: ${newAlert.title} [级别: ${newAlert.type.toUpperCase()}]`;
+        else if (isRu) logText = `НОВЫЙ АЛАРМ: ${newAlert.title} [Класс: ${newAlert.type.toUpperCase()}]`;
         addGameLog(logText);
 
         const timerInterval = setInterval(() => {
@@ -1305,10 +1433,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const isEn = document.documentElement.classList.contains('lang-en');
       const isDe = document.documentElement.classList.contains('lang-de');
       const isZh = document.documentElement.classList.contains('lang-zh');
+      const isRu = document.documentElement.classList.contains('lang-ru');
       let breachText = `[SIZMA] ${alertObj.title} tehdidine zamanında müdahale edilemedi! (%20 Sağlık Hasarı)`;
       if (isEn) breachText = `[BREACH] ${alertObj.title} was not mitigated in time! (20% Health Damage)`;
       else if (isDe) breachText = `[SICHERHEITSLÜCKE] ${alertObj.title} wurde nicht rechtzeitig abgewehrt! (20% Systemschaden)`;
       else if (isZh) breachText = `[安全漏洞] 未能及时处置 ${alertObj.title} 威胁！（系统健康度受到 20% 伤害）`;
+      else if (isRu) breachText = `[УТЕЧКА] Угроза ${alertObj.title} не была отражена вовремя! (Урон здоровью системы: 20%)`;
       addGameLog(breachText, true);
       shakeGame();
 
@@ -1327,6 +1457,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const isEn = document.documentElement.classList.contains('lang-en');
       const isDe = document.documentElement.classList.contains('lang-de');
       const isZh = document.documentElement.classList.contains('lang-zh');
+      const isRu = document.documentElement.classList.contains('lang-ru');
       if (currentAlert.category === category) {
         score += 10;
         updateHUD();
@@ -1334,6 +1465,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isEn) successText = `[SUCCESS] ${currentAlert.title} mitigated with ${category}! (+10 Score)`;
         else if (isDe) successText = `[ERFOLG] ${currentAlert.title} wurde erfolgreich mit ${category} abgewehrt! (+10 Punkte)`;
         else if (isZh) successText = `[成功] 已成功通过 ${category} 处置 ${currentAlert.title} 威胁！（+10 分）`;
+        else if (isRu) successText = `[УСПЕХ] Угроза ${currentAlert.title} успешно отражена с помощью ${category}! (+10 очков)`;
         addGameLog(successText, false, true);
         removeAlertFromList(currentAlert.id);
         deselectAlert();
@@ -1345,6 +1477,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isEn) errorText = `[ERROR] Incorrect mitigation applied for ${currentAlert.title}! (10% Health Damage)`;
         else if (isDe) errorText = `[FEHLER] Falsche Abwehr für ${currentAlert.title} angewendet! (10% Systemschaden)`;
         else if (isZh) errorText = `[错误] 对 ${currentAlert.title} 采取了错误的处置动作！（系统健康度受到 10% 伤害）`;
+        else if (isRu) errorText = `[ОШИБКА] Неверные меры приняты для ${currentAlert.title}! (Урон здоровью системы: 10%)`;
         addGameLog(errorText, true);
         shakeGame();
         if (health <= 0) {
@@ -1366,6 +1499,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isEn = document.documentElement.classList.contains('lang-en');
         const isDe = document.documentElement.classList.contains('lang-de');
         const isZh = document.documentElement.classList.contains('lang-zh');
+        const isRu = document.documentElement.classList.contains('lang-ru');
         
         let gameOverTitle = "SİSTEM SIZMA LİMİTİNE ULAŞTI";
         let gameOverDesc = "Kritik sunucular ve veri tabanı sistemleri ele geçirildi. Güvenlik operasyon merkezi başarısız oldu.";
@@ -1391,6 +1525,12 @@ document.addEventListener('DOMContentLoaded', () => {
           statLabelScore = "得分";
           statLabelLevel = "等级";
           restartBtnText = "重新启动控制台";
+        } else if (isRu) {
+          gameOverTitle = "СИСТЕМА СКОМПРОМЕТИРОВАНА";
+          gameOverDesc = "Критические серверы и базы данных были взломаны. Центр мониторинга безопасности (SOC) не справился с угрозами.";
+          statLabelScore = "СЧЕТ";
+          statLabelLevel = "УРОВЕНЬ";
+          restartBtnText = "ПЕРЕЗАПУСТИТЬ КОНСОЛЬ";
         }
 
         gamePanel.innerHTML = `
@@ -1436,10 +1576,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const isEn = document.documentElement.classList.contains('lang-en');
       const isDe = document.documentElement.classList.contains('lang-de');
       const isZh = document.documentElement.classList.contains('lang-zh');
+      const isRu = document.documentElement.classList.contains('lang-ru');
       let bootText = 'Güvenlik operasyon protokolü aktifleşti. Tehditleri bertaraf edin.';
       if (isEn) bootText = 'Security operations protocol active. Mitigate threats.';
       else if (isDe) bootText = 'Sicherheitsbetriebsprotokoll aktiv. Wehren Sie Bedrohungen ab.';
       else if (isZh) bootText = '安全运营协议已启动。请处置传入的威胁。';
+      else if (isRu) bootText = 'Протокол операций безопасности активен. Отражайте угрозы.';
       addGameLog(bootText);
 
       for (let i = 0; i < 2; i++) {
@@ -1461,9 +1603,38 @@ document.addEventListener('DOMContentLoaded', () => {
       if (btnSoc) btnSoc.addEventListener('click', () => handleMitigate('SOC'));
     }
 
+    const gameModal = document.getElementById('game-modal');
+    const gameModalClose = document.getElementById('game-modal-close');
+    const gameModalOverlay = document.getElementById('game-modal-overlay');
+
+    const stopAndCloseGame = () => {
+      triggerGameOver();
+      if (gameModal) {
+        gameModal.classList.remove('active');
+      }
+      document.body.style.overflow = 'auto';
+    };
+
+    if (gameModalClose) {
+      gameModalClose.addEventListener('click', stopAndCloseGame);
+    }
+    if (gameModalOverlay) {
+      gameModalOverlay.addEventListener('click', stopAndCloseGame);
+    }
+
+    // Also listen to Escape key to stop game when modal is active
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && gameModal && gameModal.classList.contains('active')) {
+        stopAndCloseGame();
+      }
+    });
+
     easterEggTrigger.addEventListener('click', () => {
+      if (gameModal) {
+        gameModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
       gamePanel.classList.remove('hidden');
-      gamePanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
       if (!gameLoopActive && health === 100 && score === 0 && alerts.length === 0) {
         restartGame();
