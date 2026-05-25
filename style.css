@@ -1563,10 +1563,12 @@ footer {
     gap: 3rem;
     transition: var(--transition-smooth);
     border-top: 1px solid var(--glass-border);
+    visibility: hidden; /* Subpixel rendering sızıntılarını tamamen engellemek için */
   }
   
   .nav-menu.active {
     left: 0;
+    visibility: visible;
   }
   
   .hamburger {
