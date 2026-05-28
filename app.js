@@ -1695,48 +1695,48 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(pandaContainer);
     
     const quotesTr = [
-      "guest@guven.sec:~$ init_scan",
-      "[!] En altta gizli bir siber protokol var... 🕵️‍♂️",
-      "[?] guest@guven.sec:~$ init_override_protocol",
-      "[*] Sayfanın en sonundaki terminale tıklayarak oyunu başlat!",
-      "[!] Kırmızı alarm! Sistem korumasını en alttaki terminalden aç!",
-      "[?] Alper'in sistemini koruyabilir misin? En alttaki konsolu bul!"
+      "guest@guven.sec:~$ scan",
+      "[!] OVERRIDE_DETECTED",
+      "[?] Down: init_override?",
+      "[!] terminal_at_bottom: RUN",
+      "guest@guven.sec:~$ run game",
+      "[!] SECURE_PROTOCOL_OFFLINE"
     ];
     
     const quotesEn = [
-      "guest@guven.sec:~$ init_scan",
-      "[!] Hidden cyber protocol detected at the very bottom... 🕵️‍♂️",
-      "[?] guest@guven.sec:~$ init_override_protocol",
-      "[*] Click the terminal at the bottom to start the game!",
-      "[!] Red Alert! Open the defender console at the end of the page!",
-      "[?] Can you defend Alper's system? Find the console at the bottom!"
+      "guest@guven.sec:~$ scan",
+      "[!] OVERRIDE_DETECTED",
+      "[?] Down: init_override?",
+      "[!] terminal_at_bottom: RUN",
+      "guest@guven.sec:~$ run game",
+      "[!] SECURE_PROTOCOL_OFFLINE"
     ];
     
     const quotesDe = [
-      "guest@guven.sec:~$ init_scan",
-      "[!] Verstecktes Cyber-Protokoll ganz unten entdeckt... 🕵️‍♂️",
-      "[?] guest@guven.sec:~$ init_override_protocol",
-      "[*] Klicke auf das Terminal unten, um das Spiel zu starten!",
-      "[!] Roter Alarm! Öffne die Konsole am Ende der Seite!",
-      "[?] Kannst du Alpers System verteidigen? Finde die Konsole unten!"
+      "guest@guven.sec:~$ scan",
+      "[!] OVERRIDE_DETECTED",
+      "[?] Down: init_override?",
+      "[!] terminal_at_bottom: RUN",
+      "guest@guven.sec:~$ run game",
+      "[!] SECURE_PROTOCOL_OFFLINE"
     ];
     
     const quotesZh = [
-      "guest@guven.sec:~$ init_scan",
-      "[!] 在最底部检测到隐藏的网络协议... 🕵️‍♂️",
-      "[?] guest@guven.sec:~$ init_override_protocol",
-      "[*] 点击底部の终端启动游戏！",
-      "[!] 红色警报！在页面末尾打开防御控制台！",
-      "[?] 你能防御Alper的系统吗？找到最底部的控制台！"
+      "guest@guven.sec:~$ scan",
+      "[!] OVERRIDE_DETECTED",
+      "[?] Down: init_override?",
+      "[!] terminal_at_bottom: RUN",
+      "guest@guven.sec:~$ run game",
+      "[!] SECURE_PROTOCOL_OFFLINE"
     ];
     
     const quotesRu = [
-      "guest@guven.sec:~$ init_scan",
-      "[!] Обнаружен скрытый киберпротокол в самом низу... 🕵️‍♂️",
-      "[?] guest@guven.sec:~$ init_override_protocol",
-      "[*] Нажмите на терминал внизу, чтобы запустить игру!",
-      "[!] Красная тревога! Откройте защитную консоль в конце страницы!",
-      "[?] Сможешь защитить систему Альпера? Найди консоль внизу!"
+      "guest@guven.sec:~$ scan",
+      "[!] OVERRIDE_DETECTED",
+      "[?] Down: init_override?",
+      "[!] terminal_at_bottom: RUN",
+      "guest@guven.sec:~$ run game",
+      "[!] SECURE_PROTOCOL_OFFLINE"
     ];
 
     function getRandomQuote() {
