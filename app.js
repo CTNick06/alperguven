@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ];
     } else if (document.documentElement.classList.contains('lang-de')) {
       return [
-        "Spezialist für Cybersicherheit"
+        "Spezialist für Cybersicherheit."
       ];
     } else if (document.documentElement.classList.contains('lang-zh')) {
       return [
