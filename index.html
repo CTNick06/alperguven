@@ -113,11 +113,11 @@
             </svg>
           </button>
           <div class="lang-dropdown-menu" id="lang-dropdown-menu">
-            <button class="lang-opt selected" data-lang-val="tr">TR - Türkçe</button>
-            <button class="lang-opt" data-lang-val="en">EN - English</button>
-            <button class="lang-opt" data-lang-val="ru">RU - Русский</button>
-            <button class="lang-opt" data-lang-val="zh">ZH - 简体中文</button>
-            <button class="lang-opt" data-lang-val="de">DE - Deutsch</button>
+            <button class="lang-opt selected" id="lang-opt-tr" data-lang-val="tr">TR - Türkçe</button>
+            <button class="lang-opt" id="lang-opt-en" data-lang-val="en">EN - English</button>
+            <button class="lang-opt" id="lang-opt-ru" data-lang-val="ru">RU - Русский</button>
+            <button class="lang-opt" id="lang-opt-zh" data-lang-val="zh">ZH - 简体中文</button>
+            <button class="lang-opt" id="lang-opt-de" data-lang-val="de">DE - Deutsch</button>
           </div>
         </div>
 
@@ -141,7 +141,7 @@
         </button>
       </div>
 
-      <button class="hamburger" aria-label="Menü">
+      <button class="hamburger" id="hamburger-btn" aria-label="Menü">
         <span></span>
         <span></span>
         <span></span>
@@ -396,21 +396,21 @@
       <div class="about-right glass-panel" style="padding: 2.5rem;">
 
         <div class="tabs-header">
-          <button class="tab-btn active" data-tab="skills">
+          <button class="tab-btn active" id="tab-btn-skills" data-tab="skills">
             <span data-lang="tr">Yetenekler</span>
             <span data-lang="en">Skills</span>
             <span data-lang="de">Fähigkeiten</span>
             <span data-lang="zh">专业技能</span>
             <span data-lang="ru">Навыки</span>
           </button>
-          <button class="tab-btn" data-tab="experience">
+          <button class="tab-btn" id="tab-btn-experience" data-tab="experience">
             <span data-lang="tr">Zaman Tüneli</span>
             <span data-lang="en">Timeline</span>
             <span data-lang="de">Lebenslauf</span>
             <span data-lang="zh">职业历程</span>
             <span data-lang="ru">Хронология</span>
           </button>
-          <button class="tab-btn" data-tab="certs">
+          <button class="tab-btn" id="tab-btn-certs" data-tab="certs">
             <span data-lang="tr">Sertifikalar & Kurslar</span>
             <span data-lang="en">Certificates & Courses</span>
             <span data-lang="de">Zertifikate & Kurse</span>
@@ -817,21 +817,21 @@
     </div>
 
     <div class="portfolio-filter">
-      <button class="filter-btn active" data-filter="all">
+      <button class="filter-btn active" id="filter-btn-all" data-filter="all">
         <span data-lang="tr">Hepsi</span>
         <span data-lang="en">All</span>
         <span data-lang="de">Alle</span>
         <span data-lang="zh">全部</span>
         <span data-lang="ru">Все</span>
       </button>
-      <button class="filter-btn" data-filter="soar">
+      <button class="filter-btn" id="filter-btn-soar" data-filter="soar">
         <span data-lang="tr">SOAR & Otomasyon</span>
         <span data-lang="en">SOAR & Automation</span>
         <span data-lang="de">SOAR & Automatisierung</span>
         <span data-lang="zh">SOAR 与自动化</span>
         <span data-lang="ru">SOAR и автоматизация</span>
       </button>
-      <button class="filter-btn" data-filter="security">
+      <button class="filter-btn" id="filter-btn-security" data-filter="security">
         <span data-lang="tr">Zafiyet Analizi</span>
         <span data-lang="en">Vulnerability Analysis</span>
         <span data-lang="de">Schwachstellenanalyse</span>
@@ -1084,7 +1084,7 @@
 
             <div id="form-response-status" class="form-status"></div>
 
-            <button type="submit" class="btn btn-primary" style="align-self: flex-start;">
+            <button type="submit" id="contact-submit-btn" class="btn btn-primary" style="align-self: flex-start;">
               <span>
                 <span data-lang="tr">Mesajı İlet</span>
                 <span data-lang="en">Send Message</span>
@@ -1101,7 +1101,7 @@
   <div class="modal" id="modal-p1">
     <div class="modal-overlay"></div>
     <div class="modal-content glass-panel">
-      <button class="modal-close" aria-label="Kapat">
+      <button class="modal-close" id="modal-close-p1" aria-label="Kapat">
         <svg viewBox="0 0 24 24">
           <path
             d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
@@ -1226,7 +1226,7 @@
   <div class="modal" id="modal-p2">
     <div class="modal-overlay"></div>
     <div class="modal-content glass-panel">
-      <button class="modal-close" aria-label="Kapat">
+      <button class="modal-close" id="modal-close-p2" aria-label="Kapat">
         <svg viewBox="0 0 24 24">
           <path
             d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
