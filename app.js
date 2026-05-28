@@ -171,31 +171,19 @@ document.addEventListener('DOMContentLoaded', () => {
   function getRoles() {
     if (document.documentElement.classList.contains('lang-en')) {
       return [
-        "Cybersecurity Specialist.",
-        "Purple Team Analyst.",
-        "System & Network Engineer.",
-        "SOAR Playbook Integrator."
+        "Cybersecurity Specialist"
       ];
     } else if (document.documentElement.classList.contains('lang-de')) {
       return [
-        "Spezialist für Cybersicherheit.",
-        "Purple-Team-Analyst.",
-        "System- und Netzwerkingenieur.",
-        "SOAR-Playbook-Integrator."
+        "Spezialist für Cybersicherheit"
       ];
     } else if (document.documentElement.classList.contains('lang-zh')) {
       return [
-        "网络安全专家。",
-        "紫军（Purple Team）分析师。",
-        "系统与网络工程师。",
-        "SOAR 剧本集成专家。"
+        "网络安全专家。"
       ];
     } else if (document.documentElement.classList.contains('lang-ru')) {
       return [
-        "Специалист по кибербезопасности.",
-        "Аналитик фиолетовых команд (Purple Team).",
-        "Системный и сетевой инженер.",
-        "Интегратор сценариев SOAR."
+        "Специалист по кибербезопасности"
       ];
     } else {
       return [
