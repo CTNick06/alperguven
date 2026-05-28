@@ -199,10 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ];
     } else {
       return [
-        "Siber Güvenlik Uzmanı.",
-        "Mor Takım (Purple Team) Analisti.",
-        "Sistem ve Ağ Mühendisi.",
-        "SOAR Playbook Entegratörü."
+        "Siber Güvenlik Uzmanı"
       ];
     }
   }
