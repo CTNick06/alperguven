@@ -130,12 +130,14 @@ document.addEventListener('DOMContentLoaded', () => {
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
+    document.body.classList.toggle('nav-active');
   });
 
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       hamburger.classList.remove('active');
       navMenu.classList.remove('active');
+      document.body.classList.remove('nav-active');
     });
   });
 
@@ -168,15 +170,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function getRoles() {
     if (document.documentElement.classList.contains('lang-en')) {
-      return ["Cybersecurity Specialist."];
+      return [
+        "Cybersecurity Specialist.",
+        "Purple Team Analyst.",
+        "System & Network Engineer.",
+        "SOAR Playbook Integrator."
+      ];
     } else if (document.documentElement.classList.contains('lang-de')) {
-      return ["Spezialist für Cybersicherheit."];
+      return [
+        "Spezialist für Cybersicherheit.",
+        "Purple-Team-Analyst.",
+        "System- und Netzwerkingenieur.",
+        "SOAR-Playbook-Integrator."
+      ];
     } else if (document.documentElement.classList.contains('lang-zh')) {
-      return ["网络安全专家。"];
+      return [
+        "网络安全专家。",
+        "紫军（Purple Team）分析师。",
+        "系统与网络工程师。",
+        "SOAR 剧本集成专家。"
+      ];
     } else if (document.documentElement.classList.contains('lang-ru')) {
-      return ["Специалист по кибербезопасности."];
+      return [
+        "Специалист по кибербезопасности.",
+        "Аналитик фиолетовых команд (Purple Team).",
+        "Системный и сетевой инженер.",
+        "Интегратор сценариев SOAR."
+      ];
     } else {
-      return ["Siber Güvenlik Uzmanı."];
+      return [
+        "Siber Güvenlik Uzmanı.",
+        "Mor Takım (Purple Team) Analisti.",
+        "Sistem ve Ağ Mühendisi.",
+        "SOAR Playbook Entegratörü."
+      ];
     }
   }
 
@@ -1677,23 +1704,23 @@ document.addEventListener('DOMContentLoaded', () => {
   function initCyberPanda() {
     const pandaContainer = document.createElement('div');
     pandaContainer.className = 'cyber-panda-container';
-    
+
     const pandaImg = document.createElement('img');
     pandaImg.src = 'images/ikon.png';
     pandaImg.alt = 'SecPanda';
     pandaImg.className = 'cyber-panda-img';
-    
+
     const scanline = document.createElement('div');
     scanline.className = 'cyber-panda-scanline';
-    
+
     const bubble = document.createElement('div');
     bubble.className = 'cyber-panda-bubble';
-    
+
     pandaContainer.appendChild(bubble);
     pandaContainer.appendChild(pandaImg);
     pandaContainer.appendChild(scanline);
     document.body.appendChild(pandaContainer);
-    
+
     const quotesTr = [
       "guest@guven.sec:~$ scan",
       "[!] OVERRIDE_DETECTED",
@@ -1702,7 +1729,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "guest@guven.sec:~$ run game",
       "[!] SECURE_PROTOCOL_OFFLINE"
     ];
-    
+
     const quotesEn = [
       "guest@guven.sec:~$ scan",
       "[!] OVERRIDE_DETECTED",
@@ -1711,7 +1738,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "guest@guven.sec:~$ run game",
       "[!] SECURE_PROTOCOL_OFFLINE"
     ];
-    
+
     const quotesDe = [
       "guest@guven.sec:~$ scan",
       "[!] OVERRIDE_DETECTED",
@@ -1720,7 +1747,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "guest@guven.sec:~$ run game",
       "[!] SECURE_PROTOCOL_OFFLINE"
     ];
-    
+
     const quotesZh = [
       "guest@guven.sec:~$ scan",
       "[!] OVERRIDE_DETECTED",
@@ -1729,7 +1756,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "guest@guven.sec:~$ run game",
       "[!] SECURE_PROTOCOL_OFFLINE"
     ];
-    
+
     const quotesRu = [
       "guest@guven.sec:~$ scan",
       "[!] OVERRIDE_DETECTED",
@@ -1744,13 +1771,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const isDe = document.documentElement.classList.contains('lang-de');
       const isZh = document.documentElement.classList.contains('lang-zh');
       const isRu = document.documentElement.classList.contains('lang-ru');
-      
+
       let list = quotesTr;
       if (isEn) list = quotesEn;
       else if (isDe) list = quotesDe;
       else if (isZh) list = quotesZh;
       else if (isRu) list = quotesRu;
-      
+
       return list[Math.floor(Math.random() * list.length)];
     }
 
@@ -1761,19 +1788,19 @@ document.addEventListener('DOMContentLoaded', () => {
       trailInterval = setInterval(() => {
         if (!isWalking) return;
         const rect = pandaContainer.getBoundingClientRect();
-        
+
         const particle = document.createElement('span');
         particle.className = 'cyber-panda-trail';
         particle.textContent = Math.random() < 0.5 ? '0' : '1';
-        
+
         particle.style.left = `${rect.left + rect.width / 2}px`;
         particle.style.bottom = `${window.innerHeight - rect.bottom + 10}px`;
-        
+
         document.body.appendChild(particle);
         setTimeout(() => particle.remove(), 1200);
       }, 150);
     }
-    
+
     function stopTrail() {
       clearInterval(trailInterval);
     }
@@ -1781,37 +1808,37 @@ document.addEventListener('DOMContentLoaded', () => {
     function walkPanda() {
       if (isWalking) return;
       isWalking = true;
-      
+
       const walkFromLeft = Math.random() < 0.5;
-      
+
       // Calculate total distance to walk (from offscreen left to offscreen right)
-      const distance = window.innerWidth + 200; 
-      
+      const distance = window.innerWidth + 200;
+
       // Calculate walk duration (14 to 18 seconds) for perfectly consistent speed on all screens
-      const durationSeconds = Math.random() * 4 + 14; 
-      
+      const durationSeconds = Math.random() * 4 + 14;
+
       // Speed in pixels per frame (assuming ~60fps)
       const speed = distance / (durationSeconds * 60);
-      
+
       let currentX = walkFromLeft ? -150 : window.innerWidth + 50;
       const targetX = walkFromLeft ? window.innerWidth + 50 : -150;
-      
+
       pandaImg.style.transform = walkFromLeft ? "scaleX(1)" : "scaleX(-1)";
       scanline.style.transform = walkFromLeft ? "scaleX(1)" : "scaleX(-1)";
-      
+
       pandaContainer.style.left = `${currentX}px`;
       pandaContainer.classList.add('is-walking');
-      
+
       bubble.textContent = getRandomQuote();
       bubble.classList.add('is-visible');
-      
+
       startTrail();
-      
+
       let lastQuoteTime = Date.now();
-      
+
       function step() {
         if (!isWalking) return;
-        
+
         let arrived = false;
         if (walkFromLeft) {
           currentX += speed;
@@ -1820,21 +1847,21 @@ document.addEventListener('DOMContentLoaded', () => {
           currentX -= speed;
           if (currentX <= targetX) arrived = true;
         }
-        
+
         pandaContainer.style.left = `${currentX}px`;
-        
+
         if (Date.now() - lastQuoteTime > 3500) {
           bubble.textContent = getRandomQuote();
           bubble.classList.add('is-visible');
           lastQuoteTime = Date.now();
-          
+
           setTimeout(() => {
             if (isWalking && Date.now() - lastQuoteTime > 3000) {
               bubble.classList.remove('is-visible');
             }
           }, 2500);
         }
-        
+
         if (!arrived) {
           requestAnimationFrame(step);
         } else {
@@ -1842,12 +1869,12 @@ document.addEventListener('DOMContentLoaded', () => {
           pandaContainer.classList.remove('is-walking');
           bubble.classList.remove('is-visible');
           stopTrail();
-          
+
           // Next walk after 45-90 seconds
           setTimeout(walkPanda, Math.random() * 45000 + 45000);
         }
       }
-      
+
       requestAnimationFrame(step);
     }
 
