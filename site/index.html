@@ -238,66 +238,157 @@
       }
     }
 
-    /* Flying Background Bottles (PC Only) */
+    /* Flying Background Bottles (PC Only - Extreme Chaos!) */
     .flying-bottle {
       position: fixed;
-      width: 70px;
-      height: 110px;
-      z-index: 3; /* Behind panels, in front of grid */
+      width: 65px;
+      height: 105px;
+      z-index: 3; /* Behind panels and card, in front of grid */
       pointer-events: none;
       opacity: 0.65;
-      animation: drift-and-spin infinite linear;
-    }
-
-    .fb-1 {
-      left: 6%;
-      top: 15%;
-      animation-duration: 20s;
-    }
-
-    .fb-2 {
-      left: 12%;
-      bottom: 15%;
-      animation-duration: 25s;
-      animation-delay: -5s;
-    }
-
-    .fb-3 {
-      right: 6%;
-      top: 20%;
-      animation-duration: 18s;
-      animation-delay: -2s;
-    }
-
-    .fb-4 {
-      right: 12%;
-      bottom: 20%;
-      animation-duration: 22s;
-      animation-delay: -8s;
     }
 
     .flying-bottle img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 8px 16px rgba(249, 115, 22, 0.35));
+      filter: drop-shadow(0 6px 12px rgba(249, 115, 22, 0.4));
     }
 
-    @keyframes drift-and-spin {
+    .fb-1 {
+      animation: arc-l2r-1 9s infinite ease-in-out;
+    }
+
+    .fb-2 {
+      animation: arc-r2l-1 10s infinite ease-in-out;
+      animation-delay: 2s;
+    }
+
+    .fb-3 {
+      animation: toss-up-1 7.5s infinite ease-in-out;
+      animation-delay: 1.5s;
+    }
+
+    .fb-4 {
+      animation: toss-up-2 8.5s infinite ease-in-out;
+      animation-delay: 3s;
+    }
+
+    .fb-5 {
+      animation: arc-l2r-2 12s infinite ease-in-out;
+      animation-delay: 4.5s;
+    }
+
+    .fb-6 {
+      animation: arc-r2l-2 7s infinite ease-in-out;
+      animation-delay: 0.5s;
+    }
+
+    /* Trajectory 1: Left to Right Parabolic Arc */
+    @keyframes arc-l2r-1 {
       0% {
-        transform: translateY(0px) translateX(0px) rotate(0deg);
-      }
-      25% {
-        transform: translateY(-18px) translateX(10px) rotate(90deg);
+        left: -100px;
+        top: 105vh;
+        transform: rotate(0deg);
       }
       50% {
-        transform: translateY(0px) translateX(20px) rotate(180deg);
-      }
-      75% {
-        transform: translateY(18px) translateX(10px) rotate(270deg);
+        top: 12vh; /* Peak height */
+        transform: rotate(360deg);
       }
       100% {
-        transform: translateY(0px) translateX(0px) rotate(360deg);
+        left: 105vw;
+        top: 105vh;
+        transform: rotate(720deg);
+      }
+    }
+
+    /* Trajectory 2: Left to Right Arc (Higher Peak, slower) */
+    @keyframes arc-l2r-2 {
+      0% {
+        left: -100px;
+        top: 105vh;
+        transform: rotate(0deg);
+      }
+      50% {
+        top: 5vh; /* Very high peak */
+        transform: rotate(540deg);
+      }
+      100% {
+        left: 105vw;
+        top: 105vh;
+        transform: rotate(1080deg);
+      }
+    }
+
+    /* Trajectory 3: Right to Left Parabolic Arc */
+    @keyframes arc-r2l-1 {
+      0% {
+        right: -100px;
+        top: 105vh;
+        transform: rotate(0deg);
+      }
+      50% {
+        top: 18vh; /* Peak height */
+        transform: rotate(-360deg);
+      }
+      100% {
+        right: 105vw;
+        top: 105vh;
+        transform: rotate(-720deg);
+      }
+    }
+
+    /* Trajectory 4: Right to Left Arc (Faster, lower peak) */
+    @keyframes arc-r2l-2 {
+      0% {
+        right: -100px;
+        top: 105vh;
+        transform: rotate(0deg);
+      }
+      50% {
+        top: 25vh; /* Lower peak */
+        transform: rotate(-360deg);
+      }
+      100% {
+        right: 105vw;
+        top: 105vh;
+        transform: rotate(-720deg);
+      }
+    }
+
+    /* Trajectory 5: Tossed straight up on Left side, falls back down */
+    @keyframes toss-up-1 {
+      0% {
+        left: 15vw;
+        top: 105vh;
+        transform: rotate(0deg);
+      }
+      50% {
+        top: 8vh; /* Highest point */
+        transform: rotate(360deg);
+      }
+      100% {
+        left: 20vw; /* Drifts slightly right */
+        top: 105vh;
+        transform: rotate(720deg);
+      }
+    }
+
+    /* Trajectory 6: Tossed straight up on Right side, falls back down */
+    @keyframes toss-up-2 {
+      0% {
+        right: 15vw;
+        top: 105vh;
+        transform: rotate(0deg);
+      }
+      50% {
+        top: 15vh; /* Highest point */
+        transform: rotate(-360deg);
+      }
+      100% {
+        right: 20vw; /* Drifts slightly left */
+        top: 105vh;
+        transform: rotate(-720deg);
       }
     }
 
@@ -577,6 +668,8 @@
   <div class="flying-bottle fb-2"><img src="./site.png" alt="Flying Link"></div>
   <div class="flying-bottle fb-3"><img src="./site.png" alt="Flying Link"></div>
   <div class="flying-bottle fb-4"><img src="./site.png" alt="Flying Link"></div>
+  <div class="flying-bottle fb-5"><img src="./site.png" alt="Flying Link"></div>
+  <div class="flying-bottle fb-6"><img src="./site.png" alt="Flying Link"></div>
 
   <div class="glow-bg">
     <div class="glow-orb orb-1"></div>
