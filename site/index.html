@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Keep these professional so the chat previews (WhatsApp, Discord) look 100% real! -->
+  <title>Abdullah Alper Güven | Cyber Security Engineer & Siber Güvenlik Uzmanı</title>
+  <meta name="description"
+    content="Abdullah Alper Güven kişisel portfolyosu. Siber Güvenlik, EDR/NDR, SOAR Entegrasyonları, SIEM Log Yönetimi ve Sistem & Ağ Uzmanlığı.">
+
+  <!-- Open Graph Meta Tags (For authentic previews on WhatsApp, Discord, Telegram) -->
+  <meta property="og:title" content="Abdullah Alper Güven | Cyber Security Engineer & Siber Güvenlik Uzmanı">
+  <meta property="og:description" content="Kişisel portfolyo projelerim, sertifikalarım ve siber güvenlik çalışmalarıma göz atmak için bağlantıyı takip edin.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../images/ikon.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <link rel="icon" type="image/png" href="../images/ikon.png">
+
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #07040b;
+      --panel-bg: rgba(22, 12, 34, 0.75);
+      --accent-orange: #f97316;
+      --accent-yellow: #fbbf24;
+      --accent-purple: #8b5cf6;
+      --accent-pink: #ec4899;
+      --accent-cyan: #06b6d4;
+      --text-primary: #f3f4f6;
+      --text-secondary: #d1d5db;
+      --glass-border: rgba(249, 115, 22, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      font-family: 'Outfit', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient party/orange glow effects */
+    .glow-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(150px);
+      opacity: 0.2;
+    }
+
+    .orb-1 {
+      top: -10%;
+      left: -10%;
+      width: 50vw;
+      height: 50vw;
+      background: var(--accent-orange);
+      animation: pulse-slow 8s infinite alternate;
+    }
+
+    .orb-2 {
+      bottom: -10%;
+      right: -10%;
+      width: 50vw;
+      height: 50vw;
+      background: var(--accent-purple);
+      animation: pulse-slow 12s infinite alternate-reverse;
+    }
+
+    /* Funny background grid */
+    .grid-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      background-image: 
+        linear-gradient(rgba(249, 115, 22, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(249, 115, 22, 0.04) 1px, transparent 1px);
+      background-size: 30px 30px;
+      pointer-events: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 480px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Glassmorphic Card (Center) */
+    .card {
+      background: var(--panel-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 2px solid var(--glass-border);
+      border-radius: 28px;
+      padding: 35px 25px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(249, 115, 22, 0.1);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 60px rgba(249, 115, 22, 0.3);
+      border-color: rgba(249, 115, 22, 0.5);
+    }
+
+    /* Top mock warning badge */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(249, 115, 22, 0.15);
+      border: 1px solid rgba(249, 115, 22, 0.4);
+      color: #fca5a5;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      animation: blink 1.5s infinite;
+    }
+
+    /* Retro/Neon Drink Container */
+    .image-container {
+      position: relative;
+      width: 180px;
+      height: 250px;
+      margin: 0 auto 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hologram-glow {
+      position: absolute;
+      width: 120px;
+      height: 180px;
+      background: linear-gradient(to bottom, var(--accent-orange), var(--accent-yellow));
+      filter: blur(35px);
+      opacity: 0.3;
+      border-radius: 30px;
+      z-index: 1;
+    }
+
+    .drink-image {
+      position: relative;
+      z-index: 2;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 20px rgba(249, 115, 22, 0.4));
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .card:hover .drink-image {
+      transform: scale(1.18) rotate(5deg);
+      filter: drop-shadow(0 15px 30px rgba(249, 115, 22, 0.75));
+    }
+
+    .platform {
+      position: absolute;
+      bottom: -5px;
+      width: 150px;
+      height: 15px;
+      background: radial-gradient(ellipse at center, rgba(249, 115, 22, 0.5) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    /* Floating Link Bottles on the sides (Purely transparent) */
+    .link-sticker {
+      position: absolute;
+      width: 65px;
+      height: 100px;
+      z-index: 12;
+      pointer-events: none;
+      animation: float 3s infinite ease-in-out alternate;
+    }
+
+    .sticker-left {
+      left: -35px;
+      top: 15%;
+      animation-delay: 0.5s;
+    }
+
+    .sticker-right {
+      right: -35px;
+      bottom: 25%;
+      animation-delay: 1.2s;
+    }
+
+    .link-sticker img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 12px rgba(249, 115, 22, 0.3));
+    }
+
+    @media (max-width: 580px) {
+      .link-sticker {
+        display: none; /* Hide floating bottles on mobile to avoid screen overflow */
+      }
+    }
+
+    /* Flying Background Bottles (PC Only) */
+    .flying-bottle {
+      position: fixed;
+      width: 70px;
+      height: 110px;
+      z-index: 3; /* Behind panels, in front of grid */
+      pointer-events: none;
+      opacity: 0.65;
+      animation: drift-and-spin infinite linear;
+    }
+
+    .fb-1 {
+      left: 6%;
+      top: 15%;
+      animation-duration: 20s;
+    }
+
+    .fb-2 {
+      left: 12%;
+      bottom: 15%;
+      animation-duration: 25s;
+      animation-delay: -5s;
+    }
+
+    .fb-3 {
+      right: 6%;
+      top: 20%;
+      animation-duration: 18s;
+      animation-delay: -2s;
+    }
+
+    .fb-4 {
+      right: 12%;
+      bottom: 20%;
+      animation-duration: 22s;
+      animation-delay: -8s;
+    }
+
+    .flying-bottle img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 16px rgba(249, 115, 22, 0.35));
+    }
+
+    @keyframes drift-and-spin {
+      0% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+      }
+      25% {
+        transform: translateY(-18px) translateX(10px) rotate(90deg);
+      }
+      50% {
+        transform: translateY(0px) translateX(20px) rotate(180deg);
+      }
+      75% {
+        transform: translateY(18px) translateX(10px) rotate(270deg);
+      }
+      100% {
+        transform: translateY(0px) translateX(0px) rotate(360deg);
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .flying-bottle {
+        display: none; /* Hide flying bottles on small screens */
+      }
+    }
+
+    /* Titles */
+    .title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #f97316 0%, #fbbf24 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* The funny Link song / poem box */
+    .song-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px dashed rgba(249, 115, 22, 0.3);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .song-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: var(--accent-yellow);
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .song-lyrics {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--text-primary);
+      line-height: 1.6;
+      font-weight: 600;
+      white-space: pre-line;
+    }
+
+    .description {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* Retro drink specs */
+    .drink-specs {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.4);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 12px 0;
+      margin-bottom: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      text-align: left;
+      gap: 6px;
+    }
+
+    .spec-item span {
+      color: var(--accent-orange);
+      font-weight: bold;
+    }
+
+    .spec-item.yellow span {
+      color: var(--accent-yellow);
+    }
+
+    /* Return button */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: linear-gradient(135deg, var(--accent-orange) 0%, #fbbf24 100%);
+      color: #000;
+      text-decoration: none;
+      font-weight: 800;
+      padding: 14px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(249, 115, 22, 0.5);
+      filter: brightness(1.1);
+    }
+
+    .btn svg {
+      transition: transform 0.3s ease;
+    }
+
+    .btn:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* ========================================================
+       PC ONLY - ATTENTION GRABBING RETRO BANNER COLUMNS
+       ======================================================== */
+    .pc-side-panel {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 250px;
+      z-index: 15;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .panel-left {
+      left: 30px;
+    }
+
+    .panel-right {
+      right: 30px;
+    }
+
+    /* Funny glass panels on the side */
+    .retro-badge {
+      background: rgba(255, 255, 255, 0.02);
+      border: 2px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 15px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    /* Different flashy neon borders for retro feel */
+    .border-pink { border-color: rgba(236, 72, 153, 0.4); box-shadow: 0 0 15px rgba(236, 72, 153, 0.15); }
+    .border-cyan { border-color: rgba(6, 182, 212, 0.4); box-shadow: 0 0 15px rgba(6, 182, 212, 0.15); }
+    .border-orange { border-color: rgba(249, 115, 22, 0.4); box-shadow: 0 0 15px rgba(249, 115, 22, 0.15); }
+    .border-yellow { border-color: rgba(251, 191, 36, 0.4); box-shadow: 0 0 15px rgba(251, 191, 36, 0.15); }
+
+    .retro-badge:hover {
+      transform: scale(1.05) rotate(1deg);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .retro-badge h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem;
+      font-weight: bold;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .text-pink { color: var(--accent-pink); text-shadow: 0 0 10px rgba(236, 72, 153, 0.5); }
+    .text-cyan { color: var(--accent-cyan); text-shadow: 0 0 10px rgba(6, 182, 212, 0.5); }
+    .text-orange { color: var(--accent-orange); text-shadow: 0 0 10px rgba(249, 115, 22, 0.5); }
+    .text-yellow { color: var(--accent-yellow); text-shadow: 0 0 10px rgba(251, 191, 36, 0.5); }
+
+    .retro-badge p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* Flashing / shaking animations */
+    .flash-fast {
+      animation: flash 0.4s infinite alternate;
+    }
+
+    .shake-crazy {
+      animation: shake 0.3s infinite;
+    }
+
+    .float-slow {
+      animation: float 4s infinite ease-in-out alternate;
+    }
+
+    /* Interactive runway poll buttons */
+    .button-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .mini-btn {
+      flex: 1;
+      padding: 6px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .mini-btn:hover {
+      background: var(--accent-orange);
+      color: black;
+    }
+
+    /* Hide side panels on tablets and mobiles */
+    @media (max-width: 1080px) {
+      .pc-side-panel {
+        display: none;
+      }
+    }
+
+    /* Animations */
+    @keyframes pulse-slow {
+      0% {
+        transform: scale(1) translate(0, 0);
+      }
+      50% {
+        transform: scale(1.15) translate(3%, 3%);
+      }
+      100% {
+        transform: scale(1) translate(0, 0);
+      }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; box-shadow: 0 0 15px rgba(249, 115, 22, 0.2); }
+      50% { opacity: 0.6; box-shadow: 0 0 5px rgba(249, 115, 22, 0.05); }
+    }
+
+    @keyframes flash {
+      0% { opacity: 0.2; }
+      100% { opacity: 1; filter: brightness(1.2); }
+    }
+
+    @keyframes shake {
+      0% { transform: translate(1px, 1px) rotate(0deg); }
+      10% { transform: translate(-1px, -2px) rotate(-1deg); }
+      20% { transform: translate(-3px, 0px) rotate(1deg); }
+      30% { transform: translate(0px, 2px) rotate(0deg); }
+      40% { transform: translate(1px, -1px) rotate(1deg); }
+      50% { transform: translate(-1px, 2px) rotate(-1deg); }
+      60% { transform: translate(-3px, 1px) rotate(0deg); }
+      70% { transform: translate(2px, 1px) rotate(-1deg); }
+      80% { transform: translate(-1px, -1px) rotate(1deg); }
+      90% { transform: translate(2px, 2px) rotate(0deg); }
+      100% { transform: translate(1px, -2px) rotate(-1deg); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(12px); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Flying Background Bottles (PC Only) -->
+  <div class="flying-bottle fb-1"><img src="./site.png" alt="Flying Link"></div>
+  <div class="flying-bottle fb-2"><img src="./site.png" alt="Flying Link"></div>
+  <div class="flying-bottle fb-3"><img src="./site.png" alt="Flying Link"></div>
+  <div class="flying-bottle fb-4"><img src="./site.png" alt="Flying Link"></div>
+
+  <div class="glow-bg">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+  </div>
+
+  <div class="grid-overlay"></div>
+
+  <!-- PC ONLY: LEFT RETRO TROLL PANEL -->
+  <aside class="pc-side-panel panel-left" aria-label="Sol Eğlence Paneli">
+    
+    <div class="retro-badge border-pink shake-crazy">
+      <h3 class="text-pink">💥 ŞAKALANDIN! 💥</h3>
+      <p>Kameraya el salla kanki! 🎥 Arkadaki gizli kamerayı henüz bulamadın mı yoksa?</p>
+    </div>
+
+    <div class="retro-badge border-cyan float-slow">
+      <h3 class="text-cyan">ZAAAAA! XD</h3>
+      <p>Link dedin geldik, şakayı da afiyetle yedin! Susuzluğun geçti mi bari? 🍊</p>
+    </div>
+
+    <div class="retro-badge border-orange">
+      <h3 class="text-orange">Günün Anketi 📊</h3>
+      <p>Şeftali aromalı Link mi, Çilekli mi?</p>
+      <div class="button-row">
+        <button class="mini-btn" onclick="alert('Tabii ki Şeftali! En doğrusunu seçtin.')">Şeftali 🍑</button>
+        <button class="mini-btn" onclick="alert('Yanlış cevap! Şeftalinin yeri ayrıdır.')">Çilek 🍓</button>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- CENTER: MAIN CARD -->
+  <main class="container">
+    <article class="card">
+      <!-- Floating bottles popping out from sides of the card -->
+      <div class="link-sticker sticker-left">
+        <img src="./site.png" alt="Mini Link">
+      </div>
+      <div class="link-sticker sticker-right">
+        <img src="./site.png" alt="Mini Link">
+      </div>
+
+      <div class="status-badge" id="alert-badge">🚨 HAHAHAHAH! ŞAKALANDIN! 🚨</div>
+
+      <div class="image-container">
+        <div class="hologram-glow"></div>
+        <img src="./site.png" 
+             alt="Link Şeftali Meyve Suyu" 
+             class="drink-image" 
+             id="link-img">
+        <div class="platform"></div>
+      </div>
+
+      <h1 class="title">
+        Al Sana <br>
+        <span class="gradient-text">LİNK! 🍊</span>
+      </h1>
+
+      <!-- The Link Song (Link Şarkısı) -->
+      <div class="song-box">
+        <div class="song-title">🎵 EFSANE LİNK ŞARKISI 🎵</div>
+        <p class="song-lyrics">
+          Link at dedin, linki yolladık,
+          Şeftalinin tadına doyamadık!
+          Tıkladın da ne oldu sanki,
+          İç bir Link, ferahla kanki! 😎
+        </p>
+      </div>
+
+      <p class="description">
+        "Link at" dedin, biz de kırmayıp hemen attık! 🍊 Şaka şaka, kameraya el salla kanki! 🎥 Şu an ufak bir şokta olduğunu biliyoruz ama bu efsane nostaljiyle susuzluğunu en tatlı şekilde giderebilirsin!
+      </p>
+
+      <div class="drink-specs">
+        <div class="spec-item">HACİM: <span>200 ml 🍹</span></div>
+        <div class="spec-item yellow">AROMA: <span>Şeftali Keyfi 🍑</span></div>
+        <div class="spec-item">NOSTALJİ ORANI: <span>%100 🔥</span></div>
+        <div class="spec-item yellow">SICAKLIK: <span>Buz Gibi ❄️</span></div>
+      </div>
+
+      <a href="../index.html" class="btn" id="real-link-btn">
+        <span>Asıl Portfolyo Bağlantısı</span>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </a>
+    </article>
+  </main>
+
+  <!-- PC ONLY: RIGHT RETRO TROLL PANEL -->
+  <aside class="pc-side-panel panel-right" aria-label="Sağ Eğlence Paneli">
+
+    <div class="retro-badge border-yellow float-slow" style="animation-delay: 1.5s;">
+      <h3 class="text-yellow">😂 HAHAHAHAH! 😂</h3>
+      <p>Şu an arkadaş grubunda efsane keklendin, geçmiş olsun kanki! 🍊</p>
+    </div>
+
+    <div class="retro-badge border-pink flash-fast">
+      <h3 class="text-pink">🔥 SAZAN AVI! 🔥</h3>
+      <p>2000'lerin en bayat şakasına maruz kaldınız. Tebrikler, ödülünüz 1 adet Link! 🏆</p>
+    </div>
+
+    <div class="retro-badge border-cyan">
+      <h3 class="text-cyan">KULLANIM REÇETESİ 📜</h3>
+      <p>Susadıkça günde 3 doz alınır. Arkadaşlara gönderildiğinde şaka etkisi ikiye katlanır.</p>
+    </div>
+
+  </aside>
+
+</body>
+
+</html>
