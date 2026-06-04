@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function setLanguage(lang) {
+    document.documentElement.lang = lang;
     document.documentElement.classList.remove('lang-en', 'lang-de', 'lang-zh', 'lang-ru');
 
     if (lang === 'en') {

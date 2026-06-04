@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
   --bg-primary: #f2faf6;
   --bg-secondary: #e6f3ed;
   --text-primary: #1e293b;
   --text-secondary: #475569;
-  --text-muted: #64748b;
+  --text-muted: #526175;
 
   --accent-primary: #0d9488;
   --accent-primary-rgb: 13, 148, 136;
