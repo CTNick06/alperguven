@@ -142,6 +142,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  let sectionOffsets = [];
+  function calculateOffsets() {
+    sectionOffsets = [];
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+      sectionOffsets.push({
+        id: section.getAttribute('id'),
+        top: section.offsetTop,
+        height: section.clientHeight
+      });
+    });
+  }
+  calculateOffsets();
+  window.addEventListener('resize', calculateOffsets);
+
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
       header.classList.add('scrolled');
@@ -150,14 +165,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let current = '';
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-      if (window.scrollY >= (sectionTop - 200)) {
-        current = section.getAttribute('id');
+    for (let i = 0; i < sectionOffsets.length; i++) {
+      if (window.scrollY >= (sectionOffsets[i].top - 200)) {
+        current = sectionOffsets[i].id;
       }
-    });
+    }
 
     navLinks.forEach(link => {
       link.classList.remove('active');
@@ -1768,6 +1780,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let isWalking = false;
+    let walkFromLeft = false;
+    let currentX = 0;
+    let targetX = 0;
+    let speed = 0;
     let trailInterval;
 
     function startTrail() {
@@ -1795,19 +1811,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isWalking) return;
       isWalking = true;
 
-      const walkFromLeft = Math.random() < 0.5;
+      walkFromLeft = Math.random() < 0.5;
 
-      
       const distance = window.innerWidth + 200;
-
-      
       const durationSeconds = Math.random() * 4 + 14;
+      speed = distance / (durationSeconds * 60);
 
-      
-      const speed = distance / (durationSeconds * 60);
-
-      let currentX = walkFromLeft ? -150 : window.innerWidth + 50;
-      const targetX = walkFromLeft ? window.innerWidth + 50 : -150;
+      currentX = walkFromLeft ? -150 : window.innerWidth + 50;
+      targetX = walkFromLeft ? window.innerWidth + 50 : -150;
 
       pandaImg.style.transform = walkFromLeft ? "scaleX(1)" : "scaleX(-1)";
       scanline.style.transform = walkFromLeft ? "scaleX(1)" : "scaleX(-1)";
@@ -1852,11 +1863,11 @@ document.addEventListener('DOMContentLoaded', () => {
           requestAnimationFrame(step);
         } else {
           isWalking = false;
+          pandaContainer.style.left = '';
           pandaContainer.classList.remove('is-walking');
           bubble.classList.remove('is-visible');
           stopTrail();
 
-          
           setTimeout(walkPanda, Math.random() * 45000 + 45000);
         }
       }
@@ -1864,7 +1875,16 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(step);
     }
 
-    
+    window.addEventListener('resize', () => {
+      if (isWalking) {
+        if (walkFromLeft) {
+          targetX = window.innerWidth + 50;
+        }
+      } else {
+        pandaContainer.style.left = '';
+      }
+    });
+
     setTimeout(walkPanda, 12000);
   }
 

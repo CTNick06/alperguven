@@ -1423,7 +1423,7 @@ section {
   fill: var(--accent-primary);
 }
 
-.contact-info-content h4 {
+.contact-info-content h3 {
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 0.9rem;
@@ -1913,7 +1913,7 @@ body.dark-mode .project-overlay-btn svg {
   border: 1px transparent;
   transition: var(--transition-fast);
   user-select: none;
-  opacity: 0.15;
+  opacity: 0.5;
   
 }
 
@@ -1926,8 +1926,12 @@ body.dark-mode .project-overlay-btn svg {
 .glitch-text {
   font-family: 'Courier New', Courier, monospace;
   font-size: 0.95rem;
-  color: var(--accent-pink);
+  color: var(--accent-primary);
   letter-spacing: 1px;
+}
+
+body.dark-mode .glitch-text {
+  color: var(--accent-pink);
 }
 
 .terminal-blink-text {
