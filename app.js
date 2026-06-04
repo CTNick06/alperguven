@@ -262,7 +262,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let particlesArray = [];
     let packetsArray = [];
     let radarAngle = 0;
-    let closeNodes = [];
 
     const colors = ['#0d9488', '#0284c7', '#10b981'];
     const cyberTerms = ['SECURE', '80', '443', 'EDR', 'API', 'LOG', 'NET', 'APT', '22', '445', '3389', 'CVE', '2FA', 'SQL', 'EPP', 'FW', 'NDR', 'VPN', 'NAC', 'PAM', 'C2'];
@@ -429,6 +428,8 @@ document.addEventListener('DOMContentLoaded', () => {
     init();
     window.addEventListener('resize', init);
 
+    let closeNodes = [];
+
     function connect() {
       let opacityValue = 1;
       const isDarkMode = document.body.classList.contains('dark-mode');
@@ -442,9 +443,9 @@ document.addEventListener('DOMContentLoaded', () => {
           let dy = particlesArray[a].y - particlesArray[b].y;
           let distSq = dx * dx + dy * dy;
 
-          if (distSq < 12100) { // 110 * 110
+          if (distSq < 12100) {
             closeNodes.push({ a: particlesArray[a], b: particlesArray[b] });
-
+            
             let distance = Math.sqrt(distSq);
             opacityValue = 1 - (distance / 110);
 
@@ -466,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isSecuredLine) {
               ctx.strokeStyle = isDarkMode
                 ? `rgba(16, 185, 129, ${opacityValue * 0.35})`
-                : `rgba(5, 150, 105, ${opacityValue * 0.6})`;
+                : `rgba(5, 150, 105, ${opacityValue * 0.6})`
               ctx.lineWidth = isDarkMode ? 1.2 : 1.4;
             } else {
               ctx.strokeStyle = isDarkMode
