@@ -262,6 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let particlesArray = [];
     let packetsArray = [];
     let radarAngle = 0;
+    let closeNodes = [];
 
     const colors = ['#0d9488', '#0284c7', '#10b981'];
     const cyberTerms = ['SECURE', '80', '443', 'EDR', 'API', 'LOG', 'NET', 'APT', '22', '445', '3389', 'CVE', '2FA', 'SQL', 'EPP', 'FW', 'NDR', 'VPN', 'NAC', 'PAM', 'C2'];
@@ -430,31 +431,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function connect() {
       let opacityValue = 1;
+      const isDarkMode = document.body.classList.contains('dark-mode');
+      const mouseRadiusSq = mouse.radius * mouse.radius;
+      
+      closeNodes = [];
+
       for (let a = 0; a < particlesArray.length; a++) {
         for (let b = a + 1; b < particlesArray.length; b++) {
           let dx = particlesArray[a].x - particlesArray[b].x;
           let dy = particlesArray[a].y - particlesArray[b].y;
-          let distance = Math.sqrt(dx * dx + dy * dy);
+          let distSq = dx * dx + dy * dy;
 
-          if (distance < 110) {
+          if (distSq < 12100) { // 110 * 110
+            closeNodes.push({ a: particlesArray[a], b: particlesArray[b] });
+
+            let distance = Math.sqrt(distSq);
             opacityValue = 1 - (distance / 110);
 
             let isSecuredLine = false;
             if (mouse.x !== null && mouse.y !== null) {
               let dxMouseA = mouse.x - particlesArray[a].x;
               let dyMouseA = mouse.y - particlesArray[a].y;
-              let distMouseA = Math.sqrt(dxMouseA * dxMouseA + dyMouseA * dyMouseA);
+              let distMouseASq = dxMouseA * dxMouseA + dyMouseA * dyMouseA;
 
               let dxMouseB = mouse.x - particlesArray[b].x;
               let dyMouseB = mouse.y - particlesArray[b].y;
-              let distMouseB = Math.sqrt(dxMouseB * dxMouseB + dyMouseB * dyMouseB);
+              let distMouseBSq = dxMouseB * dxMouseB + dyMouseB * dyMouseB;
 
-              if (distMouseA < mouse.radius || distMouseB < mouse.radius) {
+              if (distMouseASq < mouseRadiusSq || distMouseBSq < mouseRadiusSq) {
                 isSecuredLine = true;
               }
             }
 
-            const isDarkMode = document.body.classList.contains('dark-mode');
             if (isSecuredLine) {
               ctx.strokeStyle = isDarkMode
                 ? `rgba(16, 185, 129, ${opacityValue * 0.35})`
@@ -486,22 +494,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       connect();
 
-      if (packetsArray.length < 12 && Math.random() < 0.015) {
-        const closeNodes = [];
-        for (let a = 0; a < particlesArray.length; a++) {
-          for (let b = a + 1; b < particlesArray.length; b++) {
-            let dx = particlesArray[a].x - particlesArray[b].x;
-            let dy = particlesArray[a].y - particlesArray[b].y;
-            let dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 110) {
-              closeNodes.push({ a: particlesArray[a], b: particlesArray[b] });
-            }
-          }
-        }
-        if (closeNodes.length > 0) {
-          const pair = closeNodes[Math.floor(Math.random() * closeNodes.length)];
-          packetsArray.push(new DataPacket(pair.a, pair.b));
-        }
+      if (packetsArray.length < 12 && Math.random() < 0.015 && closeNodes.length > 0) {
+        const pair = closeNodes[Math.floor(Math.random() * closeNodes.length)];
+        packetsArray.push(new DataPacket(pair.a, pair.b));
       }
 
       for (let i = packetsArray.length - 1; i >= 0; i--) {
