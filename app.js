@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Language Management Logic (Dropdown Mode)
+  
   const langDropdown = document.getElementById('lang-dropdown');
   const langToggleBtn = document.getElementById('lang-toggle');
   const langOptions = document.querySelectorAll('.lang-opt');
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updatePlaceholders();
     updateDropdownActiveState(lang);
 
-    // Update typing effect if active
+    
     if (typingTextElement) {
       charIndex = 0;
       isDeleting = false;
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Toggle Dropdown Menu
+  
   if (langToggleBtn && langDropdown) {
     langToggleBtn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Handle Option Clicks
+  
   langOptions.forEach(opt => {
     opt.addEventListener('click', () => {
       const selectedLang = opt.getAttribute('data-lang-val');
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Close dropdown when clicking outside
+  
   document.addEventListener('click', (e) => {
     if (langDropdown && !langDropdown.contains(e.target)) {
       langDropdown.classList.remove('open');
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
     typeEffect();
   }
 
-  // Trigger language init to ensure typing logic is ready
+  
   initLanguage();
 
   const canvas = document.getElementById('bg-canvas');
@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (labelType === 'term') {
           this.cyberTerm = assignedTerm;
           if (assignedTerm === 'APT') {
-            this.color = '#ef4444'; // APT tehdidi için kırmızı nokta
+            this.color = '#ef4444'; 
           }
         }
         this.binaryVal = Math.random() < 0.5 ? '0' : '1';
@@ -372,10 +372,10 @@ document.addEventListener('DOMContentLoaded', () => {
       packetsArray = [];
       const numberOfParticles = Math.min((canvas.width * canvas.height) / 11500, 90);
 
-      // 'APT' kelimesini karıştırma havuzundan çıkarıp en başa garantili yerleştiriyoruz
+      
       const remainingTerms = cyberTerms.filter(t => t !== 'APT');
       const shuffledTerms = [...remainingTerms].sort(() => Math.random() - 0.5);
-      shuffledTerms.unshift('APT'); // 'APT' her zaman index 0'da
+      shuffledTerms.unshift('APT'); 
 
       let termIndex = 0;
 
@@ -384,7 +384,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let term = null;
 
         if (i === 0 && numberOfParticles > 0) {
-          // İlk parçacığı her zaman kırmızı APT parçacığı olarak garanti ediyoruz
+          
           labelType = 'term';
           term = shuffledTerms[termIndex++];
         } else {
@@ -392,10 +392,10 @@ document.addEventListener('DOMContentLoaded', () => {
           if (rand < 0.25 && termIndex < shuffledTerms.length) {
             labelType = 'term';
             term = shuffledTerms[termIndex++];
-          } else if (rand < 0.25 + 0.35) { // 0.25 - 0.60 arası (%35 ihtimal)
+          } else if (rand < 0.25 + 0.35) { 
             labelType = 'binary';
           } else {
-            labelType = 'none'; // Geriye kalan %40 ihtimal
+            labelType = 'none'; 
           }
         }
 
@@ -1666,7 +1666,7 @@ document.addEventListener('DOMContentLoaded', () => {
       gameModalOverlay.addEventListener('click', stopAndCloseGame);
     }
 
-    // Also listen to Escape key to stop game when modal is active
+    
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && gameModal && gameModal.classList.contains('active')) {
         stopAndCloseGame();
@@ -1686,7 +1686,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Cyber Red Panda Security Patrol ---
+  
   function initCyberPanda() {
     const pandaContainer = document.createElement('div');
     pandaContainer.className = 'cyber-panda-container';
@@ -1797,13 +1797,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const walkFromLeft = Math.random() < 0.5;
 
-      // Calculate total distance to walk (from offscreen left to offscreen right)
+      
       const distance = window.innerWidth + 200;
 
-      // Calculate walk duration (14 to 18 seconds) for perfectly consistent speed on all screens
+      
       const durationSeconds = Math.random() * 4 + 14;
 
-      // Speed in pixels per frame (assuming ~60fps)
+      
       const speed = distance / (durationSeconds * 60);
 
       let currentX = walkFromLeft ? -150 : window.innerWidth + 50;
@@ -1856,7 +1856,7 @@ document.addEventListener('DOMContentLoaded', () => {
           bubble.classList.remove('is-visible');
           stopTrail();
 
-          // Next walk after 45-90 seconds
+          
           setTimeout(walkPanda, Math.random() * 45000 + 45000);
         }
       }
@@ -1864,7 +1864,7 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(step);
     }
 
-    // Set first walk after 12 seconds
+    
     setTimeout(walkPanda, 12000);
   }
 

@@ -188,7 +188,7 @@ body {
   background: rgba(255, 255, 255, 0.6);
 }
 
-/* --- MATRIX CODE LEAK EFFECT FOR CARDS --- */
+
 .about-card,
 .about-right,
 .contact-form-panel {
@@ -209,12 +209,12 @@ body {
   background-size: 128px 128px;
   background-position: 0 0;
   pointer-events: none;
-  z-index: 1; /* Render above parent background to avoid backdrop-filter rendering bugs */
+  z-index: 1; 
   -webkit-mask-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 1) 12%, rgba(0, 0, 0, 1) 88%, transparent);
   mask-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 1) 12%, rgba(0, 0, 0, 1) 88%, transparent);
 }
 
-/* Direct children must be z-indexed higher so matrix rain background sits correctly behind card text */
+
 .about-card > *,
 .about-right > *,
 .project-card > *,
@@ -1667,7 +1667,7 @@ footer {
     transition: var(--transition-smooth);
     border-top: 1px solid var(--glass-border);
     visibility: hidden;
-    /* Subpixel rendering sızıntılarını tamamen engellemek için */
+    
   }
 
   .nav-menu.active {
@@ -1697,7 +1697,7 @@ footer {
   }
 
   .floating-card {
-    display: none !important; /* Hide on mobile to prevent overflow and clutter */
+    display: none !important; 
   }
 
   .tabs-header {
@@ -1914,7 +1914,7 @@ body.dark-mode .project-overlay-btn svg {
   transition: var(--transition-fast);
   user-select: none;
   opacity: 0.15;
-  /* Extremely subtle, almost invisible until hovered */
+  
 }
 
 .easter-egg-trigger-container:hover {
@@ -2580,7 +2580,7 @@ body.dark-mode .project-overlay-btn svg {
   }
 }
 
-/* --- MULTILINGUAL SUPPORT --- */
+
 html:not(.lang-en):not(.lang-de):not(.lang-zh):not(.lang-ru) [data-lang="en"],
 html:not(.lang-en):not(.lang-de):not(.lang-zh):not(.lang-ru) [data-lang="de"],
 html:not(.lang-en):not(.lang-de):not(.lang-zh):not(.lang-ru) [data-lang="zh"],
@@ -2669,7 +2669,7 @@ body.dark-mode .lang-toggle {
   fill: none;
 }
 
-/* Dropdown Menu Premium Glassmorphism Stilleri */
+
 .lang-dropdown-menu {
   position: absolute;
   top: calc(100% + 8px);
@@ -2742,7 +2742,7 @@ body.dark-mode .lang-opt.selected {
   background: rgba(20, 184, 166, 0.2);
 }
 
-/* Game Modal Specific Styles & Premium Responsiveness */
+
 .game-modal-content {
   max-width: 1100px !important;
   width: 95% !important;
@@ -2771,7 +2771,7 @@ body.dark-mode .lang-opt.selected {
   }
 }
 
-/* --- CYBER RED PANDA SECURITY PATROL --- */
+
 .cyber-panda-container {
   position: fixed;
   bottom: 20px;
@@ -2905,7 +2905,7 @@ body.dark-mode .cyber-panda-img {
   }
 }
 
-/* --- CYBER PANDA MOBILE RESPONSIVENESS --- */
+
 @media (max-width: 768px) {
   .cyber-panda-container {
     bottom: 12px;
