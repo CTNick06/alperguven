@@ -143,6 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   let sectionOffsets = [];
+  let offsetsCalculated = false;
+
   function calculateOffsets() {
     sectionOffsets = [];
     const sections = document.querySelectorAll('section');
@@ -153,11 +155,20 @@ document.addEventListener('DOMContentLoaded', () => {
         height: section.clientHeight
       });
     });
+    offsetsCalculated = true;
   }
-  calculateOffsets();
-  window.addEventListener('resize', calculateOffsets);
+
+  window.addEventListener('resize', () => {
+    if (offsetsCalculated) {
+      calculateOffsets();
+    }
+  });
 
   window.addEventListener('scroll', () => {
+    if (!offsetsCalculated) {
+      calculateOffsets();
+    }
+
     if (window.scrollY > 50) {
       header.classList.add('scrolled');
     } else {
